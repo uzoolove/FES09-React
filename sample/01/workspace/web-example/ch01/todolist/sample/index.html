@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List App</title>
+</head>
+<body>
+  <div id="todo">
+    <header>
+      <h1>Todo List - Sample :)</h1>
+      <p>파일 경로: <span id="filepath"></span></p>
+    </header>
+    <div id="main">
+      <div id="container">
+        <ul>
+          <li>
+            <h2>쇼핑 목록</h2>
+            <div class="todoinput">
+              <input type="text" autofocus>
+              <button type="button">추가</button>
+            </div>
+            <ul class="todolist">
+              <li>
+                <span>1</span>
+                <span><s>샘플1</s></span>
+                <button type="button">삭제</button>
+              </li>
+              <li>
+                <span>2</span>
+                <span>샘플2</span>
+                <button type="button">삭제</button>
+              </li>
+              <li>
+                <span>3</span>
+                <span>샘플3</span>
+                <button type="button">삭제</button>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <footer>
+      <p>Front-End School 9기</p>
+    </footer>
+  </div>
+
+  <script type="text/javascript">
+    document.querySelector('#filepath').textContent = document.URL.split('web-example')[1]+'index.html';
+
+    // 샘플 목록
+    const itemList = [
+      { no: 1, title: '두부', done: true} ,
+      { no: 2, title: '계란', done: false },
+      { no: 3, title: '라면', done: true },
+    ];
+
+    // 할일 추가
+    function addItem(title){
+
+    }
+
+    // 완료/미완료 처리
+    function toggleDone(no){
+
+    }
+
+    // 할일 삭제
+    function deleteItem(no){
+      
+    }
+  </script>
+</body>
+</html>

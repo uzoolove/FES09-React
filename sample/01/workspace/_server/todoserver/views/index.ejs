@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/todoapp/assets/img/favicon.ico">
+  <title>Todo List App</title>
+</head>
+
+<body>
+  <div id="todo">
+    <header>
+      <h1>Todo List - 고전적인 방식 :(</h1>
+    </header>
+    <div id="main">
+      <div id="container">
+        <ul>
+          <li>
+            <h2>할일 목록</h2>
+            <form id="add" action="/regist" method="POST">
+              <input type="text" name="title" autofocus>
+              <button type="submit">추가</button>
+              <!-- <a href="/init">초기화</a> -->
+            </form>
+            <ul class="todolist">
+              <% list?.items?.forEach(item => { %>
+                <form action="/delete" method="POST">
+                  <input type="hidden" name="_id" value="<%= item._id %>">
+                  <li data-no="<%= item._id %>">
+                    <span><%= item._id %></span>
+                    <a href="/update/<%= item._id %>?done=<%= !item.done %>"><%- item.done ? `<s>${item.title}</s>` : item.title %></a>
+                    <button type="submit">삭제</button>
+                  </li>
+                </form>
+              <% }); %>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <footer>
+      <p>Front-End School 9기</p>
+    </footer>
+  </div> 
+
+  <script type="text/javascript">
+    document.querySelector('#add').addEventListener('submit', event => {
+      event.preventDefault();
+      const title = document.querySelector('#add input[name=title]').value;
+      if(title.trim().length === 0){
+        return;
+      }else{
+        event.target.submit();
+      }
+    });
+  </script>
+</body>
+</html>
