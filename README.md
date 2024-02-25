@@ -30,9 +30,9 @@
 
 ### 웹 서버 구동
 1. Live Server 설치
-  - VS Code Extention에서 live server 검색 후 설치
+	- VS Code Extention에서 live server 검색 후 설치
 2. workspace/index.html 파일을 열고 Live Server 실행
-  - VS Code 우측 하단의 Go Live 클릭
+	- VS Code 우측 하단의 Go Live 클릭
 
 ## 소스코드 공유(본인의 소스코드를 강사에게 공유하고 싶을때)
 * https://codeshare.io/KW8KVE 접속 후 문제 있는 소스코드를 붙여넣기한 후 채팅창에 알려주세요.
