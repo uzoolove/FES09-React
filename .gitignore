@@ -2,6 +2,7 @@ ins
 .history
 **/node_modules
 /workspace
+todolist.json
 
 # 오피스 임시파일
 ~$*
