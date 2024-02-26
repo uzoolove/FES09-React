@@ -2,7 +2,7 @@ ins
 .history
 **/node_modules
 /workspace
-todolist.json
+_server/todoapi/db/todolist.json
 
 # 오피스 임시파일
 ~$*
