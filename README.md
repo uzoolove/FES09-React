@@ -10,6 +10,7 @@
 
 ### Visual Studio Code 설정
 1. VSCode 실행
+  * 이미 실행중이면 File > New Window 메뉴로 새로운 VS Code 실행
 2. File > Preferences > Settings
 	* Files: Auto Save: onFocusChange
 	* Editor: Font Size: 각자 맞춰서 조절
@@ -22,6 +23,16 @@
 	* <nohyper>https</nohyper>://github.com/uzoolove/FES09-React.git 입력
 	* 복사할 적당한 폴더 선택 후 Select as Repository Destination 선택
 	* Open 선택
+
+### 실습 준비
+* Sample 폴더 복사
+  - Sample/01/workspace 폴더를 복사해서 프로젝트 루트에 붙여넣기
+
+### 웹 서버 구동
+1. Live Server 설치
+	- VS Code Extention에서 live server 검색 후 설치
+2. workspace/index.html 파일을 열고 Live Server 실행
+	- VS Code 우측 하단의 Go Live 클릭
 
 ## 소스코드 공유(본인의 소스코드를 강사에게 공유하고 싶을때)
 * https://codeshare.io/KW8KVE 접속 후 문제 있는 소스코드를 붙여넣기한 후 채팅창에 알려주세요.
