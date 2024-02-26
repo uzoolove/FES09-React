@@ -17,7 +17,7 @@
           <li>
             <h2>쇼핑 목록</h2>
             <div class="todoinput">
-              <input type="text" autofocus>
+              <input type="text" autofocus onkeydown="handleAddKeydown(event)">
               <button type="button" onclick="handleAdd()">추가</button>
             </div>
             <ul class="todolist">
@@ -147,6 +147,11 @@
       }
     };
 
+    // 엔터 이벤트
+    const handleAddKeydown = event => {
+      if(event.key === 'Enter') handleAdd();
+    };
+
     // 할일 추가
     function addItem(title){
       const item = {
@@ -157,7 +162,7 @@
 
       // 데이터에 새로운 아이템 추가
       itemList.push(item);
-      
+
       // 화면에 새로운 아이템 추가
       const liElem = getTodoItemElem(item);
       const todoListElem = document.querySelector('.todolist');
