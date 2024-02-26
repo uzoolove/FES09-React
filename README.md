@@ -1,5 +1,5 @@
 # React 프로그래밍
-* GitHub URL: (https://github.com/uzoolove/FES09)
+* GitHub URL: (https://github.com/uzoolove/FES09-React)
 
 ## 개발환경 구축
 ### 프로그램 설치
@@ -10,7 +10,6 @@
 
 ### Visual Studio Code 설정
 1. VSCode 실행
-  * 이미 실행중이면 File > New Window 메뉴로 새로운 VS Code 실행
 2. File > Preferences > Settings
 	* Files: Auto Save: onFocusChange
 	* Editor: Font Size: 각자 맞춰서 조절
@@ -24,18 +23,38 @@
 	* 복사할 적당한 폴더 선택 후 Select as Repository Destination 선택
 	* Open 선택
 
-### 실습 준비
-* Sample 폴더 복사
-  - Sample/01/workspace 폴더를 복사해서 프로젝트 루트에 붙여넣기
-
-### 웹 서버 구동
-1. Live Server 설치
-	- VS Code Extention에서 live server 검색 후 설치
-2. workspace/index.html 파일을 열고 Live Server 실행
-	- VS Code 우측 하단의 Go Live 클릭
-
 ## 소스코드 공유(본인의 소스코드를 강사에게 공유하고 싶을때)
 * https://codeshare.io/KW8KVE 접속 후 문제 있는 소스코드를 붙여넣기한 후 채팅창에 알려주세요.
+
+## 주차별 내용(일정은 변동 가능)
+### 1주차
+* TodoList - vanillaJS 
+* Counter 프로그램 - 라이브러리 개발
+* TodoList - 라이브러리 이용
+* TodoList - React
+### 2주차
+* 리액트 란? 리액트 역사, 리액트 개발환경 설정, create-react-app, Vite
+* 리액트 개발에 필요한 자바스크립트 문법
+* JSX, 가상 DOM, 리액트 랜더링
+* 리액트 컴포넌트(함수형 컴포넌트, 클래스 컴포넌트)와 라이프 사이클
+* 리액트 훅, useState, useEffect
+### 3주차
+* 리액트 훅, useRef, useReducer
+* 리액트 훅, useMemo, useCallback
+* 사용자 정의 훅 만들기, 고차 컴포넌트
+* Context API
+### 4주차
+* 리액트 상태관리 라이브러리
+* Recoil, Zustand
+* 리액트 Router
+* HTTP 통신(Fetch API, Axios, React Query)
+* CSR과 SSR, Next.js
+### 5주차
+* 백엔드 개발과 API 서버
+* Styled components, Tailwind CSS
+* 프로젝트 실습 - 로그인, JWT 토큰 인증
+* 프로젝트 실습 - 게시물 관리
+
 
 ## 참고 사이트
 
