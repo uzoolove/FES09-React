@@ -54,12 +54,13 @@
 
     // 샘플 목록
     let itemList = [
-      { no: 1, title: '두부', done: true } ,
-      { no: 2, title: '계란', done: false },
-      { no: 3, title: '라면', done: true },
+      
     ];
 
-    let lastNo = itemList[itemList.length-1].no;
+    // 옵셔널 체이닝
+    let lastNo = itemList[itemList.length-1]?.no || 0;
+    // let lastNo = (itemList[itemList.length-1] !== undefined) ? itemList[itemList.length-1].no : 0;
+    // let lastNo = itemList.length > 0  ? itemList[itemList.length-1].no : 0;
 
     // Todo 아이템을 받아서 DOM 객체로 만들어 반환
     function getTodoItemElem(item){
