@@ -53,7 +53,7 @@
     document.querySelector('#filepath').textContent = document.URL.split('web-example')[1]+'index.html';
 
     // 샘플 목록
-    const itemList = [
+    let itemList = [
       { no: 1, title: '두부', done: true} ,
       { no: 2, title: '계란', done: false },
       { no: 3, title: '라면', done: true },
@@ -224,8 +224,66 @@
       // 데이터 갱신(배열에서 삭제)
 
       // 화면 갱신(화면에서 삭제)
-      
+
     }
+
+    // 정진욱
+    function deleteItem(no){
+      // 데이터 삭제
+      itemList = itemList.filter(item => item.no !== no);
+      
+
+      // 삭제된 데이터로 다시 렌더링
+      while (todoListElem.firstChild) {
+        todoListElem.firstChild.remove();
+      }
+
+      itemList.forEach((item, index) => {
+        item.no = index + 1;
+        const liElem = getTodoItemElem(item);
+        todoListElem.appendChild(liElem);
+      });
+    }
+
+    // const itemList = [
+    //   { no: 1, title: '두부', done: true} ,
+    //   { no: 2, title: '계란', done: false },
+    //   { no: 3, title: '라면', done: true },
+    // ];
+
+
+    // 이소정
+    function deleteItem(no) {
+      // 아이템 갱신
+      itemList.splice(no - 1, 1);
+
+      // 화면 갱신
+      const todolist = document.querySelector(".todolist");
+      todolist.children[no - 1].remove();
+    }
+
+    // 남동현
+    function deleteItem(no){
+      // 데이터 갱신(배열에서 삭제)
+      itemList.splice(no -1, 1);
+      // 화면에 갱식
+      const selectedLi = document.querySelector(`.todolist > li[data-no="${(no)}"]`)
+      selectedLi.remove();
+    }
+
+    // 류채영
+    function deleteItem(no){
+      let selectedItemElem = document.querySelector(`li[data-no="${no}"]`)
+      //데이터 갱신
+      itemList.forEach((item, index)=> {
+        if(item.no === no) itemList.splice(index, 1);
+      })
+
+      //화면 갱신 
+      selectedItemElem.remove();
+    }
+
+
   </script>
 </body>
 </html>
