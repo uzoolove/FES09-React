@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>실습</title>
+  <link rel="shortcut icon" href="./favicon.ico">
+  <link rel="stylesheet" href="./assets/style.css">
+  <script src="https://unpkg.com/jquery"></script>
+  <script>
+    $(function() {
+      $('.chapter-title').click(function() {
+        if ($(this).parent().toggleClass('chapter-open').hasClass('chapter-open')) {
+          $(this).children('button').text('예제목록 접기');
+        }else{
+          $(this).children('button').text('예제 목록 펼치기');
+        }
+      });
+    });
+
+    $(function() {
+      $('.paragraph > ul a').click(function(e) {
+        $('.paragraph > ul a').removeClass('clicked');
+        $(this).addClass('clicked');
+        var url = $(this).attr('href');
+        var extName = url.split('.')[1];
+        if (extName == 'js') {
+          e.preventDefault();
+          console.clear();
+          var title = $(this).text();
+          console.log('<<< ' + title + ' 예제 실행 결과(' + url + ') >>>');
+          $.get(url, function(data) {
+            if (data.trim) {
+              data = data.trim();
+            }
+            console.log(data);
+            console.log('\n\n');
+            $('body').next().remove();
+            var result = '<script>' + data + '<\/script>';
+              $('html').append(result);
+          }, 'text');
+        }
+      });
+    });
+
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="example-title">React 실습</h1>
+    </header>
+    <div class="main-contents">
+
+      <section class="chapter chapter-open">
+        <div class="chapter-title">
+        	<h3 tabindex="0">1장 리액트 빌드업</h3>
+        	<button>예제 목록 펼치기</button>
+        </div>
+        <section class="paragraph">
+          <h4 class="paragraph-title">1-1 웹 개발의 변천사</h4>
+          <ul>
+            <li>고전적인 방식 (서버에서 완성된 HTML 응답)
+              <ul>
+                <li><a href="http://localhost:3000">01 Todo List</a></li>
+              </ul>
+            </li>
+            <li>근대적인 방식 (Multi Page Application, MPA)
+              <ul>
+                <li>Todo List (HTML + vanillaJS)
+                  <ul>
+                    <li><a href="ch01/todolist/sample/">Sample</a></li>
+                    <li><a href="ch01/todolist/01/">01 목록 출력</a></li>
+                    <li><a href="ch01/todolist/02/">02 등록</a></li>
+                    <li><a href="ch01/todolist/03/">03 수정</a></li>
+                    <li><a href="ch01/todolist/04/">04 삭제, 완성</a></li>
+                  </ul>
+                </li>
+                <li>Todo List (HTML + jQuery)
+                  <ul>
+                    <li><a href="ch01/todolist/05/">05 jQuery</a></li>
+                  </ul>
+                </li>
+                <li>Counter (라이브러리 개발)
+                  <ul>
+                    <li><a href="ch01/counter/sample/">Sample</a></li>
+                    <li><a href="ch01/counter/01/">01 HTML + JS</a></li>
+                    <li><a href="ch01/counter/02/">02 HTML 대신 JS로 UI 구성</a></li>
+                    <li><a href="ch01/counter/03/">03 creteElement() 함수 만들기</a></li>
+                    <li><a href="ch01/counter/04/">04 createRoot(), render() 함수 만들기</a></li>
+                    <li><a href="ch01/counter/05/">05 UI 구성 요소별 각각의 함수로 분리(컴포넌트로 만들기)</a></li>
+                    <li><a href="ch01/counter/06/">06 상태(데이터) 변경시 자동으로 UI 리렌더링</a></li>
+                    <li><a href="ch01/counter/07/">07 컴포넌트를 모듈로 분리</a></li>
+                  </ul>
+                </li>
+                <li>Todo List (vanillaJS + Lib)
+                  <ul>
+                    <li><a href="ch01/todolist/06/">06 Mylib.createElement() 사용해서 UI 구성</a></li>
+                    <li><a href="ch01/todolist/07/">07 UI 구성 요소별 각각의 함수로 분리(컴포넌트로 만들기)</a></li>
+                    <li><a href="ch01/todolist/08/">08 상태(데이터) 변경시 화면 리렌더링</a></li>
+                    <li><a href="ch01/todolist/09/">09 컴포넌트를 모듈로 분리</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>03 현대적인 방식 (Single Page Application, SPA)
+              <ul>
+                <li><a href="ch01/react/01/">01 Counter - React</a></li>
+                <li><a href="ch01/react/02/">02 Todo List - React로 UI 구성</a></li>
+                <li><a href="ch01/react/03/">03 Todo List - React 컴포넌트 분리</a></li>
+                <li><a href="ch01/react/04/">04 Todo List - React 기능 추가</a></li>
+                <li><a href="ch01/react/05/">05 Todo List - React 컴포넌트를 모듈로 분리</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <h4 class="paragraph-title">1-2 자바스크립트 리뷰</h4>
+          <ul>
+            <li><a href="ch01/js-review/01.js">01 Arrow Function</a></li>
+            <li><a href="ch01/js-review/02.js">02 구조 분해 할당(Destructuring assignment)</a></li>
+            <li><a href="ch01/js-review/03.js">03 전개 연산자</a>
+              <ul>
+                <li><a href="ch01/js-review/03-01.js">03-01 기본 데이터 타입과 참조형 데이터 타입</a></li>
+                <li><a href="ch01/js-review/03-02.js">03-02 객체에 적용</a></li>
+                <li><a href="ch01/js-review/03-03.js">03-03 배열에 적용</a></li>
+              </ul>
+            </li>
+            
+            <li><a href="ch01/js-review/04/">04 module</a></li>
+            <li><a href="ch01/js-review/05.js">05 Promise</a>
+              <ul>
+                <li><a href="ch01/js-review/05-01.js">05-01 동기 함수 호출</a></li>
+                <li><a href="ch01/js-review/05-02.js">05-02 비동기 함수 호출</a></li>
+                <li><a href="ch01/js-review/05-03.js">05-03 callback</a></li>
+              </ul>
+            </li>
+            
+            <li><a href="ch01/js-review/06.js">06 async/await</a></li>
+            <li><a href="ch01/js-review/07.js">07 배열의 reduce 함수</a></li>
+            <li><a href="ch01/js-review/08.js">08 메모이제이션 함수</a></li>
+          </ul>
+        </section>
+      </section>
+
+
+    </div>
+    <footer class="footer">
+      <p>Copyrightⓒ Front-End School. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>
