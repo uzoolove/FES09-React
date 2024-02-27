@@ -54,7 +54,7 @@
 
     // 샘플 목록
     let itemList = [
-      { no: 1, title: '두부', done: true} ,
+      { no: 1, title: '두부', done: true } ,
       { no: 2, title: '계란', done: false },
       { no: 3, title: '라면', done: true },
     ];
@@ -219,20 +219,12 @@
       }
     }
 
-    // 할일 삭제
-    function deleteItem(no){
-      // 데이터 갱신(배열에서 삭제)
-
-      // 화면 갱신(화면에서 삭제)
-
-    }
-
     // 정진욱
     function deleteItem(no){
+      // TODO: 리액트 스톼일~~~
       // 데이터 삭제
       itemList = itemList.filter(item => item.no !== no);
       
-
       // 삭제된 데이터로 다시 렌더링
       while (todoListElem.firstChild) {
         todoListElem.firstChild.remove();
@@ -245,15 +237,8 @@
       });
     }
 
-    // const itemList = [
-    //   { no: 1, title: '두부', done: true} ,
-    //   { no: 2, title: '계란', done: false },
-    //   { no: 3, title: '라면', done: true },
-    // ];
-
-
     // 이소정
-    function deleteItem(no) {
+    function deleteItem(no){
       // 아이템 갱신
       itemList.splice(no - 1, 1);
 
@@ -266,7 +251,7 @@
     function deleteItem(no){
       // 데이터 갱신(배열에서 삭제)
       itemList.splice(no -1, 1);
-      // 화면에 갱식
+      // 화면 갱신
       const selectedLi = document.querySelector(`.todolist > li[data-no="${(no)}"]`)
       selectedLi.remove();
     }
@@ -283,7 +268,15 @@
       selectedItemElem.remove();
     }
 
+    // 할일 삭제
+    function deleteItem(no){
+      // 데이터 갱신(배열에서 삭제)
+      itemList = itemList.filter(item => item.no !== no);
 
+      // 화면 갱신(화면에서 삭제)
+      const selectedLi = document.querySelector(`.todolist > li[data-no="${no}"]`);
+      selectedLi.remove();
+    }
   </script>
 </body>
 </html>
