@@ -62,9 +62,9 @@
     // Todo 아이템을 받아서 DOM 객체로 만들어 반환
     function getTodoItemElem(item){
       // return (
-      //   <li>
+      //   <li data-no=1>
       //     <span>1</span>
-      //     <span><s>샘플1</s></span>
+      //     <span onclick="toggleDone(1)"><s>샘플1</s></span>
       //     <button type="button">삭제</button>
       //   </li>
       // );
@@ -121,6 +121,20 @@
       //   <button type="button">삭제</button>
       // </li>
       liElem.appendChild(deleteElem);
+
+      // <li data-no="1">
+      //   <span>1</span>
+      //   <span><s>샘플1</s></span>
+      //   <button type="button">삭제</button>
+      // </li>
+      liElem.setAttribute('data-no', item.no);
+
+      // <li data-no="1">
+      //   <span>1</span>
+      //   <span onclick="toggleDone(1)"><s>샘플1</s></span>
+      //   <button type="button">삭제</button>
+      // </li>
+      titleElem.setAttribute('onclick', `toggleDone(${item.no})`);
 
       return liElem;
     }
@@ -186,7 +200,22 @@
       selectedItem.done = !selectedItem.done;
 
       // 화면 갱신(화면에 수정된 아이템으로 갱신)
-      
+      const selectedLi = document.querySelector(`.todolist > li[data-no="${no}"]`);
+      if(selectedItem.done){
+        // <span>계란</span>
+        // -> <span><s>계란</s></span>
+        const titleElem = selectedLi.children[1];
+        const sElem = document.createElement('s');
+        // <s>계란</s>
+        sElem.appendChild(titleElem.firstChild);
+        titleElem.appendChild(sElem);
+      }else{
+        // <span><s>두부</s></span>
+        // -> <span>두부</span>
+        const titleElem = selectedLi.children[1];
+        titleElem.appendChild(titleElem.firstElementChild.firstChild);
+        titleElem.firstElementChild.remove();
+      }
     }
 
     // 할일 삭제
