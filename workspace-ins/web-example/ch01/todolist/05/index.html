@@ -18,8 +18,8 @@
           <li>
             <h2>쇼핑 목록</h2>
             <div class="todoinput">
-              <input type="text" autofocus>
-              <button type="button">추가</button>
+              <input type="text" autofocus onkeyup="handleAddKeydown(event)">
+              <button type="button" onclick="handleAdd()">추가</button>
             </div>
             <ul class="todolist">
               <li>
@@ -53,7 +53,7 @@
     document.querySelector('#filepath').textContent = document.URL.split('web-example')[1]+'index.html';
 
     // 샘플 목록
-    const itemList = [
+    let itemList = [
       { no: 1, title: '두부', done: true} ,
       { no: 2, title: '계란', done: false },
       { no: 3, title: '라면', done: true },
@@ -99,7 +99,7 @@
       // 데이터에 새로운 아이템 추가
       itemList.push(item);
       // 화면에 새로운 아이템 추가
-      getTodoItemElem(item).appenTo('.todolist');
+      getTodoItemElem(item).appendTo('.todolist');
     }
 
     // 완료/미완료 처리
@@ -110,7 +110,7 @@
       selectedItem.done = !selectedItem.done;
       // 화면 갱신(화면에 수정된 아이템으로 갱신)
       const selectedLi = $(`.todolist > li[data-no="${no}"]`);
-      selectedLi.empty().append(selectedItem.done ? `<s>${selectedItem.title}</s>` : selectedItem.title);
+      selectedLi.children('span:last').empty().append(selectedItem.done ? `<s>${selectedItem.title}</s>` : selectedItem.title);
     }
 
     // 할일 삭제

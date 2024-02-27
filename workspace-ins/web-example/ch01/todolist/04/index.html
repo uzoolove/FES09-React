@@ -59,6 +59,8 @@
       { no: 3, title: '라면', done: true },
     ];
 
+    let lastNo = itemList[itemList.length-1].no;
+
     // Todo 아이템을 받아서 DOM 객체로 만들어 반환
     function getTodoItemElem(item){
       // return (
@@ -171,7 +173,7 @@
     // 할일 추가
     function addItem(title){
       const item = {
-        no: itemList.length + 1,
+        no: ++lastNo,
         title,
         done: false
       };
