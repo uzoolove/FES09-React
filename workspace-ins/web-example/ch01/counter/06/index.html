@@ -24,17 +24,18 @@
     }
 
     function Counter(){
-      // 컴포넌트가 다시 호출되어도 상태(값)를 저장할 수 있는 방법이 필요
-      let count = 0;
+      // 컴포넌트가 다시 호출되어도 상태값(데이터)을 저장할 수 있는 방법이 필요
+      const [count, setCount] = Mylib.useState(10);
 
       const handleDown = () => {
-        count--;
+        // 상태값이 변경되면 화면도 수정되어야 한다.(리렌더링 필요)
+        setCount(count-1);
       };
       const handleUp = () => {
-        count++;
+        setCount(count+1);
       };
       const handleReset = event => {
-        count = 0;
+        setCount(0);
       };
       
       return (

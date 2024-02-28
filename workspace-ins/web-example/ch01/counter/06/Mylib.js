@@ -1,4 +1,6 @@
 const Mylib = (() => {
+  let _root;
+  let _stateValue;
   // 지정한 속성과 자식 요소를 가지는 요소 노드를 생성해서 반환
   const createElement = (tag, props, ...children) => {
     // 요소 노드 생성
@@ -31,16 +33,37 @@ const Mylib = (() => {
 
   // 루트노드를 관리하는 객체를 생성
   const createRoot = (rootNode) => {
-    return {
+    let _appComponent;
+    return _root = {
       // 루트노드 하위에 지정한 컴포넌트를 렌더링 한다.
       render(appFn){
-        rootNode.appendChild(appFn());
+        _appComponent = _appComponent || appFn;
+        if(rootNode.firstChild){
+          rootNode.firstChild.remove();
+        }
+        rootNode.appendChild(_appComponent());
       }
     };
   };
 
-  return { createElement, createRoot };
-})();
+  // 상태값을 등록
+  const useState = (initValue) => {
+    if(_stateValue === undefined){
+      // 최초 한번만 실행
+      _stateValue = initValue;
+    }
 
+    // 상태값을 변경하는 함수
+    function setValue(newValue){
+      _stateValue = newValue;
+
+      _root.render();
+    }
+
+    return [_stateValue, setValue];
+  }
+
+  return { createElement, createRoot, useState };
+})();
 
 export default Mylib;
