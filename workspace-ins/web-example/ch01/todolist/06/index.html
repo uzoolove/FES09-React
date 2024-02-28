@@ -33,19 +33,6 @@
       );
     }
 
-    // ul 요소
-    const todoListElem = document.querySelector('.todolist');
-    // 기존 목록 삭제
-    while(todoListElem.firstChild){
-      todoListElem.firstChild.remove();
-    }
-
-    // itemList 배열의 각 Todo 아이템을 화면에 추가
-    itemList.forEach((item, index) => {
-      const liElem = getTodoItemElem(item);
-      todoListElem.appendChild(liElem);
-    });
-
     // "추가" 클릭 이벤트
     const handleAdd = () => {
       const inputElem = document.querySelector('.todoinput > input');
@@ -106,58 +93,43 @@
       selectedLi.remove();
     }
 
-    const Header = 
-      Myway.createElement('header', null, 
-        Myway.createElement('h1', null, 'Todo List - Mylib.createElement() 사용해서 UI 구성'), 
-        Myway.createElement('p', null, '파일 경로: ', 
-          Myway.createElement('span', { id: 'filepath '}, document.URL.split('web-example')[1]+'index.html')));
+    function Header (){
+      return (
+        Myway.createElement('header', null, 
+          Myway.createElement('h1', null, 'Todo List - Mylib.createElement() 사용해서 UI 구성'), 
+          Myway.createElement('p', null, '파일 경로: ', 
+            Myway.createElement('span', { id: 'filepath '}, document.URL.split('web-example')[1]+'index.html')))
+      );
+    }      
 
     const list = itemList.map(item => getTodoItemElem(item));
 
-    const Todo = Myway.createElement();
-
-    const Footer = 
-      Myway.createElement('footer', null, 
-        Myway.createElement('p', null, 'Front-End School 9기'));
+    function Todo (){
+      return (
+        Myway.createElement('div', { id: 'main' }, 
+          Myway.createElement('div', { id: 'container' }, 
+            Myway.createElement('ul', null, 
+              Myway.createElement('li', null, 
+                Myway.createElement('h2', null, '쇼핑 목록'), 
+                Myway.createElement('div', { class: 'todoinput' }, 
+                  Myway.createElement('input', { type: 'text', autofocus: '', onkeyup: event => handleAddKeydown(event) }), 
+                  Myway.createElement('button', { type: 'button', onclick: handleAdd }, '추가')), 
+                Myway.createElement('ul', { class: 'todolist' }, list)))))
+      );
+    } 
+      
+    function Footer (){
+      return (
+        Myway.createElement('footer', null, 
+        Myway.createElement('p', null, 'Front-End School 9기'))
+      );
+    }
     
-        const App = Myway.createElement('div', { id: 'todo' }, Header, Todo, Footer);
+    function App(){
+      return Myway.createElement('div', { id: 'todo' }, Header, Todo, Footer);
+    }
 
     Myway.createRoot(document.getElementById('root')).render(App);
-
-
-      <div id="main">
-        <div id="container">
-          <ul>
-            <li>
-              <h2>쇼핑 목록</h2>
-              <div class="todoinput">
-                <input type="text" autofocus onkeyup="handleAddKeydown(event)">
-                <button type="button" onclick="handleAdd()">추가</button>
-              </div>
-              <ul class="todolist">
-                <li data-no="1">
-                  <span>1</span>
-                  <span><s>샘플1</s></span>
-                  <button type="button">삭제</button>
-                </li>
-                <li>
-                  <span>2</span>
-                  <span>샘플2</span>
-                  <button type="button">삭제</button>
-                </li>
-                <li>
-                  <span>3</span>
-                  <span>샘플3</span>
-                  <button type="button">삭제</button>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-
-
 
   </script>
 </body>

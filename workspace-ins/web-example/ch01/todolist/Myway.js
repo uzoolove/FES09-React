@@ -24,8 +24,10 @@ const Mylib = (() => {
         child = document.createTextNode(child);
       }else if(typeof child === 'function'){
         child = child();
+      }else if(Array.isArray(child)){
+        child.forEach(c => elem.appendChild(c));
       }
-      elem.appendChild(child);
+      if(!Array.isArray(child)) elem.appendChild(child);
     }
 
     return elem;
