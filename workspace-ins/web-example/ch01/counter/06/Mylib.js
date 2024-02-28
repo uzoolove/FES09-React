@@ -42,6 +42,7 @@ const Mylib = (() => {
           rootNode.firstChild.remove();
         }
         rootNode.appendChild(_appComponent());
+        console.log('리렌더링...');
       }
     };
   };
@@ -55,9 +56,14 @@ const Mylib = (() => {
 
     // 상태값을 변경하는 함수
     function setValue(newValue){
+      const oldValue = _stateValue;
       _stateValue = newValue;
 
-      _root.render();
+      // TODO: 객체일때 같은 메모리 주소를 가지고 있으면 true
+      // 상태가 바뀔때만 화면도 갱신한다.
+      if(!Object.is(oldValue, newValue)){
+        _root.render();
+      }
     }
 
     return [_stateValue, setValue];
