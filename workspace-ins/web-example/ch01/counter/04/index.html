@@ -19,8 +19,8 @@
         Mylib.createElement('div', { id: 'app' }, 
           Mylib.createElement('header', null, 
             Mylib.createElement('h1', null, 'Counter - createRoot(), render() 함수 만들기'), 
-            Mylib.createElement('p', null, 
-              Mylib.createElement('span', { id: 'filepath' }))), 
+            Mylib.createElement('p', null, '파일 경로: ',
+              Mylib.createElement('span', { id: 'filepath' }, document.URL.split('web-example')[1]+'index.html'))), 
           Mylib.createElement('div', { id: 'counter' }, 
             Mylib.createElement('button', { type: 'button', onclick: 'handleDown()' }, '-'), 
             Mylib.createElement('button', { type: 'button', onclick: 'handleReset(event)' }, 0), 
@@ -30,10 +30,6 @@
     }
 
     Mylib.createRoot(document.getElementById('root')).render(App);
-  </script>
-
-  <script type="module">
-    document.querySelector('#filepath').textContent = document.URL.split('web-example')[1]+'index.html';
   </script>
 
   <script type="text/javascript">

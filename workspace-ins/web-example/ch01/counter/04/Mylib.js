@@ -1,4 +1,5 @@
 const Mylib = (() => {
+  // 지정한 속성과 자식 요소를 가지는 요소 노드를 생성해서 반환
   const createElement = (tag, props, ...children) => {
     // 요소 노드 생성
     const elem = document.createElement(tag);
@@ -22,8 +23,10 @@ const Mylib = (() => {
     return elem;
   };
 
+  // 루트노드를 관리하는 객체를 생성
   const createRoot = (rootNode) => {
     return {
+      // 루트노드 하위에 지정한 컴포넌트를 렌더링 한다.
       render(appFn){
         rootNode.appendChild(appFn());
       }
@@ -32,5 +35,6 @@ const Mylib = (() => {
 
   return { createElement, createRoot };
 })();
+
 
 export default Mylib;
