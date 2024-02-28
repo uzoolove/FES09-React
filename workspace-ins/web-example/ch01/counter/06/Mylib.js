@@ -60,8 +60,12 @@ const Mylib = (() => {
       _stateValue = newValue;
 
       // TODO: 객체일때 같은 메모리 주소를 가지고 있으면 true
+      // 두 값이 모두 undefined 이거나 null 이면 true
+      // 두 값이 모두 true 이거나 false 이면 true
+      // String 이라면 두 값의 글자수, 순서, 모든 글자가 같으면 true
+      // Number 라면 같은 값을 가지고 있거나 둘다 NaN이면 true
       // 상태가 바뀔때만 화면도 갱신한다.
-      if(!Object.is(oldValue, newValue)){
+      if(!Object.is(oldValue === newValue)){
         _root.render();
       }
     }
