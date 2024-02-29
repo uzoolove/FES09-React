@@ -47,18 +47,18 @@
       );
     }
 
-    function TodoItem({ item }){
+    function TodoItem({ item, toggleDone, deleteItem }){
       return (
         <li>
           <span>{ item._id }</span>
-          <span>{ item.done ? <s>{ item.title }</s> : item.title }</span>
-          <button type="button">삭제</button>
+          <span onClick={ () => toggleDone(item._id) }>{ item.done ? <s>{ item.title }</s> : item.title }</span>
+          <button type="button" onClick={ () => deleteItem(item._id) }>삭제</button>
         </li>
       );
     }
 
     function TodoList(props){
-      const list = props.itemList.map(item => <TodoItem key={ item._id } item={ item } /> );
+      const list = props.itemList.map(item => <TodoItem key={ item._id } item={ item } toggleDone={ props.toggleDone } deleteItem={ props.deleteItem } /> );
       return (
         <ul className="todolist">
           { list }
@@ -74,7 +74,7 @@
               <li>
                 <h2>쇼핑 목록</h2>
                 <TodoInput addItem={ props.addItem } />
-                <TodoList itemList={ props.itemList } />
+                <TodoList itemList={ props.itemList } toggleDone={ props.toggleDone } deleteItem={ props.deleteItem } />
               </li>
             </ul>
           </div>
@@ -99,13 +99,27 @@
       ]);
 
       function addItem(item){
+        // 데이터 갱신(상태 변경)
         setItemList([ ...itemList, item ]);
+      }
+
+      function toggleDone(_id){
+        // 데이터 갱신(상태 변경)
+        const item = itemList.find(item => item._id === _id);
+        item.done = !item.done;
+        setItemList([ ...itemList ]);
+      }
+
+      function deleteItem(_id){
+        // 상태 변경
+        const newItemList = itemList.filter(item => item._id !== _id);
+        setItemList(newItemList);
       }
 
       return (
         <div id="todo">
           <Header />
-          <Todo itemList={ itemList } addItem={ addItem } />
+          <Todo itemList={ itemList } addItem={ addItem } toggleDone={ toggleDone } deleteItem={ deleteItem } />
           <Footer />
         </div>
       );
