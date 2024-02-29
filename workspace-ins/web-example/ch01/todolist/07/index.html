@@ -14,7 +14,7 @@
     function Header (){
       return (
         Myway.createElement('header', null, 
-          Myway.createElement('h1', null, 'Todo List - Mylib.createElement() 사용해서 UI 구성'), 
+          Myway.createElement('h1', null, 'Todo List - UI 구성 요소별 각각의 함수로 분리(컴포넌트로 만들기)'), 
           Myway.createElement('p', null, '파일 경로: ', 
             Myway.createElement('span', { id: 'filepath '}, document.URL.split('web-example')[1]+'index.html')))
       );
@@ -102,7 +102,7 @@
         itemList.push(item);
 
         // 화면에 새로운 아이템 추가
-        const liElem = getTodoItemElem(item);
+        const liElem = TodoItem({ item, toggleDone, deleteItem });
         const todoListElem = document.querySelector('.todolist');
         todoListElem.appendChild(liElem);
       }
