@@ -42,7 +42,7 @@
     }
 
     function TodoList(props){
-      const list = props.itemList.map(item => <TodoItem item={ item } /> );
+      const list = props.itemList.map(item => <TodoItem key={ item._id } item={ item } /> );
       return (
         <ul className="todolist">
           { list }
