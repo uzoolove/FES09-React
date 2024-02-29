@@ -86,8 +86,6 @@
         const inputElem = document.querySelector('.todoinput > input');
         if(inputElem.value.trim() !== ''){
           addItem(inputElem.value);
-          inputElem.value = '';
-          inputElem.focus();
         }
       };
 
@@ -105,37 +103,26 @@
         };
 
         // 데이터에 새로운 아이템 추가
-        const newItemList = [ ...itemList ];
-        newItemList.push(item);
-        setItemList(newItemList);
+        // const newItemList = [ ...itemList ];
+        // newItemList.push(item);
+        // setItemList(newItemList);
+        setItemList([ ...itemList, item ]);
       }
 
       // 완료/미완료 처리
       function toggleDone(no){
         // 데이터 갱신(아이템의 완료 여부 갱신)
-        // Array.prototype.find()
         let selectedItem = itemList.find(item => item.no === no);
         selectedItem.done = !selectedItem.done;
 
-        // 화면 갱신(화면에 수정된 아이템으로 갱신)
-        const selectedLi = document.querySelector(`.todolist > li[data-no="${no}"]`);
-        const titleElem = selectedLi.children[1];
-        let titleSpan = Myway.createElement('span', null, selectedItem.done ? Myway.createElement('s', null, selectedItem.title) : selectedItem.title);
-
-        while(titleElem.firstChild){
-          titleElem.firstChild.remove();
-        }
-        titleElem.appendChild(titleSpan);
+        setItemList([ ...itemList ]);
       }
 
       // 할일 삭제
       function deleteItem(no){
         // 데이터 갱신(배열에서 삭제)
-        itemList = itemList.filter(item => item.no !== no);
-
-        // 화면 갱신(화면에서 삭제)
-        const selectedLi = document.querySelector(`.todolist > li[data-no="${no}"]`);
-        selectedLi.remove();
+        const newItemList = itemList.filter(item => item.no !== no);
+        setItemList(newItemList);
       }
       
       return Myway.createElement('div', { id: 'todo' }, Header, Todo({ itemList, handleAdd, handleAddKeydown, toggleDone, deleteItem }), Footer);
