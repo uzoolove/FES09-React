@@ -67,7 +67,7 @@ const Mylib = (() => {
       // String 이라면 두 값의 글자수, 순서, 모든 글자가 같으면 true
       // Number 라면 같은 값을 가지고 있거나 둘다 NaN이면 true
       // 상태가 바뀔때만 화면도 갱신한다.
-      if(!Object.is(oldValue === newValue)){
+      if(!Object.is(oldValue, newValue)){
         _root.render();
       }
     }
