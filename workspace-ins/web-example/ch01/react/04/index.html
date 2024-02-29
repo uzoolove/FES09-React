@@ -35,9 +35,13 @@
         }
       };
 
+      const handleKeyUp = event => {
+        if(event.key === 'Enter') handleAdd();
+      };
+
       return (
         <div className="todoinput">
-          <input type="text" value={ title } onChange={ event => setTitle(event.target.value) } autoFocus />
+          <input type="text" value={ title } onChange={ event => setTitle(event.target.value) } onKeyUp={ handleKeyUp } autoFocus />
           <button type="button" onClick={ handleAdd }>추가</button>
         </div>
       );
