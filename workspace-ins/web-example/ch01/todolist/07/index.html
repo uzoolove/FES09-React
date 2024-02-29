@@ -20,15 +20,15 @@
       );
     }      
 
-    function TodoInput(){
+    function TodoInput(props){
       return (
         Myway.createElement('div', { class: 'todoinput' }, 
-          Myway.createElement('input', { type: 'text', autofocus: '', onkeyup: event => handleAddKeydown(event) }), 
-          Myway.createElement('button', { type: 'button', onclick: handleAdd }, '추가'))
+          Myway.createElement('input', { type: 'text', autofocus: '', onkeyup: event => props.handleAddKeydown(event) }), 
+          Myway.createElement('button', { type: 'button', onclick: props.handleAdd }, '추가'))
       );
     }
 
-    function TodoItem({ item }){
+    function TodoItem({ item, toggleDone, deleteItem }){
       return (
         Myway.createElement('li', { 'data-no': item.no }, 
           Myway.createElement('span', null, item.no), 
@@ -38,7 +38,7 @@
     }
 
     function TodoList(props){
-      const list = props.itemList.map(item => TodoItem({ item }));
+      const list = props.itemList.map(item => TodoItem({ item, toggleDone: props.toggleDone, deleteItem: props.deleteItem }));
       return Myway.createElement('ul', { class: 'todolist' }, list);
     }
 
@@ -49,8 +49,8 @@
             Myway.createElement('ul', null, 
               Myway.createElement('li', null, 
                 Myway.createElement('h2', null, '쇼핑 목록'), 
-                TodoInput,
-                TodoList({ itemList: props.itemList })))))
+                TodoInput({ handleAdd: props.handleAdd, handleAddKeydown: props.handleAddKeydown }),
+                TodoList({ itemList: props.itemList, toggleDone: props.toggleDone, deleteItem: props.deleteItem })))))
       );
     }
       
