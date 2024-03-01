@@ -1,0 +1,9 @@
+import greenlock from 'greenlock-express';
+import app from '../app.js';
+
+greenlock.init({
+  packageRoot: '.',
+  configDir: '../greenlock.d',
+  maintainerEmail: "uzoolove@gmail.com",
+  cluster: false
+}).serve(app); // Serves on 80 and 443

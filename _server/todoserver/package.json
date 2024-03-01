@@ -9,13 +9,15 @@
     ]
   },
   "scripts": {
-    "start": "node ./bin/www.js"
+    "start": "node ./bin/www",
+    "start:prod": "node ./bin/www-https"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "ejs": "^3.1.9",
     "express": "~4.16.1",
+    "greenlock-express": "^4.0.3",
     "http-errors": "~1.6.3",
     "lodash": "^4.17.21",
     "lowdb": "^6.1.1",

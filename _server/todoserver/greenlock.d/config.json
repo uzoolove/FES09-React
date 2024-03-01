@@ -1,0 +1,5 @@
+{ 
+  "sites": [
+    { "subject": "*.frontendschool.shop", "altnames": ["*.frontendschool.shop"] }
+  ]
+} 
