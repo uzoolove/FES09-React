@@ -10,7 +10,7 @@
   },
   "scripts": {
     "prestart": "node ./swagger.js",
-    "start": "nodemon ./bin/www.js"
+    "start": "node ./bin/www.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
