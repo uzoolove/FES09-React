@@ -73,13 +73,12 @@
 ## 팁
 * VSCode에서 소스코드 비교
   - 비교할 두개의 파일을 오픈
-  - View > Command Palette > Compare Active File With... 선택
+  - View > Command Palette > File: Compare Active File With... 선택
   - 비교할 대상 파일 선택
 
 ## 질문
-* 10. 정진욱 — 오늘 오후 4:04
-강사님 엔터치면 왜 input의 마지막 글자가 한 번씩 더 추가될까요??
-  -> Mac 에서는 onkeyup 이벤트로 등록
+* 10. 정진욱 — 오늘 오후 4:04 강사님 엔터치면 왜 input의 마지막 글자가 한 번씩 더 추가될까요??
+  - Mac 에서는 onkeyup 이벤트로 등록
 
 ## 참고 사이트
 ### 온라인 코드 편집기(HTML, CSS, JS)
