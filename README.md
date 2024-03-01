@@ -1,5 +1,6 @@
 # 멋쟁이 사자처럼 Front-End School 9기: React 프로그래밍
-* GitHub URL: (https://github.com/uzoolove/FES09-React)
+* 소스 코드(GitHub): <https://github.com/uzoolove/FES09-React>
+* 코드 실행(GitHub Page): <https://uzoolove.github.io/FES09-React>
 
 ## 개발환경 구축
 ### 프로그램 설치
