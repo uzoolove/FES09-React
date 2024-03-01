@@ -9,7 +9,8 @@
     ]
   },
   "scripts": {
-    "prestart": "node ./swagger.js",
+    "swagger": "node ./swagger.js",
+    "dev": "npm run swagger && node ./bin/www.js",
     "start": "node ./bin/www.js"
   },
   "dependencies": {

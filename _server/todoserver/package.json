@@ -9,6 +9,7 @@
     ]
   },
   "scripts": {
+    "dev": "node ./bin/www",
     "start": "node ./bin/www"
   },
   "dependencies": {
