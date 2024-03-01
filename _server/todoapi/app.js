@@ -38,9 +38,10 @@ app.use(function(req, res, next){
 
 // 500 에러
 app.use(function(err, req, res, next){
-  console.error(err.stack);
+  if(err.status !== 404){
+    console.error(err.stack);
+  }
   const status = err.status || 500;
-
   let message = '서버 오류';
   if(status !== 500){
     message = err.message;
