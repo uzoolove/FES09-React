@@ -71,6 +71,11 @@
 * 프로젝트 실습 - 로그인, JWT 토큰 인증
 * 프로젝트 실습 - 게시물 관리
 
+## 수업 내용
+### React
+
+
+
 ## 팁
 * VSCode에서 소스코드 비교
   - 비교할 두개의 파일을 오픈
@@ -82,6 +87,8 @@
   - Mac 에서는 onkeyup 이벤트로 등록
 
 ## 참고 사이트
+### 병아리반 자바스크립트 자료
+* Github: https://github.com/uzoolove/FES09-Javascript
 ### 온라인 코드 편집기(HTML, CSS, JS)
 * CodePen: https://codepen.io
 ### React 웹 기반 개발 환경
