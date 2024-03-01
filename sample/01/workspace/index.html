@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>실습</title>
-  <link rel="shortcut icon" href="./favicon.ico">
+  <link rel="shortcut icon" href="./assets/favicon.ico">
   <link rel="stylesheet" href="./assets/style.css">
-  <script src="https://unpkg.com/jquery"></script>
+  <script src="https://unpkg.com/jquery@3.7.1"></script>
   <script>
-    $(function() {
-      $('.chapter-title').click(function() {
+    $(() => {
+      $('.chapter-title').click(() => {
         if ($(this).parent().toggleClass('chapter-open').hasClass('chapter-open')) {
           $(this).children('button').text('예제목록 접기');
         }else{
@@ -17,18 +17,18 @@
       });
     });
 
-    $(function() {
+    $(() => {
       $('.paragraph > ul a').click(function(e) {
         $('.paragraph > ul a').removeClass('clicked');
         $(this).addClass('clicked');
         var url = $(this).attr('href');
-        var extName = url.split('.')[1];
+        var extName = url.split('.').pop();
         if (extName == 'js') {
           e.preventDefault();
           console.clear();
           var title = $(this).text();
           console.log('<<< ' + title + ' 예제 실행 결과(' + url + ') >>>');
-          $.get(url, function(data) {
+          $.get(url, data => {
             if (data.trim) {
               data = data.trim();
             }
@@ -41,7 +41,6 @@
         }
       });
     });
-
   </script>
 </head>
 <body>
@@ -108,7 +107,7 @@
                 <li><a href="ch01/react/02/">02 Todo List - React로 UI 구성</a></li>
                 <li><a href="ch01/react/03/">03 Todo List - React 컴포넌트 분리</a></li>
                 <li><a href="ch01/react/04/">04 Todo List - React 기능 추가</a></li>
-                <li><a href="run.html?filepath=web-example/ch01/react/05">05 Todo List - React 컴포넌트를 모듈로 분리</a></li>
+                <li><a href="run-react.html?filepath=ch01/react/05">05 Todo List - React 컴포넌트를 모듈로 분리</a></li>
               </ul>
             </li>
           </ul>
@@ -117,26 +116,27 @@
           <ul>
             <li><a href="ch01/js-review/01.js">01 Arrow Function</a></li>
             <li><a href="ch01/js-review/02.js">02 구조 분해 할당(Destructuring assignment)</a></li>
-            <li><a href="ch01/js-review/03.js">03 전개 연산자</a>
+            <li>03 전개 연산자
               <ul>
                 <li><a href="ch01/js-review/03-01.js">03-01 기본 데이터 타입과 참조형 데이터 타입</a></li>
                 <li><a href="ch01/js-review/03-02.js">03-02 객체에 적용</a></li>
                 <li><a href="ch01/js-review/03-03.js">03-03 배열에 적용</a></li>
+                <li><a href="ch01/js-review/03-04.js">03-04 전개 연산자를 이용한 얕은 복사</a></li>
               </ul>
             </li>
             
             <li><a href="ch01/js-review/04/">04 module</a></li>
-            <li><a href="ch01/js-review/05.js">05 Promise</a>
+            <li>05 Promise
               <ul>
                 <li><a href="ch01/js-review/05-01.js">05-01 동기 함수 호출</a></li>
                 <li><a href="ch01/js-review/05-02.js">05-02 비동기 함수 호출</a></li>
-                <li><a href="ch01/js-review/05-03.js">05-03 callback</a></li>
+                <li><a href="ch01/js-review/05-03.js">05-03 callback을 이용한 비동기 함수 호출</a></li>
+                <li><a href="ch01/js-review/05-04.js">05-04 Promise를 이용한 비동기 함수 호출</a></li>
+                <li><a href="ch01/js-review/05-05.js">05-05 async/await를 이용한 Promise</a></li>
               </ul>
             </li>
-            
-            <li><a href="ch01/js-review/06.js">06 async/await</a></li>
-            <li><a href="ch01/js-review/07.js">07 배열의 reduce 함수</a></li>
-            <li><a href="ch01/js-review/08.js">08 메모이제이션 함수</a></li>
+            <li><a href="ch01/js-review/07.js">06 배열의 reduce 함수</a></li>
+            <li><a href="ch01/js-review/08.js">07 메모이제이션 함수</a></li>
           </ul>
         </section>
       </section>

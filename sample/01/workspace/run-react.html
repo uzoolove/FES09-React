@@ -12,12 +12,12 @@
     <code style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"></code>
   </pre>
   <script>
-    const WORKSPACE = 'C:/FES09/FES09-React/workspace';
+    const WORKSPACE_DIR = 'C:/FES09/FES09-React/workspace';
     const qs = new URLSearchParams(location.search);
     const filepath = qs.get('filepath');
     document.querySelector('code').innerHTML = `
       c:
-      cd ${WORKSPACE}/${filepath}
+      cd ${WORKSPACE_DIR}/${filepath}
       npm run dev
     `;
   </script>
