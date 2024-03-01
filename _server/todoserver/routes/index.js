@@ -23,7 +23,7 @@ router.get('/list', async function(req, res, next) {
     res.write(first);
     setTimeout(async () => {
       res.end(second);
-    }, 700);
+    }, 1700);
     //////////////////////////////////////////////////////////////
 
     // 정상적인 응답
