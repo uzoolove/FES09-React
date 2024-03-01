@@ -11,7 +11,7 @@ const options = {
     title: 'TODO API', 
     description: '할일 목록 API Server입니다.', 
   },
-  host: 'localhost:33088',
+  host: 'localhost:33020',
   schemes: ['http'],
   basePath: '/api',
   tags: [
