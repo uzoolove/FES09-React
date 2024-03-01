@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 모듈</title>
+</head>
+<body>
+  <header>
+    <h1>module 예제 :)</h1>
+    <p>파일 경로: <span id="filepath"></span></p>
+  </header>
+  <div id="main">
+    <p>개발자 도구의 콘솔을 확인하세요.</p>
+  </div>
+  <footer>
+    <p>Front-End School 9기</p>
+  </footer>
+
+  <script type="module">
+    document.querySelector('#filepath').textContent = `ch${document.URL.split('/ch')[1]}index.html`;
+
+    
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter</title>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Counter - Sample</h1>
+      <p>파일 경로: <span id="filepath"></span></p>
+    </header>
+    <div id="counter">
+      <button type="button" onclick="handleDown()">-</button>
+      <button type="button" onclick="handleReset(event)">0</button>
+      <button type="button" onclick="handleUp()">+</button>
+      <span>0</span>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    document.querySelector('#filepath').textContent = `ch${document.URL.split('/ch')[1]}index.html`;
+  </script>
+
+  <script type="text/javascript">
+    let count = 0;
+
+    const handleDown = () => {
+      
+    };
+    const handleUp = () => {
+      
+    };
+    const handleReset = event => {
+      
+    };
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter</title>
+</head>
+<body>
+  <!-- 
+  <div id="app">
+    <header>
+      <h1>Counter - HTML 대신 JS로 UI 구성</h1>
+      <p>파일 경로: <span id="filepath"></span></p>
+    </header>
+    <div id="counter">
+      <button type="button" onclick="handleDown()">-</button>
+      <button type="button" onclick="handleReset(event)">0</button>
+      <button type="button" onclick="handleUp()">+</button>
+      <span>0</span>
+    </div>
+  </div>
+  -->
+
+  <div id="root"></div>
+
+  <script type="text/javascript">
+    // <button type="button" onclick="handleDown()">-</button>
+    const downBtn = document.createElement('button');
+    downBtn.setAttribute('type', 'button');
+    downBtn.setAttribute('onclick', 'handleDown()');
+    const downTxt = document.createTextNode('-');
+    downBtn.appendChild(downTxt);
+
+    // <button type="button" onclick="handleReset(event)">0</button>
+    const resetBtn = document.createElement('button');
+    resetBtn.setAttribute('type', 'button');
+    resetBtn.setAttribute('onclick', 'handleReset(event)');
+    const resetTxt = document.createTextNode(0);
+    resetBtn.appendChild(resetTxt);
+
+    // <button type="button" onclick="handleUp()">+</button>
+    const upBtn = document.createElement('button');
+    upBtn.setAttribute('type', 'button');
+    upBtn.setAttribute('onclick', 'handleUp()');
+    const upTxt = document.createTextNode('+');
+    upBtn.appendChild(upTxt);
+
+    // <span>0</span>
+    const counterSpan = document.createElement('span');
+    const counterTxt = document.createTextNode(0);
+    counterSpan.appendChild(counterTxt);
+
+    // <h1>Counter - HTML 대신 JS로 UI 구성</h1>
+    const h1 = document.createElement('h1');
+    const h1Txt = document.createTextNode('Counter - HTML 대신 JS로 UI 구성');
+    h1.appendChild(h1Txt);
+
+    // <p>파일 경로: <span id="filepath"></span></p>
+    const filepath = document.createElement('p');
+    const filepathTxt = document.createTextNode('파일 경로: ');
+    const filepathSpan = document.createElement('span');
+    filepathSpan.setAttribute('id', 'filepath');
+    filepath.appendChild(filepathTxt);
+    filepath.appendChild(filepathSpan);
+
+    // <header>
+    const Header = document.createElement('header');
+    Header.appendChild(h1);
+    Header.appendChild(filepath);
+
+    // <div id="counter">
+    const Counter = document.createElement('div');
+    Counter.setAttribute('id', 'counter');
+    Counter.appendChild(downBtn);
+    Counter.appendChild(resetBtn);
+    Counter.appendChild(upBtn);
+    Counter.appendChild(counterSpan);
+
+    // <div id="app">
+    const App = document.createElement('div');
+    App.setAttribute('id', 'app');
+    App.appendChild(Header);
+    App.appendChild(Counter);
+
+    document.getElementById('root').appendChild(App);
+  </script>
+
+  <script type="text/javascript">
+    document.querySelector('#filepath').textContent = `ch${document.URL.split('/ch')[1]}index.html`;
+  </script>
+
+  <script type="text/javascript">
+    let count = 0;
+
+    const handleDown = () => {
+      count--;
+      const counterSpan = document.querySelector('#counter > span');
+      counterSpan.textContent = count;
+    };
+    const handleUp = () => {
+      count++;
+      const counterSpan = document.querySelector('#counter > span');
+      counterSpan.textContent = count;
+    };
+    const handleReset = event => {
+      count = 0;
+      const counterSpan = document.querySelector('#counter > span');
+      counterSpan.textContent = count;
+    };
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List App</title>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="module">
+    import Myway from '../Myway.js';
+
+    function Header (){
+      return (
+        Myway.createElement('header', null, 
+          Myway.createElement('h1', null, 'Todo List - UI 구성 요소별 각각의 함수로 분리(컴포넌트로 만들기)'), 
+          Myway.createElement('p', null, '파일 경로: ', 
+            Myway.createElement('span', { id: 'filepath '}, `ch${document.URL.split('/ch')[1]}index.html`)))
+      );
+    }      
+
+    function TodoInput(props){
+      return (
+        Myway.createElement('div', { class: 'todoinput' }, 
+          Myway.createElement('input', { type: 'text', autofocus: '', onkeyup: event => props.handleAddKeydown(event) }), 
+          Myway.createElement('button', { type: 'button', onclick: props.handleAdd }, '추가'))
+      );
+    }
+
+    function TodoItem({ item, toggleDone, deleteItem }){
+      return (
+        Myway.createElement('li', { 'data-no': item.no }, 
+          Myway.createElement('span', null, item.no), 
+          Myway.createElement('span', { onclick: () => toggleDone(item.no) }, item.done ? Myway.createElement('s', null, item.title) : item.title), 
+          Myway.createElement('button', { type: 'button', onclick: () => deleteItem(item.no) }, '삭제'))
+      );
+    }
+
+    function TodoList(props){
+      const list = props.itemList.map(item => TodoItem({ item, toggleDone: props.toggleDone, deleteItem: props.deleteItem }));
+      return Myway.createElement('ul', { class: 'todolist' }, list);
+    }
+
+    function Todo (props){
+      return (
+        Myway.createElement('div', { id: 'main' }, 
+          Myway.createElement('div', { id: 'container' }, 
+            Myway.createElement('ul', null, 
+              Myway.createElement('li', null, 
+                Myway.createElement('h2', null, '쇼핑 목록'), 
+                TodoInput({ handleAdd: props.handleAdd, handleAddKeydown: props.handleAddKeydown }),
+                TodoList({ itemList: props.itemList, toggleDone: props.toggleDone, deleteItem: props.deleteItem })))))
+      );
+    }
+      
+    function Footer (){
+      return (
+        Myway.createElement('footer', null, 
+        Myway.createElement('p', null, 'Front-End School 9기'))
+      );
+    }
+    
+    function App(){
+      // 샘플 목록
+      let itemList = [
+        { no: 1, title: '두부', done: true} ,
+        { no: 2, title: '계란', done: false },
+        { no: 3, title: '라면', done: true },
+      ];
+
+      // 옵셔널 체이닝
+      let lastNo = itemList[itemList.length-1]?.no || 0;
+      // let lastNo = (itemList[itemList.length-1] !== undefined) ? itemList[itemList.length-1].no : 0;
+      // let lastNo = itemList.length > 0  ? itemList[itemList.length-1].no : 0;
+
+
+      // "추가" 클릭 이벤트
+      const handleAdd = () => {
+        const inputElem = document.querySelector('.todoinput > input');
+        if(inputElem.value.trim() !== ''){
+          addItem(inputElem.value);
+          inputElem.value = '';
+          inputElem.focus();
+        }
+      };
+
+      // 엔터 이벤트
+      const handleAddKeydown = event => {
+        if(event.key === 'Enter') handleAdd();
+      };
+
+      // 할일 추가
+      function addItem(title){
+        const item = {
+          no: ++lastNo,
+          title,
+          done: false
+        };
+
+        // 데이터에 새로운 아이템 추가
+        itemList.push(item);
+
+        // 화면에 새로운 아이템 추가
+        const liElem = TodoItem({ item, toggleDone, deleteItem });
+        const todoListElem = document.querySelector('.todolist');
+        todoListElem.appendChild(liElem);
+      }
+
+      // 완료/미완료 처리
+      function toggleDone(no){
+        // 데이터 갱신(아이템의 완료 여부 갱신)
+        // Array.prototype.find()
+        let selectedItem = itemList.find(item => item.no === no);
+        selectedItem.done = !selectedItem.done;
+
+        // 화면 갱신(화면에 수정된 아이템으로 갱신)
+        const selectedLi = document.querySelector(`.todolist > li[data-no="${no}"]`);
+        const titleElem = selectedLi.children[1];
+        let titleSpan = Myway.createElement('span', null, selectedItem.done ? Myway.createElement('s', null, selectedItem.title) : selectedItem.title);
+
+        while(titleElem.firstChild){
+          titleElem.firstChild.remove();
+        }
+        titleElem.appendChild(titleSpan);
+      }
+
+      // 할일 삭제
+      function deleteItem(no){
+        // 데이터 갱신(배열에서 삭제)
+        itemList = itemList.filter(item => item.no !== no);
+
+        // 화면 갱신(화면에서 삭제)
+        const selectedLi = document.querySelector(`.todolist > li[data-no="${no}"]`);
+        selectedLi.remove();
+      }
+      
+      return Myway.createElement('div', { id: 'todo' }, Header, Todo({ itemList, handleAdd, handleAddKeydown, toggleDone, deleteItem }), Footer);
+    }
+
+    Myway.createRoot(document.getElementById('root')).render(App);
+
+  </script>
+</body>
+</html>

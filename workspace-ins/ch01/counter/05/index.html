@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter</title>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="module">
+    // module은 defer 속성을 붙인것처럼 지연 실행됨
+    // HTML 파싱을 멈추지 않고, HTML 파싱이 끝난 이후에 실행됨
+    // module끼리는 선언한 순서대로 실행됨
+    import Mylib from './Mylib.js';
+
+    function Header(){
+      return (
+        Mylib.createElement('header', null, 
+          Mylib.createElement('h1', null, 'Counter - UI 구성 요소별 각각의 함수로 분리(컴포넌트로 만들기)'), 
+          Mylib.createElement('p', null, '파일 경로: ',
+            Mylib.createElement('span', { id: 'filepath' }, `ch${document.URL.split('/ch')[1]}index.html`)))
+      );
+    }
+
+    function Counter(){
+      let count = 0;
+
+      const handleDown = () => {
+        count--;
+        const counterSpan = document.querySelector('#counter > span');
+        counterSpan.textContent = count;
+      };
+      const handleUp = () => {
+        count++;
+        const counterSpan = document.querySelector('#counter > span');
+        counterSpan.textContent = count;
+      };
+      const handleReset = event => {
+        count = 0;
+        const counterSpan = document.querySelector('#counter > span');
+        counterSpan.textContent = count;
+      };
+      
+      return (
+        Mylib.createElement('div', { id: 'counter' }, 
+          Mylib.createElement('button', { type: 'button', onclick: handleDown }, '-'), 
+          Mylib.createElement('button', { type: 'button', onClick: event => handleReset(event) }, 0), 
+          Mylib.createElement('button', { type: 'button', onclick: handleUp }, '+'), 
+          Mylib.createElement('span', null, 0))
+      );
+    }
+
+    function App(){
+      return (
+        Mylib.createElement('div', { id: 'app' }, Header, Counter)
+      );
+    }
+
+    Mylib.createRoot(document.getElementById('root')).render(App);
+  </script>
+</body>
+</html>
