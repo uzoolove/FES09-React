@@ -1,7 +1,7 @@
 # ins
 ins
 .history
-**/swagger-output.json
+swagger-output.json
 
 # Logs
 logs
