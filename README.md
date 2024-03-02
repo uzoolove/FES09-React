@@ -41,11 +41,12 @@
 </details>
 
 <details>
-  <summary><h2>수업 목차</h2></summary>
-<h3>1장 리액트 빌드업</h3>
-* https://uzoolove.github.io/FES09-React/workspace-ins/ch01
-### 2장 리액트 시작하기
-* https://uzoolove.github.io/FES09-React/workspace-ins/ch02
+  <summary></summary>
+  <h2>수업 목차</h2>
+  <h3>1장 리액트 빌드업</h3>
+  * https://uzoolove.github.io/FES09-React/workspace-ins/ch01
+  ### 2장 리액트 시작하기
+  * https://uzoolove.github.io/FES09-React/workspace-ins/ch02
 </details>
 
 ## 수업 목차
