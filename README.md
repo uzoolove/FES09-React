@@ -41,8 +41,8 @@
 </details>
 
 <details>
-  <summary>## 수업 목차</summary>
-### 1장 리액트 빌드업
+  <summary><h2>수업 목차</h2></summary>
+<h3>1장 리액트 빌드업</h3>
 * https://uzoolove.github.io/FES09-React/workspace-ins/ch01
 ### 2장 리액트 시작하기
 * https://uzoolove.github.io/FES09-React/workspace-ins/ch02
@@ -51,8 +51,10 @@
 ## 수업 목차
 ### 1장 리액트 빌드업
 * https://uzoolove.github.io/FES09-React/workspace-ins/ch01
+
 ### 2장 리액트 시작하기
 * https://uzoolove.github.io/FES09-React/workspace-ins/ch02
+
 ### 3장 리액트 훅
 
 ### 4장 클래스 컴포넌트와 컴포넌트의 라이프 사이클
