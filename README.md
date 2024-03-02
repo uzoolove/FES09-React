@@ -4,6 +4,7 @@
 * 예제 테스트(GitHub Page): <https://uzoolove.github.io/FES09-React/workspace-ins>
 
 # 주차별 내용(일정은 변동 가능)
+
 ## 1주차
 * TodoList - vanillaJS 
 * Counter 프로그램 - 라이브러리 개발
@@ -37,8 +38,10 @@
 * 프로젝트 실습 - 게시물 관리
 
 # 수업 목차
+
 ## 1장 리액트 빌드업
 * https://uzoolove.github.io/FES09-React/workspace-ins/ch01-buildup
+
 ### 1-1 웹 개발의 변천사
 * 고전적인 방식 (Server Side)
   - TodoList 실습
@@ -48,6 +51,7 @@
 * 현대적인 방식 (SPA)
   - Counter 실습
   - TodoList 실습
+
 ### 1-2 리액트 개발에 자주 사용하는 자바스크립트 문법
 * Arrow Function
 * 구조 분해 할당
@@ -60,12 +64,16 @@
 
 ## 2장 리액트 시작하기
 * https://uzoolove.github.io/FES09-React/workspace-ins/ch02-start
+
 ### 2-1 리액트란?
+
 ### 2-2 리액트의 실행 방식
 * 가상 DOM
+
 ### 2-3 프로젝트 환경 설정
 * CRA (create-react-app)
 * Vite
+
 ### 2-4 리액트 기본
 * JSX
 * 컴포넌트
@@ -100,21 +108,28 @@
 
 ## 8장 상태 관리 라이브러리
 * https://uzoolove.github.io/FES09-React/workspace-ins/ch08-globalstate
+
 ### 8-1 Redux
 * useReducer
+
 ### 8-2 Recoil
+
 ### 8-3 Zustand
 
 ## 9장 리액트에서 CSS 사용
 * https://uzoolove.github.io/FES09-React/workspace-ins/ch09-css
+
 ### 9-1 CSS Module
+
 ### 9-2 CSS-in-JS
 * Styled components
 * Tailwind CSS
 
 ## 10장 HTTP 통신과 Ajax
 * https://uzoolove.github.io/FES09-React/workspace-ins/ch10-ajax
+
 ### 10-1 HTTP 프로토콜
+
 ### 10-2 Ajax
 * XMLHttpRequest
 * fetch API
@@ -130,11 +145,15 @@
 
 ## 13장 프로젝트 준비
 * https://uzoolove.github.io/FES09-React/workspace-ins/ch13-skeleton
+
 ### 13-1 게시물 관리
+
 ### 13-2 로그인
+
 ### 13-3 JWT 토큰 인증
 
 # 개발환경 구축
+
 ## 프로그램 설치
 * 본인의 OS에 맞는 버전 다운로드 후 설치
 1. Nodejs 설치 <https://nodejs.org/en/download/>
@@ -160,11 +179,13 @@
 	* Open 선택
 
 ## React 개발용 웹브라우저 플러그인
+
 ### React Developer Tools
 * 리액트 컴포넌트 트리를 확인하고 컴포넌트 내부 데이터를 한눈에 볼 수 있어서 디버깅에 도움
 * Chrome: 크롬 웹스토어에서 React developer tools로 검색 후 설치
   - https://chromewebstore.google.com/search/react%20developer%20tools
 * 설치하면 크롬 개발자 도구에 Components 탭이 추가됨
+
 ### Redux DevTools
 * 리덕스 애플리케이션의 상태 변경을 추적하고 상태와 액션 정보들을 시각화 할 수 있는 개발, 디버깅 도구
 * Chrome: 크롬 웹스토어에서 Redux DevTools로 검색 후 설치
@@ -202,12 +223,16 @@
   - Mac 에서는 onkeyup 이벤트로 등록
 
 # 참고 사이트
+
 ## 병아리반 자바스크립트 자료
 * Github: https://github.com/uzoolove/FES09-Javascript
+
 ## 온라인 코드 편집기(HTML, CSS, JS)
 * CodePen: https://codepen.io
+
 ## React 웹 기반 개발 환경
 * Codesandbox: https://codesandbox.io
 * Stackblitz: https://stackblitz.com
+
 ## 바벨 REPL
 * https://babeljs.io/repl
