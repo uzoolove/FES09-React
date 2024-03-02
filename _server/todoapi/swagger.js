@@ -23,7 +23,7 @@ const options = {
     description: '할일 목록 API Server입니다.', 
   },
   host: process.env.API_HOST,
-  schemes: ['http', 'https'],
+  schemes: [process.env.API_PROTOCOL],
   basePath: '/api',
   tags: [
     {
