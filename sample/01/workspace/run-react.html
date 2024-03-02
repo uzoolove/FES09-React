@@ -11,14 +11,14 @@
   <h1>React 예제</h1>
   <p>폴더 경로: <span id="filepath"></span></p>
   <p>이 예제는 <b>Node.js 기반의 개발환경(Vite)</b>에서 실행해야 합니다.</p>
-  <button data-clipboard-target="textarea">복사</button>
+  <button data-clipboard-target="textarea">코드 복사</button>
   <span id="copyresult"></span>
   <pre style="background-color: lightgrey;">
     <code style="font-family: Consolas, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"></code>
   </pre>
   <textarea style="position:absolute; left:-9999px;" value="qewre&nbsp;sd\nf"></textarea>
   <script>
-    const WORKSPACE_DIR = 'C:/FES09/FES09-React/workspace';
+    const WORKSPACE_DIR = 'C:/FES09/FES09-React/workspace-ins';
     const qs = new URLSearchParams(location.search);
     const filepath = qs.get('filepath');
     document.querySelector('#filepath').textContent = filepath;
@@ -34,7 +34,7 @@
     clipboard.on('success', function(e) {
       const result = document.querySelector('#copyresult');
       result.innerHTML = '복사 완료. VS Code 터미널에서 붙여넣기 하세요 :)';
-      setTimeout(() => result.innerHTML = '', 2000);
+      setTimeout(() => result.innerHTML = '', 3000);
     });
     
     clipboard.on('error', function(e) {
