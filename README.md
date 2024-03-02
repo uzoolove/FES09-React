@@ -41,7 +41,7 @@
 </details>
 
 <details>
-  <summary></summary>
+  <summary>수업 목차 접기</summary>
   <h2>수업 목차</h2>
   <h3>1장 리액트 빌드업</h3>
   * https://uzoolove.github.io/FES09-React/workspace-ins/ch01
