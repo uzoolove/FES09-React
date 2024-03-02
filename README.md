@@ -11,7 +11,7 @@
 
 ### 2주차
 * 리액트 란? 리액트 역사, 리액트 개발환경 설정, create-react-app, Vite
-* 리액트 개발에 필요한 자바스크립트 문법
+* 리액트 개발에 자주 사용하는 자바스크립트 문법
 * JSX, 가상 DOM, 리액트 랜더링
 * 리액트 컴포넌트(함수형 컴포넌트, 클래스 컴포넌트)와 라이프 사이클
 * 리액트 훅, useState, useEffect
@@ -23,9 +23,9 @@
 * Context API
 
 ### 4주차
+* 리액트 Router
 * 리액트 상태관리 라이브러리
 * Recoil, Zustand
-* 리액트 Router
 * HTTP 통신(Fetch API, Axios, React Query)
 * CSR과 SSR, Next.js
 
@@ -35,36 +35,104 @@
 * 프로젝트 실습 - 로그인, JWT 토큰 인증
 * 프로젝트 실습 - 게시물 관리
 
-<details>
-  <summary>클릭하여 접기/펼치기</summary>
-  <p>접기와 펼치기를 지원하는 내용입니다.</p>
-</details>
-
-<details>
-  <summary>수업 목차 접기/펼치기</summary>
-  <h2>수업 목차</h2>
-  <h3>1장 리액트 빌드업</h3>
-  <ul>
-    <li>https://uzoolove.github.io/FES09-React/workspace-ins/ch01</li>
-  </ul>
-  <h3>2장 리액트 시작하기</h3>
-  <ul>
-    <li>https://uzoolove.github.io/FES09-React/workspace-ins/ch02</li>
-  </ul>
-</details>
-
 ## 수업 목차
 ### 1장 리액트 빌드업
-* https://uzoolove.github.io/FES09-React/workspace-ins/ch01
+* https://uzoolove.github.io/FES09-React/workspace-ins/ch01-buildup
+#### 1-1 웹 개발의 변천사
+* 고전적인 방식 (Server Side)
+  - TodoList 실습
+* 근대적인 방식 (MPA)
+  - Counter 실습
+  - TodoList 실습
+* 현대적인 방식 (SPA)
+  - Counter 실습
+  - TodoList 실습
+#### 1-2 리액트 개발에 자주 사용하는 자바스크립트 문법
+* Arrow Function
+* 구조 분해 할당
+* 전개 연산자
+* 삼항 조건 연산자
+* module
+* Promise, async/await
+* 배열 메서드
+* 메모이제이션
 
 ### 2장 리액트 시작하기
-* https://uzoolove.github.io/FES09-React/workspace-ins/ch02
+* https://uzoolove.github.io/FES09-React/workspace-ins/ch02-start
+#### 2-1 리액트란?
+#### 2-2 리액트의 실행 방식
+* 가상 DOM
+#### 2-3 프로젝트 환경 설정
+* CRA (create-react-app)
+* Vite
+#### 2-4 리액트 기본
+* JSX
+* 컴포넌트
+* 속성 (Props)
+* 상태 (State)
+* CSS 사용
 
 ### 3장 리액트 훅
+* https://uzoolove.github.io/FES09-React/workspace-ins/ch03-hooks
+* https://ko.legacy.reactjs.org/docs/hooks-reference.html
+* useState
+* useEffect
+* useRef
+* 사용자 정의 훅
 
 ### 4장 클래스 컴포넌트와 컴포넌트의 라이프 사이클
+* https://uzoolove.github.io/FES09-React/workspace-ins/ch04-class
 
-### 5장 
+### 5장 고차 함수
+* https://uzoolove.github.io/FES09-React/workspace-ins/ch05-highorder
+* useMemo
+* useCallback
+* React.memo
+
+### 6장 컨텍스트 API
+* https://uzoolove.github.io/FES09-React/workspace-ins/ch06-contextapi
+* Provider
+* useContext
+
+### 7장 리액트 라우터
+* https://uzoolove.github.io/FES09-React/workspace-ins/ch07-router
+
+### 8장 상태 관리 라이브러리
+* https://uzoolove.github.io/FES09-React/workspace-ins/ch08-globalstate
+#### 8-1 Redux
+* useReducer
+#### 8-2 Recoil
+#### 8-3 Zustand
+
+### 9장 리액트에서 CSS 사용
+* https://uzoolove.github.io/FES09-React/workspace-ins/ch09-css
+#### CSS Module
+#### css-in-js
+* Styled components
+* Tailwind CSS
+
+### 10장 HTTP 통신과 Ajax
+* https://uzoolove.github.io/FES09-React/workspace-ins/ch10-ajax
+#### HTTP 프로토콜
+#### Ajax
+* XMLHttpRequest
+* fetch API
+* Axios
+* React Query (TanStack Query)
+
+### 11장 백엔드 개발과 API 서버
+* https://uzoolove.github.io/FES09-React/workspace-ins/ch11-api
+
+### 12장 Next.js
+* https://uzoolove.github.io/FES09-React/workspace-ins/ch12-nextjs
+#### CSR과 SSR
+
+### 13장 프로젝트 준비
+* https://uzoolove.github.io/FES09-React/workspace-ins/ch13-skeleton
+#### 게시물 관리
+#### 로그인
+#### JWT 토큰 인증
+
 
 ## 개발환경 구축
 ### 프로그램 설치
@@ -90,6 +158,16 @@
 	* <nohyper>https</nohyper>://github.com/uzoolove/FES09-React.git 입력
 	* 복사할 적당한 폴더 선택 후 Select as Repository Destination 선택
 	* Open 선택
+
+### React 개발용 웹브라우저 플러그인
+#### React Developer Tools
+* 리액트 컴포넌트 트리를 확인하고 컴포넌트 내부 데이터를 한눈에 볼 수 있어서 디버깅에 도움
+* Chrome: 크롬 웹스토어(<https://chrome.google.com/webstore/category/extensions>)에서 React developer tools로 검색 후 설치
+* 설치하면 크롬 개발자 도구에 Components 탭이 추가됨
+#### Redux DevTools
+* 리덕스 애플리케이션의 상태 변경을 추적하고 상태와 액션 정보들을 시각화 할 수 있는 개발, 디버깅 도구
+* Chrome: 크롬 웹스토어에서 Redux DevTools로 검색 후 설치
+* 설치하면 크롬 개발자 도구에 Redux 탭이 추가됨
 
 ### 실습 준비
 * sample 폴더 복사
