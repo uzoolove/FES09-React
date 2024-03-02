@@ -13,3 +13,4 @@
 * Chrome: 크롬 웹스토어(https://chrome.google.com/webstore/category/extensions)에서 Redux DevTools로 검색 후 설치
 * 설치하면 크롬 개발자 도구에 Redux 탭이 추가됨
 
+[구글](https://www.google.com){:target="_blank"}
