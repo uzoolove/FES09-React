@@ -1,13 +1,10 @@
 ins
-sample
 .history
-
 **/node_modules
 /workspace
 _server/todoapi/db/todolist.json
 _server/todoserver/db/todolist.json
-_server.todoapi/swagger-output.json
-**/app.js
+
 # 오피스 임시파일
 ~$*
 
