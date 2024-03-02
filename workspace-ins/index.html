@@ -7,21 +7,45 @@
   <link rel="stylesheet" href="./assets/style.css">
   <script src="https://unpkg.com/jquery@3.7.1"></script>
   <script>
+
+    $(() => {
+      const clicked = $(`.paragraph > ul a[href*="${history.state?.link}"]`);
+      clicked.addClass('clicked');
+
+      const chapter = location.hash?.substring(1);
+      $('#chapter-' + chapter).addClass('chapter-open');
+
+      setTimeout(() => {
+        if(clicked[0]){
+          const elementRect = clicked[0].getBoundingClientRect();
+          const offset = clicked[0] ? elementRect.top - (window.innerHeight / 2 - elementRect.height / 2) : 0;
+          window.scrollBy({ top: offset, behavior: 'smooth' });
+        }else{
+          document.querySelector('#chapter-'+chapter)?.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+      
+    });
+
     $(() => {
       $('.chapter-title').click(function(){
-        console.log($(this))
         if ($(this).parent().toggleClass('chapter-open').hasClass('chapter-open')) {
           $(this).children('button').text('예제목록 접기');
         }else{
           $(this).children('button').text('예제 목록 펼치기');
         }
       });
-      
-      const chapter = location.hash?.substring(1);
-      document.querySelector('#chapter-'+chapter)?.scrollIntoView({
-        behavior: 'smooth'
+    });
+
+    $(() => {
+      $('.paragraph > ul a').click(function(){
+        console.log($(this).parents('.chapter'));
+        const chapter = $(this).parents('.chapter').attr('id')?.split('-').pop();
+        const newUrl = `${location.origin}${location.pathname}#${chapter}`;
+        history.replaceState({ link: $(this).attr('href') }, '', newUrl);
       });
-      $('#chapter-' + chapter).addClass('chapter-open');
     });
 
     $(() => {
@@ -182,7 +206,7 @@
         	<button>예제 목록 펼치기</button>
         </div>
         <section class="paragraph">
-
+          
         </section>
       </section>
 
@@ -212,7 +236,7 @@
         	<button>예제 목록 펼치기</button>
         </div>
         <section class="paragraph">
-
+          
         </section>
       </section>
 
