@@ -6,7 +6,7 @@
 ### React 개발용 크롬 플러그인
 #### React Developer Tools
 * 리액트 컴포넌트 트리를 확인하고 컴포넌트 내부 데이터를 한눈에 볼 수 있어서 디버깅에 도움
-* Chrome: 크롬 웹스토어(https://chrome.google.com/webstore/category/extensions)에서 React developer tools로 검색 후 설치
+* Chrome: 크롬 웹스토어(<https://chrome.google.com/webstore/category/extensions>)에서 React developer tools로 검색 후 설치
 * 설치하면 크롬 개발자 도구에 Components 탭이 추가됨
 #### Redux DevTools
 * 리덕스 애플리케이션의 상태 변경을 추적하고 상태와 액션 정보들을 시각화 할 수 있는 개발, 디버깅 도구
