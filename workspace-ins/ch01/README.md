@@ -1,7 +1,7 @@
 # 멋쟁이 사자처럼 Front-End School 9기: 1장 리액트 빌드업
-* 소스 코드(GitHub): <https://github.com/uzoolove/FES09-React/tree/main/workspace-ins/ch01>
-* 코드 실행(GitHub Page): <https://uzoolove.github.io/FES09-React/workspace-ins>
-
+* 소스 코드(GitHub): (https://github.com/uzoolove/FES09-React/tree/main/workspace-ins/ch01){:target="_blank"}
+* 코드 실행(GitHub Page): <https://uzoolove.github.io/FES09-React/workspace-ins>{:target="_blank"}
+* [링크 텍스트](http://naver.com){:target="_blank"}
 ## 개발환경 구축
 ### React 개발용 크롬 플러그인
 #### React Developer Tools
