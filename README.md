@@ -1,6 +1,7 @@
 # 멋쟁이 사자처럼 Front-End School 9기: React 프로그래밍
 * 소스 코드(GitHub): <https://github.com/uzoolove/FES09-React>
-* 코드 실행(GitHub Page): <https://uzoolove.github.io/FES09-React/workspace-ins>
+* 문서(GitHub Page): <https://uzoolove.github.io/FES09-React/workspace-ins>
+* 예제 테스트(GitHub Page): <https://uzoolove.github.io/FES09-React/workspace-ins>
 
 # 주차별 내용(일정은 변동 가능)
 ## 1주차
@@ -106,15 +107,15 @@
 
 ## 9장 리액트에서 CSS 사용
 * https://uzoolove.github.io/FES09-React/workspace-ins/ch09-css
-### CSS Module
-### css-in-js
+### 9-1 CSS Module
+### 9-2 CSS-in-JS
 * Styled components
 * Tailwind CSS
 
 ## 10장 HTTP 통신과 Ajax
 * https://uzoolove.github.io/FES09-React/workspace-ins/ch10-ajax
-### HTTP 프로토콜
-### Ajax
+### 10-1 HTTP 프로토콜
+### 10-2 Ajax
 * XMLHttpRequest
 * fetch API
 * Axios
@@ -125,14 +126,13 @@
 
 ## 12장 Next.js
 * https://uzoolove.github.io/FES09-React/workspace-ins/ch12-nextjs
-### CSR과 SSR
+### 12-1 CSR과 SSR
 
 ## 13장 프로젝트 준비
 * https://uzoolove.github.io/FES09-React/workspace-ins/ch13-skeleton
-### 게시물 관리
-### 로그인
-### JWT 토큰 인증
-
+### 13-1 게시물 관리
+### 13-2 로그인
+### 13-3 JWT 토큰 인증
 
 # 개발환경 구축
 ## 프로그램 설치
@@ -162,11 +162,13 @@
 ## React 개발용 웹브라우저 플러그인
 ### React Developer Tools
 * 리액트 컴포넌트 트리를 확인하고 컴포넌트 내부 데이터를 한눈에 볼 수 있어서 디버깅에 도움
-* Chrome: 크롬 웹스토어(<https://chrome.google.com/webstore/category/extensions>)에서 React developer tools로 검색 후 설치
+* Chrome: 크롬 웹스토어에서 React developer tools로 검색 후 설치
+  - https://chromewebstore.google.com/search/react%20developer%20tools
 * 설치하면 크롬 개발자 도구에 Components 탭이 추가됨
 ### Redux DevTools
 * 리덕스 애플리케이션의 상태 변경을 추적하고 상태와 액션 정보들을 시각화 할 수 있는 개발, 디버깅 도구
 * Chrome: 크롬 웹스토어에서 Redux DevTools로 검색 후 설치
+  - https://chromewebstore.google.com/search/Redux%20DevTools
 * 설치하면 크롬 개발자 도구에 Redux 탭이 추가됨
 
 ## 실습 준비
