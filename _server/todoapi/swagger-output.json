@@ -5,7 +5,7 @@
     "title": "TODO API",
     "description": "할일 목록 API Server입니다."
   },
-  "host": "localhost:33088",
+  "host": "localhost:33020",
   "basePath": "/api",
   "tags": [
     {
@@ -363,11 +363,11 @@
             },
             "createdAt": {
               "type": "string",
-              "example": "2024.03.01 21:54:44"
+              "example": "2024.03.02 11:12:39"
             },
             "updatedAt": {
               "type": "string",
-              "example": "2024.03.01 21:54:44"
+              "example": "2024.03.02 11:12:39"
             }
           }
         }
@@ -399,11 +399,11 @@
               },
               "createdAt": {
                 "type": "string",
-                "example": "2024.02.28 22:54:44"
+                "example": "2024.02.29 12:12:39"
               },
               "updatedAt": {
                 "type": "string",
-                "example": "2024.02.29 02:54:44"
+                "example": "2024.02.29 16:12:39"
               }
             }
           }
@@ -457,11 +457,11 @@
               },
               "createdAt": {
                 "type": "string",
-                "example": "2024.02.28 22:54:44"
+                "example": "2024.02.29 12:12:39"
               },
               "updatedAt": {
                 "type": "string",
-                "example": "2024.02.29 02:54:44"
+                "example": "2024.02.29 16:12:39"
               }
             }
           }
