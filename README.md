@@ -2,6 +2,59 @@
 * 소스 코드(GitHub): <https://github.com/uzoolove/FES09-React>
 * 코드 실행(GitHub Page): <https://uzoolove.github.io/FES09-React/workspace-ins>
 
+## 주차별 내용(일정은 변동 가능)
+### 1주차
+* TodoList - vanillaJS 
+* Counter 프로그램 - 라이브러리 개발
+* TodoList - 라이브러리 이용
+* TodoList - React
+### 2주차
+* 리액트 란? 리액트 역사, 리액트 개발환경 설정, create-react-app, Vite
+* 리액트 개발에 필요한 자바스크립트 문법
+* JSX, 가상 DOM, 리액트 랜더링
+* 리액트 컴포넌트(함수형 컴포넌트, 클래스 컴포넌트)와 라이프 사이클
+* 리액트 훅, useState, useEffect
+### 3주차
+* 리액트 훅, useRef, useReducer
+* 리액트 훅, useMemo, useCallback
+* 사용자 정의 훅 만들기, 고차 컴포넌트
+* Context API
+### 4주차
+* 리액트 상태관리 라이브러리
+* Recoil, Zustand
+* 리액트 Router
+* HTTP 통신(Fetch API, Axios, React Query)
+* CSR과 SSR, Next.js
+### 5주차
+* 백엔드 개발과 API 서버
+* Styled components, Tailwind CSS
+* 프로젝트 실습 - 로그인, JWT 토큰 인증
+* 프로젝트 실습 - 게시물 관리
+
+<details>
+  <summary>클릭하여 접기/펼치기</summary>
+  <p>접기와 펼치기를 지원하는 내용입니다.</p>
+</details>
+
+<details>
+  <summary>## 수업 목차</summary>
+### 1장 리액트 빌드업
+* https://uzoolove.github.io/FES09-React/workspace-ins/ch01
+### 2장 리액트 시작하기
+* https://uzoolove.github.io/FES09-React/workspace-ins/ch02
+</details>
+
+## 수업 목차
+### 1장 리액트 빌드업
+* https://uzoolove.github.io/FES09-React/workspace-ins/ch01
+### 2장 리액트 시작하기
+* https://uzoolove.github.io/FES09-React/workspace-ins/ch02
+### 3장 리액트 훅
+
+### 4장 클래스 컴포넌트와 컴포넌트의 라이프 사이클
+
+### 5장 
+
 ## 개발환경 구축
 ### 프로그램 설치
 * 본인의 OS에 맞는 버전 다운로드 후 설치
@@ -37,44 +90,15 @@
 	- VS Code Extention에서 live server 검색 후 설치
 2. workspace/index.html 파일을 열고 Live Server 실행
 	- VS Code 우측 하단의 Go Live 클릭
-3. 각 예제 클릭해서 브라우저 개발자 도구 > 콘솔 탭에서 결과 확인
+
+### 실습 테스트
+* 각 예제 클릭해서 테스트
+  - DOM, Ajax 관련 실습은 새로운 화면으로 이동 후 테스트
+  - Javascript 문법 관련 실습은 브라우저 개발자 도구 > 콘솔 탭에서 결과 확인
+  - React 실습은 안내 화면을 참고해서 Node.js 환경에서 테스트
 
 ## 소스코드 공유(본인의 소스코드를 강사에게 공유하고 싶을때)
 * https://codeshare.io/KW8KVE 접속 후 문제 있는 소스코드를 붙여넣기한 후 채팅창에 알려주세요.
-
-## 주차별 내용(일정은 변동 가능)
-### 1주차
-* TodoList - vanillaJS 
-* Counter 프로그램 - 라이브러리 개발
-* TodoList - 라이브러리 이용
-* TodoList - React
-### 2주차
-* 리액트 란? 리액트 역사, 리액트 개발환경 설정, create-react-app, Vite
-* 리액트 개발에 필요한 자바스크립트 문법
-* JSX, 가상 DOM, 리액트 랜더링
-* 리액트 컴포넌트(함수형 컴포넌트, 클래스 컴포넌트)와 라이프 사이클
-* 리액트 훅, useState, useEffect
-### 3주차
-* 리액트 훅, useRef, useReducer
-* 리액트 훅, useMemo, useCallback
-* 사용자 정의 훅 만들기, 고차 컴포넌트
-* Context API
-### 4주차
-* 리액트 상태관리 라이브러리
-* Recoil, Zustand
-* 리액트 Router
-* HTTP 통신(Fetch API, Axios, React Query)
-* CSR과 SSR, Next.js
-### 5주차
-* 백엔드 개발과 API 서버
-* Styled components, Tailwind CSS
-* 프로젝트 실습 - 로그인, JWT 토큰 인증
-* 프로젝트 실습 - 게시물 관리
-
-## 수업 내용
-### React
-
-
 
 ## 팁
 * VSCode에서 소스코드 비교
