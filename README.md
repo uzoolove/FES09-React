@@ -40,7 +40,7 @@
 # 수업 목차
 
 ## 1장 리액트 빌드업
-* https://uzoolove.github.io/FES09-React/workspace-ins/ch01-buildup
+* <https://uzoolove.github.io/FES09-React/workspace-ins/ch01-buildup>
 
 ### 1-1 웹 개발의 변천사
 * 고전적인 방식 (Server Side)
@@ -63,7 +63,7 @@
 * 메모이제이션
 
 ## 2장 리액트 시작하기
-* https://uzoolove.github.io/FES09-React/workspace-ins/ch02-start
+* <https://uzoolove.github.io/FES09-React/workspace-ins/ch02-start>
 
 ### 2-1 리액트란?
 
@@ -82,32 +82,32 @@
 * CSS 사용
 
 ## 3장 리액트 훅
-* https://uzoolove.github.io/FES09-React/workspace-ins/ch03-hooks
-* https://ko.legacy.reactjs.org/docs/hooks-reference.html
+* <https://uzoolove.github.io/FES09-React/workspace-ins/ch03-hooks>
+* 참고: <https://ko.legacy.reactjs.org/docs/hooks-reference.html>
 * useState
 * useEffect
 * useRef
 * 사용자 정의 훅
 
 ## 4장 클래스 컴포넌트와 컴포넌트의 라이프 사이클
-* https://uzoolove.github.io/FES09-React/workspace-ins/ch04-class
+* <https://uzoolove.github.io/FES09-React/workspace-ins/ch04-class>
 
 ## 5장 고차 함수
-* https://uzoolove.github.io/FES09-React/workspace-ins/ch05-highorder
+* <https://uzoolove.github.io/FES09-React/workspace-ins/ch05-highorder>
 * useMemo
 * useCallback
 * React.memo
 
 ## 6장 컨텍스트 API
-* https://uzoolove.github.io/FES09-React/workspace-ins/ch06-contextapi
+* <https://uzoolove.github.io/FES09-React/workspace-ins/ch06-contextapi>
 * Provider
 * useContext
 
 ## 7장 리액트 라우터
-* https://uzoolove.github.io/FES09-React/workspace-ins/ch07-router
+* <https://uzoolove.github.io/FES09-React/workspace-ins/ch07-router>
 
 ## 8장 상태 관리 라이브러리
-* https://uzoolove.github.io/FES09-React/workspace-ins/ch08-globalstate
+* <https://uzoolove.github.io/FES09-React/workspace-ins/ch08-globalstate>
 
 ### 8-1 Redux
 * useReducer
@@ -117,7 +117,7 @@
 ### 8-3 Zustand
 
 ## 9장 리액트에서 CSS 사용
-* https://uzoolove.github.io/FES09-React/workspace-ins/ch09-css
+* <https://uzoolove.github.io/FES09-React/workspace-ins/ch09-css>
 
 ### 9-1 CSS Module
 
@@ -126,7 +126,7 @@
 * Tailwind CSS
 
 ## 10장 HTTP 통신과 Ajax
-* https://uzoolove.github.io/FES09-React/workspace-ins/ch10-ajax
+* <https://uzoolove.github.io/FES09-React/workspace-ins/ch10-ajax>
 
 ### 10-1 HTTP 프로토콜
 
@@ -137,14 +137,14 @@
 * React Query (TanStack Query)
 
 ## 11장 백엔드 개발과 API 서버
-* https://uzoolove.github.io/FES09-React/workspace-ins/ch11-api
+* <https://uzoolove.github.io/FES09-React/workspace-ins/ch11-api>
 
 ## 12장 Next.js
-* https://uzoolove.github.io/FES09-React/workspace-ins/ch12-nextjs
+* <https://uzoolove.github.io/FES09-React/workspace-ins/ch12-nextjs>
 ### 12-1 CSR과 SSR
 
 ## 13장 프로젝트 준비
-* https://uzoolove.github.io/FES09-React/workspace-ins/ch13-skeleton
+* <https://uzoolove.github.io/FES09-React/workspace-ins/ch13-skeleton>
 
 ### 13-1 게시물 관리
 
