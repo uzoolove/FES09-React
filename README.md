@@ -1,6 +1,6 @@
 # 멋쟁이 사자처럼 Front-End School 9기: React 프로그래밍
-* 소스 코드(GitHub): <https://github.com/uzoolove/FES09-React>
 * 문서(GitHub Page): <https://uzoolove.github.io/FES09-React>
+* 소스 코드(GitHub): <https://github.com/uzoolove/FES09-React>
 * 예제 테스트(GitHub Page): <https://uzoolove.github.io/FES09-React/workspace-ins>
 
 # 주차별 내용(일정은 변동 가능)
