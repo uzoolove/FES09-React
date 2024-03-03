@@ -42,26 +42,6 @@
 ## 1장 리액트 빌드업
 * <https://uzoolove.github.io/FES09-React/workspace-ins/ch01-buildup>
 
-### 1-1 웹 개발의 변천사
-* 고전적인 방식 (Server Side)
-  - TodoList 실습
-* 근대적인 방식 (MPA)
-  - Counter 실습
-  - TodoList 실습
-* 현대적인 방식 (SPA)
-  - Counter 실습
-  - TodoList 실습
-
-### 1-2 리액트 개발에 자주 사용하는 자바스크립트 문법
-* Arrow Function
-* 구조 분해 할당
-* 전개 연산자
-* 삼항 조건 연산자
-* module
-* Promise, async/await
-* 배열 메서드
-* 메모이제이션
-
 ## 2장 리액트 시작하기
 * <https://uzoolove.github.io/FES09-React/workspace-ins/ch02-start>
 
