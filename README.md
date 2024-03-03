@@ -11,7 +11,7 @@
 * TodoList - 라이브러리 이용
 * TodoList - React
 
-![title](http://fakeImgUrl.com/img/01.jpg)
+![title](https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/FES_back.png)
 ![title](/images/FES_back.png)
 
 ## 2주차 (2024.03.04 ~ 2024.03.08, 5일)
