@@ -233,8 +233,8 @@
   <div id="todolist" className={ todoClass }></div>
   ```
 
-4 보간법{}을 사용할 때에는 표현식을 사용해야 함
-* {} 안에는 변수값, 메서드 리턴값 등 값만 사용 가능
+4 보간법{ }을 사용할 때에는 표현식을 사용해야 함
+* { } 안에는 변수값, 메서드 리턴값 등 값만 사용 가능
 * if문, for 문 등은 사용할 수 없음
   - if문 대신 삼항 연산자 사용
     ```
@@ -268,6 +268,7 @@
   - <span>Hello &lt;i&gt;World&lt;/i&gt;</span>
 * 해결 방법
   1. dangerouslySetInnerHTML 속성을 사용하면 HTML 태그를 인코딩하지 않음
+
     ```
     const App(){
       // { msg }를 <span dangerouslySetInnerHTML={{ __html: msg }}></span>로 변경
@@ -276,6 +277,7 @@
     }
     ```
   2. JSX는 XSS 공격에 안전하므로 JSX를 사용
+  
     ```
     const App(){
       // const msg = '<i>World</i>';
