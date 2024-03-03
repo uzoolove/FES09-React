@@ -4,12 +4,15 @@
 * 예제 테스트(GitHub Page): <https://uzoolove.github.io/FES09-React/workspace-ins>
 
 # 수업 스케쥴 (일정은 변동 가능)
-- <img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/FES_back.png" witdh="100px" ></img>
+- <img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/FES_back.png" witdh="100">
 ## 1주차 (2024.02.26 ~ 2024.02.29, 4일)
 * TodoList - vanillaJS 
 * Counter 프로그램 - 라이브러리 개발
 * TodoList - 라이브러리 이용
 * TodoList - React
+
+![title](http://fakeImgUrl.com/img/01.jpg)
+![title](/images/FES_back.png)
 
 ## 2주차 (2024.03.04 ~ 2024.03.08, 5일)
 * 리액트 란? 리액트 역사, 리액트 개발환경 설정, create-react-app, Vite
