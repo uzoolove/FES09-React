@@ -4,7 +4,6 @@
 
 ## 2-1 리액트란?
 * 페이스북에서 만든 웹 UI를 작성하기 위한 자바스크립트 라이브러리
-* 자바스크립트만을 이용해서 
 
 ### React의 특징
 * SPA의 단점을 보완하는 몇가지 기술을 도입
@@ -62,7 +61,7 @@
   - 보일러 플레이트 코드 제공
   - 프로젝트 설정 파일 자동 구성
   - 필요 라이브러리 설치
-  - HMR(Hot Module Replacement): 개발시 소스 코드룰 수정하면 컴포넌트를 자동으로 리로딩해서 브라우저의 새로고침 없이 곧바로 화면에 적용 가능
+  - HMR(Hot Module Replacement): 개발시 소스 코드를 수정하면 컴포넌트를 자동으로 리로딩해서 브라우저의 새로고침 없이 곧바로 화면에 적용 가능
   - 프로덕션 배포에 필요한 번들링 기능 제공
 
 #### create-react-app(CRA)
@@ -107,12 +106,13 @@
   - npm init vite == npm create vite == npx create-vite
 
 ## 2-3 리액트 애플리케이션 배포
+### 프로젝트 빌드
 * 프로덕션 배포용 파일 생성
   ```
   npm run build
   ```
 * 프로젝트 빌드
-  - build 폴더에 프로덕션 배포용 파일 생성
+  - build(CRA), dist(Vite) 폴더에 프로덕션 배포용 파일 생성
   - JSX 문법을 Javascript 코드로 변환
   - 트랜스파일링: ES6+ 문법을 지원하지 않는 구 버전의 브라우저를 위해 ES5 수준의 코드로 변환
   - 압축: 주석 제거, 변수명 축약, 화이트 스페이스 제거
@@ -141,8 +141,8 @@
 ### JSX 규칙
 1 단일 루트 요소를 반환해야 한다.
 * JSX는 자바스크립트 객체로 변환되는데 함수가 여러 객체를 반환 할 수 없으므로 단일 객체를 반환하도록 해야함
-* 에러 발생
-  - Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>?
+* Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? 에러 발생
+  
   ```
   return (
     <h1>Todo List</h1>
@@ -150,7 +150,7 @@
   );
   ```
 
-* 루트 요소로 래핑
+* 루트 요소를 추가
   ```
   return (
     <div>
@@ -162,6 +162,7 @@
 
 * Fragment 사용
   - 렌더링 결과에는 영향을 미치지 않음
+  
   ```
   return (
     <Fragment>
