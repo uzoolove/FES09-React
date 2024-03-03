@@ -12,7 +12,7 @@
 * TodoList - React
 
 ![title](https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/FES_back.png)
-![title](/images/FES_back.png)
+![title](/images/FES_back.png){: width="100"}
 
 ## 2주차 (2024.03.04 ~ 2024.03.08, 5일)
 * 리액트 란? 리액트 역사, 리액트 개발환경 설정, create-react-app, Vite
