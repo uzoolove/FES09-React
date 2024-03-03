@@ -75,7 +75,6 @@
   # 개발 서버 실행
   npm start
   ```
-  - 자동으로 브라우저 열려서 접속됨
 
 #### Vite
 * 프랑스어로 "빠르다"는 뜻
@@ -97,7 +96,7 @@
   # 개발 서버 실행
   npm run dev
   ```
-  - 콘솔에 출력된 URL로 접속
+
 * npm init vite에서 vite는 initializer이며 create- 접두사로 시작하는 Node.js 모듈을 이용해 프로젝트의 초기 구성을 해줌
   - npm init vite
     + npx create-vite 실행
@@ -277,7 +276,7 @@
     }
     ```
   2. JSX는 XSS 공격에 안전하므로 JSX를 사용
-  
+
     ```
     const App(){
       // const msg = '<i>World</i>';
