@@ -4,7 +4,7 @@
 * 예제 테스트(GitHub Page): <https://uzoolove.github.io/FES09-React/workspace-ins>
 
 # 수업 스케쥴 (일정은 변동 가능)
-
+- <img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/FES_back.png"></img>
 ## 1주차 (2024.02.26 ~ 2024.02.29, 4일)
 * TodoList - vanillaJS 
 * Counter 프로그램 - 라이브러리 개발
