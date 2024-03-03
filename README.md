@@ -1,37 +1,37 @@
 # 멋쟁이 사자처럼 Front-End School 9기: React 프로그래밍
-* 문서(GitHub Page): <https://uzoolove.github.io/FES09-React>
+* GitHub Page에서 보기: <https://uzoolove.github.io/FES09-React>
 * 소스 코드(GitHub): <https://github.com/uzoolove/FES09-React>
 * 예제 테스트(GitHub Page): <https://uzoolove.github.io/FES09-React/workspace-ins>
 
-# 주차별 내용(일정은 변동 가능)
+# 수업 스케쥴 (일정은 변동 가능)
 
-## 1주차
+## 1주차 (2024.02.26 ~ 2024.02.29, 4일)
 * TodoList - vanillaJS 
 * Counter 프로그램 - 라이브러리 개발
 * TodoList - 라이브러리 이용
 * TodoList - React
 
-## 2주차
+## 2주차 (2024.03.04 ~ 2024.03.08, 5일)
 * 리액트 란? 리액트 역사, 리액트 개발환경 설정, create-react-app, Vite
 * 리액트 개발에 자주 사용하는 자바스크립트 문법
 * JSX, 가상 DOM, 리액트 랜더링
 * 리액트 컴포넌트(함수형 컴포넌트, 클래스 컴포넌트)와 라이프 사이클
 * 리액트 훅, useState, useEffect
 
-## 3주차
+## 3주차 (2024.03.11 ~ 2024.03.14, 4일)
 * 리액트 훅, useRef, useReducer
 * 리액트 훅, useMemo, useCallback
 * 사용자 정의 훅 만들기, 고차 컴포넌트
 * Context API
 
-## 4주차
+## 4주차 (2024.03.18 ~ 2024.03.22, 5일)
 * 리액트 Router
 * 리액트 상태관리 라이브러리
 * Recoil, Zustand
 * HTTP 통신(Fetch API, Axios, React Query)
 * CSR과 SSR, Next.js
 
-## 5주차
+## 5주차 (2024.03.25 ~ 2024.03.28, 4일)
 * 백엔드 개발과 API 서버
 * Styled components, Tailwind CSS
 * 프로젝트 실습 - 로그인, JWT 토큰 인증
