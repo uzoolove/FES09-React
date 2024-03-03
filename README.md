@@ -45,43 +45,17 @@
 ## 2장 리액트 시작하기
 * <https://uzoolove.github.io/FES09-React/workspace-ins/ch02-start>
 
-### 2-1 리액트란?
-
-### 2-2 리액트의 실행 방식
-* 가상 DOM
-
-### 2-3 프로젝트 환경 설정
-* CRA (create-react-app)
-* Vite
-
-### 2-4 리액트 기본
-* JSX
-* 컴포넌트
-* 속성 (Props)
-* 상태 (State)
-* CSS 사용
-
 ## 3장 리액트 훅
 * <https://uzoolove.github.io/FES09-React/workspace-ins/ch03-hooks>
-* 참고: <https://ko.legacy.reactjs.org/docs/hooks-reference.html>
-* useState
-* useEffect
-* useRef
-* 사용자 정의 훅
 
 ## 4장 클래스 컴포넌트와 컴포넌트의 라이프 사이클
 * <https://uzoolove.github.io/FES09-React/workspace-ins/ch04-class>
 
 ## 5장 고차 함수
 * <https://uzoolove.github.io/FES09-React/workspace-ins/ch05-highorder>
-* useMemo
-* useCallback
-* React.memo
 
 ## 6장 컨텍스트 API
 * <https://uzoolove.github.io/FES09-React/workspace-ins/ch06-contextapi>
-* Provider
-* useContext
 
 ## 7장 리액트 라우터
 * <https://uzoolove.github.io/FES09-React/workspace-ins/ch07-router>
@@ -89,56 +63,28 @@
 ## 8장 상태 관리 라이브러리
 * <https://uzoolove.github.io/FES09-React/workspace-ins/ch08-globalstate>
 
-### 8-1 Redux
-* useReducer
-
-### 8-2 Recoil
-
-### 8-3 Zustand
-
 ## 9장 리액트에서 CSS 사용
 * <https://uzoolove.github.io/FES09-React/workspace-ins/ch09-css>
 
-### 9-1 CSS Module
-
-### 9-2 CSS-in-JS
-* Styled components
-* Tailwind CSS
-
 ## 10장 HTTP 통신과 Ajax
 * <https://uzoolove.github.io/FES09-React/workspace-ins/ch10-ajax>
-
-### 10-1 HTTP 프로토콜
-
-### 10-2 Ajax
-* XMLHttpRequest
-* fetch API
-* Axios
-* React Query (TanStack Query)
 
 ## 11장 백엔드 개발과 API 서버
 * <https://uzoolove.github.io/FES09-React/workspace-ins/ch11-api>
 
 ## 12장 Next.js
 * <https://uzoolove.github.io/FES09-React/workspace-ins/ch12-nextjs>
-### 12-1 CSR과 SSR
 
 ## 13장 프로젝트 준비
 * <https://uzoolove.github.io/FES09-React/workspace-ins/ch13-skeleton>
-
-### 13-1 게시물 관리
-
-### 13-2 로그인
-
-### 13-3 JWT 토큰 인증
 
 # 개발환경 구축
 
 ## 프로그램 설치
 * 본인의 OS에 맞는 버전 다운로드 후 설치
-1. Nodejs 설치 <https://nodejs.org/en/download/>
-2. Visual Studio Code 설치 <https://code.visualstudio.com/download>
-3. Git 설치 <https://git-scm.com/downloads>
+  - Nodejs 설치 <https://nodejs.org/en/download/>
+  - Visual Studio Code 설치 <https://code.visualstudio.com/download>
+  - Git 설치 <https://git-scm.com/downloads>
 
 ## Visual Studio Code 설정
 1. VSCode 실행
