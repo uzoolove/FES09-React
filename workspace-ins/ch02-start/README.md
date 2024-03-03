@@ -25,35 +25,46 @@
   * 전역 수준의 상태 관리를 위한 라이브러리(Context API, Redux, MobX, Recoil, Zustand 등)를 사용할 수 있음
   * 상태가 변경되면 뷰(UI, HTML)를 즉시 랜더링
   * 단방향 데이터 바인딩: State -> View, View -> Event Handler -> setState() -> State
+    - View의 변경이 직접 State를 변경시키지 않고 Event Handler를 통해서만 변경 가능하게 구현해야 하므로 상태가 변경되는 과정에 대한 예측과 추적이 용이함
 
 #### JSX (Javascript XML)
-  * HTML 마크업과 비슷한 문법을 사용해서 UI 정의하면 Babel 같은 변환 도구에 의해 자바스크립트 코드로 변환됨
-    ```
-    <div class="todolist">
-      <ul>
-        <li>두부</li>
-        <li>계란</li>
-        <li>라면</li>
-      </ul>
-    </div>
-    ```
-    ```
-    /*#__PURE__*/_jsx("div", {
-      class: "todolist",
-      children: /*#__PURE__*/_jsxs("ul", {
-        children: [/*#__PURE__*/_jsx("li", {
-          children: "\uB450\uBD80"
-        }), /*#__PURE__*/_jsx("li", {
-          children: "\uACC4\uB780"
-        }), /*#__PURE__*/_jsx("li", {
-          children: "\uB77C\uBA74"
-        })]
-      })
-    });
-    ```
+* HTML 마크업과 비슷한 문법을 사용해서 UI 정의하면 Babel 같은 변환 도구에 의해 자바스크립트 코드로 변환됨
+  ```
+  <div class="todolist">
+    <ul>
+      <li>두부</li>
+      <li>계란</li>
+      <li>라면</li>
+    </ul>
+  </div>
+  ```
+  ```
+  /*#__PURE__*/_jsx("div", {
+    class: "todolist",
+    children: /*#__PURE__*/_jsxs("ul", {
+      children: [/*#__PURE__*/_jsx("li", {
+        children: "\uB450\uBD80"
+      }), /*#__PURE__*/_jsx("li", {
+        children: "\uACC4\uB780"
+      }), /*#__PURE__*/_jsx("li", {
+        children: "\uB77C\uBA74"
+      })]
+    })
+  });
+  ```
 
 #### 가상 DOM (Virtual DOM)
 * 상태가 변경되어서 뷰를 랜더링할때 브라우저 DOM에 바로 적용하지 않고 브라우저 DOM과 유사한 트리구조의 가상 DOM(자바스크립트 객체)을 먼저 수정한 후 수정전의 가상 DOM과 수정후의 가상 DOM을 비교해서 바뀐 부분만 브라우저 DOM에 실제 반영
+* DOM API를 이용한 화면 갱신 방법
+  - 수정된 부분만 찾아서 갱신
+    + 장점: 화면 렌더링을 최소화 하기 때문에 성능에 좋음
+    + 단점: 기존 데이터와 새로운 데이터를 비교해서 새로운 데이터가 기존 데이터의 어느 부분과 달라졌는지 확인하고 해당 요소를 DOM에서 찾아 갱신해야 하므로 코드가 복잡해짐
+  - 관련 영역 전체를 갱신
+    + 장점: 기존 요소를 지우고 새로운 데이터로 전체를 교체하면 되므로 기존 데이터와 비교 작업이 필요 없고 수정될 부분만 찾아서 DOM을 갱신할 필요가 없으므로 코드가 간결해짐
+    + 단점: 하나만 수정해서 갱신하면 될 것을 관련 영역 전체를 다시 렌더링 하므로 성능 이슈 발생
+  - 가상 DOM 이용
+    + 새로운 데이터를 가지고 만들어진 가상 DOM과 기존 DOM을 비교해서 바뀐 부분만 찾아서 브라우저 DOM을 갱신하므로 성능에 좋음
+    + 바뀐 부분만 찾아서 리렌더링 하는 작업은 리액트가 담당하므로 코드가 간결해짐
 
 ## 2-2 리액트 개발 환경 구축
 ### 툴체인
@@ -69,7 +80,7 @@
 * workspace/ch02-start 폴더로 이동 후 다음 명령 실행
   - Need to install the following packages 메세지가 나오면 y 입력후 엔터
   ```
-  npx create-react-app 01
+  npx create-react-app cra
   # 생성한 프로젝트 폴더로 이동
   cd 01
   # 개발 서버 실행
@@ -84,7 +95,7 @@
   ```
   npm init vite@latest
   ```
-  - 프로젝트 명: 02
+  - 프로젝트 명: vite
   - 개발환경 선택: React
   - 개발언어 선택: JavaScript
 
@@ -286,20 +297,3 @@
     ```
 
 
-
-
-
-
-## 2-2 리액트의 실행 방식
-* 가상 DOM
-
-## 2-3 프로젝트 환경 설정
-* CRA (create-react-app)
-* Vite
-
-## 2-4 리액트 기본
-* JSX
-* 컴포넌트
-* 속성 (Props)
-* 상태 (State)
-* CSS 사용
