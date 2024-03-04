@@ -296,4 +296,135 @@
     }
     ```
 
+## 2-5 속성 (Props)
+* 상위 컴포넌트에서 하위 컴포넌트로 데이터를 전달할 때 사용
+  ```
+  // ch02-start/todo/03.html
+  function App(){
+    const title = 'React Props';
+    let list = [
+      { _id: 1, title: '리그오브 레전드', done: false},
+      { _id: 2, title: '영화 보기(집에서)', done: false},
+      { _id: 3, title: '던파', done: false},
+    ];
+
+    return (
+      <div id="app">
+        <div>
+          <Title title={ title } />
+          <TodoList list={ list } />
+        </div>
+      </div>
+    );
+  }
+
+  function Title({ title='Default Title' }){
+    return (
+      <div>
+        <h1>Simple Todo List - { title } :()</h1>
+        <hr />
+      </div>
+    );
+  }
+
+  function TodoList({ list }){
+    const itemList = list.map(item => {
+      return (
+        <li key={ item._id }>{ item.title }</li>
+      );
+    });
+
+    return (
+      <ul className="todolist">
+        { itemList }
+      </ul>
+    );
+  }    
+  ```
+* 함수에 데이터를 전달할 때 인수를 사용하듯이 컴포넌트에 데이터를 전달할 때 Props를 사용
+  - JSX에서 하위 컴포넌트를 HTML 태그처럼 사용할 때 HTML 태그의 속성을 지정하는 것처럼 사용
+* 하위 컴포넌트에는 상위 컴포넌트가 전달한 여러 속성이 하나의 Props 객체로 전달되므로 주로 구조 분해 할당을 이용해서 필요한 속성을 바로 꺼내서 사용
+* 기본값 매개변수를 사용하면 Props가 전달되지 않거나 undefined가 명시적으로 전달될 때 적용됨
+  - null, 0 값은 기본값으로 대체되지 않음
+* 자신이 전달받은 Props 전체를 하위 컴포넌트에 전달하고 싶을때는 전개 연산자를 사용
+  ```
+  function Profile(props) {
+    return (
+      <div>
+        <Avatar { ...props } />
+      </div>
+    );
+  }
+  ```
+* Props로 객체를 전달 받을 때 자식 컴포넌트가 그 값을 직접 변경하는 것은 지양
+  - 리액트의 데이터는 상위 컴포넌트에서 하위 컴포넌트로 전달되는데 하위 컴포넌트에서 상위 컴포넌트의 데이터를 직접 수정하면 데이터의 흐름을 예측하기 어려워서 디버깅하기 어려운 오류를 만들 수 있음
+
+## 2-6 상태 (State)
+* 리액트에서는 시간이 지남에 따라 변하는 데이터를 상태라고 함
+* 상태가 변경되면 해당 컴포넌트와 하위 컴포넌트가 리렌더링 됨
+
+### React.useState()
+* 상태값(컴포넌트에서 관리하는 데이터)을 추가하기 위한 훅(Hook)
+
+#### API
+  ```
+  const [state, setState] = useState(initialState);
+  ```
+
+##### 매개변수
+* initialState: 상태값의 초기값(초기 렌더링 후 무시됨)
+
+##### 리턴값
+* state: 상태값이 저장된 getter
+* setState: 상태값을 변경하는 setter 함수. setter를 통해 상태가 변경되면 해당 컴포넌트는 다시 렌더링됨
+
+#### useState() 특징
+* 컴포넌트가 랜더링 되는 동안에만 사용할 수 있는 특별한 함수(훅, Hooks)
+* 컴포넌트의 최상위 수준이나 커스텀 훅 내부에서만 사용 가능(조건문, 반복문, 일반 함수 같은 블럭{ } 내부에서는 사용 불가)
+* 컴포넌트 내에서 여러번 사용하면 리액트가 관리하는 배열에 저장되므로 컴포넌트가 리렌더링 될때 마다 순서가 정확히 지켜져야 한다.
+  ```
+  const [firstName, setFirstName] = useState('Dragon');
+  if(firstName === 'Dragon'){
+    const [lastName, setLastName] = useState('Gil');
+  }  
+  const [age, setAge] = useState(36);
+  ```
+* state로 만든 변수는 컴포넌트를 여러곳에서 사용해도 각각의 값을 따로 관리
+  - 컴포넌트 외부에 선언한 변수는 컴포넌트 리렌더링 되어도 값이 유지되지만 해당 컴포넌트를 여러곳에서 사용할 경우 모든 컴포넌트가 공유하는 값이 됨
+
+### 상태 사용시 유의사항
+* state가 변경되는 즉시 리렌더링이 되지 않고 이벤트 큐의 마지막으로 리렌더링 작업이 등록되므로 React는 이벤트 핸들러의 모든 코드가 실행될 때까지 기다리게됨
+  - 이벤트 핸들러와 그 안의 코드가 완료될 때까지 UI가 업데이트되지 않는다는 의미
+  - 이벤트 핸들러 내에서 상태값을 여러번 바꾼 후 읽어오면 바로 반영되지 않음
+* 상태를 객체나 배열로 지정한 경우에는 그 값을 변경할 때 속성만 변경해서는 참조 주소가 바뀌지 않으므로 리액트가 상태가 변경되었음을 인지하지 못함. 대신 새로운 객체나 배열을 생성해서 교체해야 리렌더링이 발생
+  - 중첩 객체일 경우에는 수정될 속성을 포함한 객체와 그 객체를 포함하는 객체를 루트 객체까지 거슬러 올라가면서 전부 교체해아할 수 있음 
+    ```
+    {
+      "_id": 4,
+      "email": "u1@market.com",
+      "name": "데이지",
+      "phone": "01044445555",
+      "address": "서울시 강남구 논현동 222",
+      "type": "user",
+      "createdAt": "2024.01.25 21:08:14",
+      "updatedAt": "2024.02.04 09:38:14",
+      "extra": {
+        "birthday": "11-30",
+        "membershipClass": "MC02",
+        "address": [
+          {
+            "id": 1,
+            "name": "회사",
+            "value": "서울시 강동구 천호동 123"
+          },
+          {
+            "id": 2,
+            "name": "집",
+            "value": "서울시 강동구 성내동 234"
+          }
+        ]
+      }
+    }
+    ```
+
 
