@@ -163,3 +163,10 @@
 
 ## 바벨 REPL
 * https://babeljs.io/repl
+
+## React 공식 홈페이지
+* https://react.dev
+
+## JSX 변환기 (HTML을 JSX로 변환)
+* https://transform.tools/html-to-jsx
+
