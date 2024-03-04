@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
+</head>
+<body>
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+
+    function Header() {
+      return (
+        <header>
+          <h1>구구단 - React</h1>
+        </header>
+      );
+    }
+
+    function Counter() {
+      const [dan, setDan] = React.useState(2);
+      const [result, setResult] = React.useState('');
+
+      const handleClick = () => {
+        let result = [];
+        for(let i=1; i<=9; i++){
+          result.push(<li>{dan} x {i} = {dan*i}</li>);
+        }
+        setResult(result);
+      };
+
+      return(
+        <div id="gugudan">
+          <input type="text" value={ dan } onChange={ e => setDan(e.target.value) } />
+          <button type="button" onClick={ handleClick }>시작</button>
+          <ul>{ result }</ul>
+        </div>
+      );
+    }
+
+    function App() {
+      return (
+        <div id="app">
+          <Header />
+          <Counter />
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+
+
+</body>
+</html>
