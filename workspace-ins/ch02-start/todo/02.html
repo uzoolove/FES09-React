@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Todo List</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+
+    // 컴포넌트 만들어서 재사용을 하려면???
+    // 1. 독립된 파일로 작성(모듈)
+    // 2. 범용성(타이틀 값을 각 페이지 별로 다르게 전달 받아서 출력해야 함)
+    function Title(){
+      return (
+        <div>
+          <h1>Simple Todo List - React Component :()</h1>
+          <hr />
+        </div>
+      );
+    }
+
+    // Todo 목록을 전달받아서 출력해야 함
+    function TodoList(){
+      return (
+        <ul className="todolist">
+          <li>React 공부 - 진행중</li>
+          <li>Nodejs 공부 - 완료</li>
+          <li>Javascript 공부 - 완료</li>
+        </ul>
+      );
+    }
+
+    // Title, TodoList의 부모 컴포넌트
+    function App(){
+      return (
+        <div id="app">
+          <div>
+            <Title />
+            <TodoList />
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+  </script>
+</body>
+
+</html>
