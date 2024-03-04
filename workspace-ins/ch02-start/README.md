@@ -82,7 +82,7 @@
   ```
   npx create-react-app cra
   # 생성한 프로젝트 폴더로 이동
-  cd 01
+  cd cra
   # 개발 서버 실행
   npm start
   ```
@@ -101,7 +101,7 @@
 
   ```
   # 생성한 프로젝트 폴더로 이동
-  cd 02
+  cd vite
   # 필요 패키지 설치
   npm i
   # 개발 서버 실행
