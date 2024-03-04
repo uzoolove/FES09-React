@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실행 안내</title>
+  <link rel="shortcut icon" href="./assets/favicon.ico">
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+</head>
+<body>
+  <h1>React 예제</h1>
+  <p>폴더 경로: <span id="filepath"></span></p>
+  <p>이 예제는 <b>Node.js 기반의 개발환경(Vite)</b>에서 실행해야 합니다.</p>
+  <button data-clipboard-target="textarea">코드 복사</button>
+  <span id="copyresult"></span>
+  <pre style="background-color: lightgrey;">
+    <code style="font-family: Consolas, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"></code>
+  </pre>
+  <textarea style="position:absolute; left:-9999px;" value="qewre&nbsp;sd\nf"></textarea>
+  <script>
+    const WORKSPACE_DIR = 'C:/FES09/FES09-React/workspace-ins';
+    const qs = new URLSearchParams(location.search);
+    const filepath = qs.get('filepath');
+    document.querySelector('#filepath').textContent = filepath;
+    const command = `
+      ${WORKSPACE_DIR.substring(0, 2)}
+      cd ${WORKSPACE_DIR}/${filepath}
+      npm run dev
+    `;
+    document.querySelector('code').innerHTML = command;
+    document.querySelector('textarea').innerHTML = `${WORKSPACE_DIR.substring(0, 2)}\ncd ${WORKSPACE_DIR}/${filepath}\nnpm run dev\n`;
+
+    const clipboard = new ClipboardJS('button');
+    clipboard.on('success', function(e) {
+      const result = document.querySelector('#copyresult');
+      result.innerHTML = '복사 완료. VS Code 터미널에서 붙여넣기 하세요 :)';
+      setTimeout(() => result.innerHTML = '', 3000);
+    });
+    
+    clipboard.on('error', function(e) {
+      console.error(e);
+      document.querySelector('#copyresult').innerHTML = '복사 실패. 수동으로 드래그해서 복사한 후 VS Code 터미널에서 붙여넣기 하세요 :(';
+    });
+  </script>
+</body>
+</html>
