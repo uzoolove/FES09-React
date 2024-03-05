@@ -20,6 +20,10 @@
   <script type="module">
     document.querySelector('#filepath').textContent = `ch${document.URL.split('/ch')[1]}index.html`;
 
+    import MyMath, { avg, plus } from './export.js';
+
+    console.log(MyMath.plus(10, 20));
+    console.log(avg(79, 57, 34));
     
   </script>
 
