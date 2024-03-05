@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "./Button";
 
 function Counter() {
   const [count, setCount] = useState(0);
@@ -14,9 +15,9 @@ function Counter() {
   };
   return(
     <div id="counter">
-      <button type="button" onClick={ handleDown }>-</button>
-      <button type="button" onClick={ () => handleReset(event) }>0</button>
-      <button type="button" onClick={ handleUp }>+</button>
+      <Button color="red" onClick={ handleDown }>-</Button>
+      <Button onClick={ () => handleReset() }>0</Button>
+      <Button color="blue" onClick={ handleUp }>+</Button>
       <span>{count}</span>
     </div>
   );

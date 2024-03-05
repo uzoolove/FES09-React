@@ -6,6 +6,7 @@ function App() {
     <div id="app">
       <Header />
       <Counter />
+      <Counter />
     </div>
   )
 }
