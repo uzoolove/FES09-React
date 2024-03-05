@@ -6,7 +6,7 @@ function App() {
     <div id="app">
       <Header />
       <Counter />
-      <Counter />
+      <Counter>10</Counter>
     </div>
   )
 }
