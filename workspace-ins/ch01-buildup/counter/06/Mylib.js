@@ -41,8 +41,9 @@ const Mylib = (() => {
         if(rootNode.firstChild){
           rootNode.firstChild.remove();
         }
+        console.log('리렌더링 이전...');
         rootNode.appendChild(_appComponent());
-        console.log('리렌더링...');
+        console.log('리렌더링 이후...');
       }
     };
   };
