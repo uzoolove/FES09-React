@@ -171,8 +171,11 @@
 ## JSX 변환기 (HTML을 JSX로 변환)
 * https://transform.tools/html-to-jsx
 
-## 객체 불변성 라이브러리 immer
+## 객체 불변성 라이브러리 immer님
 * https://immerjs.github.io/immer
 
 ## props의 타입 검증을 위한 PropTypes
-* https://legacy.reactjs.org/docs/typechecking-with-proptypes.html
+* https://ko.legacy.reactjs.org/docs/typechecking-with-proptypes.html
+
+## Form 입력값 검증을 위한 react-hook-form
+* https://react-hook-form.com
