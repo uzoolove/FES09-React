@@ -30,7 +30,19 @@ function App(){
   });
 
   const handleAddressChange = e => {
+    const address = user.extra.addressBook.find(address => address.id === Number(e.target.name));
+    address.value = e.target.value;
+    const newState = { ...user };
 
+    console.log('user', user === newState);
+    console.log('user.extra', user.extra === newState.extra);
+    console.log('user.extra.addressBook', user.extra.addressBook === newState.extra.addressBook);
+    console.log('회사', user.extra.addressBook[0] === newState.extra.addressBook[0]);
+    console.log('집', user.extra.addressBook[1] === newState.extra.addressBook[1]);
+    console.log('회사 주소', user.extra.addressBook[0].value === newState.extra.addressBook[0].value);
+    console.log('집 주소', user.extra.addressBook[1].value === newState.extra.addressBook[1].value);
+
+    setUser(newState);
   };
 
   return (
