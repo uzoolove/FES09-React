@@ -6,6 +6,7 @@ function App(){
     <>
       <h1>State 사용</h1>
       <Message />
+      <Message />
     </>
   );
 }
