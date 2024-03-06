@@ -30,9 +30,27 @@ function App(){
   });
 
   const handleAddressChange = e => {
-    const address = user.extra.addressBook.find(address => address.id === Number(e.target.name));
-    address.value = e.target.value;
-    const newState = { ...user };
+    // 불변 객체가 아님
+    // const address = user.extra.addressBook.find(address => address.id === Number(e.target.name));
+    // address.value = e.target.value;
+    // const newState = { ...user };
+
+    // user는 불변 객체이어야 한다.
+    const newAddressBook = user.extra.addressBook.map(address => {
+      if(address.id === Number(e.target.name)){
+        return { ...address, value: e.target.value };
+      }else{
+        return { ...address };
+      }
+    });
+
+    const newState = {
+      ...user,
+      extra: {
+        ...user.extra,
+        addressBook: newAddressBook
+      }
+    };
 
     console.log('user', user === newState);
     console.log('user.extra', user.extra === newState.extra);
@@ -41,6 +59,7 @@ function App(){
     console.log('집', user.extra.addressBook[1] === newState.extra.addressBook[1]);
     console.log('회사 주소', user.extra.addressBook[0].value === newState.extra.addressBook[0].value);
     console.log('집 주소', user.extra.addressBook[1].value === newState.extra.addressBook[1].value);
+    console.log('기존 state의 값', user.extra.addressBook[1].value);
 
     setUser(newState);
   };
