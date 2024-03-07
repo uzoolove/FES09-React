@@ -1,5 +1,11 @@
 import { useForm } from 'react-hook-form';
 
+const errorStyle = {
+  fontSize: '12px',
+  color: 'red',
+  fontWeight: 'bold'
+};
+
 function App(){
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm({
@@ -33,7 +39,7 @@ function App(){
             }
           }) }
         /><br/>
-        <div>{ errors.name?.message }</div>
+        <div style={ errorStyle }>{ errors.name?.message }</div>
 
         <label htmlFor="email">이메일</label>
         <input 
@@ -46,7 +52,7 @@ function App(){
             }
           }) }
         /><br/>
-        <div>{ errors.email?.message }</div>
+        <div style={ errorStyle }>{ errors.email?.message }</div>
 
         <label htmlFor="cellphone">휴대폰</label>
         <input 
@@ -59,7 +65,7 @@ function App(){
             }
           }) }
         /><br/>
-        <div>{ errors.cellphone?.message }</div>
+        <div style={ errorStyle }>{ errors.cellphone?.message }</div>
 
         <button type="submit">가입</button>
       </form>
