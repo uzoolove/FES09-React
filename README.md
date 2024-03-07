@@ -36,6 +36,7 @@
 * Styled components, Tailwind CSS
 * 프로젝트 실습 - 로그인, JWT 토큰 인증
 * 프로젝트 실습 - 게시물 관리
+* 배포
 
 ## 목차
 
@@ -170,3 +171,11 @@
 ## JSX 변환기 (HTML을 JSX로 변환)
 * https://transform.tools/html-to-jsx
 
+## 객체 불변성 라이브러리 immer님
+* https://immerjs.github.io/immer
+
+## props의 타입 검증을 위한 PropTypes
+* https://ko.legacy.reactjs.org/docs/typechecking-with-proptypes.html
+
+## Form 입력값 검증을 위한 react-hook-form
+* https://react-hook-form.com
