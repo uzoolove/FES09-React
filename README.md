@@ -168,6 +168,9 @@
 ## React 공식 홈페이지
 * <https://react.dev>
 
+## React 홈페이지 한글 (비공식)
+* <https://react-ko.dev>
+
 ## JSX 변환기 (HTML을 JSX로 변환)
 * <https://transform.tools/html-to-jsx>
 
@@ -182,3 +185,6 @@
 
 ## 정규표현식 테스트
 * <https://regexr.com>
+
+## 초보자를 위한 리액트
+* <https://react.vlpt.us>
