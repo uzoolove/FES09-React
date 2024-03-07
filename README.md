@@ -138,7 +138,7 @@
 
 # 소스코드 공유
 * 본인의 소스코드를 강사에게 공유하고 싶을때
-* https://codeshare.io/KW8KVE 접속 후 문제 있는 소스코드를 붙여넣기한 후 채팅창에 알려주세요.
+* <https://codeshare.io/KW8KVE> 접속 후 문제 있는 소스코드를 붙여넣기한 후 채팅창에 알려주세요.
 
 # 팁
 * VSCode에서 소스코드 비교
@@ -153,32 +153,32 @@
 # 참고 사이트
 
 ## 병아리반 자바스크립트 자료
-* Github: https://github.com/uzoolove/FES09-Javascript
+* Github: <https://github.com/uzoolove/FES09-Javascript>
 
 ## 온라인 코드 편집기(HTML, CSS, JS)
-* CodePen: https://codepen.io
+* CodePen: <https://codepen.io>
 
 ## React 웹 기반 개발 환경
-* Codesandbox: https://codesandbox.io
-* Stackblitz: https://stackblitz.com
+* Codesandbox: <https://codesandbox.io>
+* Stackblitz: <https://stackblitz.com>
 
 ## 바벨 REPL
-* https://babeljs.io/repl
+* <https://babeljs.io/repl>
 
 ## React 공식 홈페이지
-* https://react.dev
+* <https://react.dev>
 
 ## JSX 변환기 (HTML을 JSX로 변환)
-* https://transform.tools/html-to-jsx
+* <https://transform.tools/html-to-jsx>
 
 ## 객체 불변성 라이브러리 immer님
-* https://immerjs.github.io/immer
+* <https://immerjs.github.io/immer>
 
 ## props의 타입 검증을 위한 PropTypes
-* https://ko.legacy.reactjs.org/docs/typechecking-with-proptypes.html
+* <https://ko.legacy.reactjs.org/docs/typechecking-with-proptypes.html>
 
 ## Form 입력값 검증을 위한 react-hook-form
-* https://react-hook-form.com
+* <https://react-hook-form.com>
 
 ## 정규표현식 테스트
-* https://regexr.com
+* <https://regexr.com>
