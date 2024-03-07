@@ -1,6 +1,7 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 
-function TodoInput(props){
+function TodoInput({ addItem }){
   const [nextId, setNextId] = useState(4);
   const [title, setTitle] = useState('');
 
@@ -8,7 +9,7 @@ function TodoInput(props){
     if(title.trim() !== ''){
       const item = {_id: nextId, title, done: false};
       setNextId(nextId + 1);
-      props.addItem(item);
+      addItem(item);
       setTitle('');
     }
   };
@@ -24,5 +25,9 @@ function TodoInput(props){
     </div>
   );
 }
+
+TodoInput.propTypes = {
+  addItem: PropTypes.func
+};
 
 export default TodoInput;
