@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { produce } from 'immer';
+
 import AddressBookEdit from "./components/AddressBookEdit";
 
 function App(){
@@ -36,21 +38,28 @@ function App(){
     // const newState = { ...user };
 
     // user는 불변 객체이어야 한다.
-    const newAddressBook = user.extra.addressBook.map(address => {
-      if(address.id === Number(e.target.name)){
-        return { ...address, value: e.target.value };
-      }else{
-        return { ...address };
-      }
-    });
+    // const newAddressBook = user.extra.addressBook.map(address => {
+    //   if(address.id === Number(e.target.name)){
+    //     return { ...address, value: e.target.value };
+    //   }else{
+    //     // return { ...address };
+    //     return address;
+    //   }
+    // });
 
-    const newState = {
-      ...user,
-      extra: {
-        ...user.extra,
-        addressBook: newAddressBook
-      }
-    };
+    // const newState = {
+    //   ...user,
+    //   extra: {
+    //     ...user.extra,
+    //     addressBook: newAddressBook
+    //   }
+    // };
+
+    // immer를 사용해서 불변성 유지
+    const newState = produce(user, draft => {
+      const address = draft.extra.addressBook.find(address => address.id === Number(e.target.name));
+      address.value = e.target.value;
+    });
 
     console.log('user', user === newState);
     console.log('user.extra', user.extra === newState.extra);
