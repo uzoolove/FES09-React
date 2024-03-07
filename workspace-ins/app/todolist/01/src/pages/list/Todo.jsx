@@ -4,7 +4,6 @@ import TodoInput from "./TodoInput";
 import TodoList from "./TodoList";
 
 function Todo({ itemList, addItem, toggleDone, deleteItem }){
-  console.log(itemList);
   return (
     <div id="main">
       <div id="container">
