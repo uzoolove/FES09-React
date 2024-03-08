@@ -26,7 +26,7 @@
 * 일반적으로 부모에게 전달받은 props를 그대로 사용하기 때문에 사용할 일은 거의 없음
 
 #### 1-3 render()
-* 가상 DOM을 리턴하도록 작성
+* 주로 JSX를 이용해서 UI를 리턴하도록 작성함
 
 #### 1-4 componentDidMount()
 * 컴포넌트 마운트가 완료되고 브라우저 DOM 트리에 반영된 후 호출됨
@@ -39,8 +39,8 @@
 
 #### 2-2 shouldComponentUpdate(nextProps, nextState)
 * true를 리턴하면 이어서 render 가 호출되고, false를 리턴하면 render를 호출하지 않음
-* 인자로 전달되는 nextProps, nextState와 이전값 this.props, this.state를 비교해서 랜더링 여부를 결정할 수 있음
-* Component 대신 PureComponent를 상속 받을 경우 이 메서드가 이전과 현재의 props, state를 얕은 비교를 통해 바뀌지 않았다면 랜더링 하지 않도록 이미 구현되어 있음
+* 인자로 전달되는 nextProps, nextState와 이전값 this.props, this.state를 비교해서 렌더링 여부를 결정할 수 있음
+* Component 대신 PureComponent를 상속 받을 경우 이 메서드가 이전과 현재의 props, state를 얕은 비교를 통해 바뀌지 않았다면 렌더링 하지 않도록 이미 구현되어 있음
 
 #### 2-3 render()
 * 1-3과 동일
