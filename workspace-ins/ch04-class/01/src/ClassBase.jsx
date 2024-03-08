@@ -1,4 +1,5 @@
 import { Component } from "react";
+import PropTypes from 'prop-types';
 
 class Child extends Component{
   // state/setState는 부모에(Component) 정의되어 있는 이름
@@ -8,15 +9,14 @@ class Child extends Component{
 
   // arrow function으로 작성해야 this.state 등에 접근 가능함
   increase = () => {
-    this.setState({ count: this.state.count + 1});
+    this.setState({ count: this.state.count + this.props.level });
   }
 
   render(){
     return (
       <>
-        <h1>클래스 컴포넌트</h1>
         <div>
-          클릭 횟수 X : { this.state.count }
+          클릭 횟수 X { this.props.level } : { this.state.count }
           <button onClick={ this.increase }>클릭</button>
         </div>
       </>
@@ -24,10 +24,15 @@ class Child extends Component{
   }
 }
 
+Child.propTypes = {
+  level: PropTypes.number
+};
+
 class Parent extends Component{
   render(){
     return(
       <div>
+        <h1>클래스 컴포넌트</h1>
         <Child level={1} />
         <Child level={5} />
       </div>
@@ -35,4 +40,4 @@ class Parent extends Component{
   }
 }
 
-export default Child;
+export default Parent;
