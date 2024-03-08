@@ -1,5 +1,5 @@
 import { Component } from "react";
-import ChildComponent from './ClassBase';
+import ChildComponent from './FunctionBase';
 
 class App extends Component{
   render(){
