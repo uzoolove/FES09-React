@@ -4,7 +4,7 @@
 
 ## 컴포넌트 생명 주기
 
-* <img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/lifecycle.png" width="300">
+<img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/lifecycle.png">
 
 ### 1 mounting
 
