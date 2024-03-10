@@ -1,5 +1,5 @@
 import { Component } from "react";
-import ChildComponent from './ClassBase';
+import ChildComponent from './Lifecycle';
 
 class App extends Component{
   render(){
@@ -8,11 +8,5 @@ class App extends Component{
     );
   }
 }
-
-// function App(){
-//   return (
-//     <h1>Hello Class Component</h1>
-//   );
-// }
 
 export default App;
