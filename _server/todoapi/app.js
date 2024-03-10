@@ -3,10 +3,10 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import cors from 'cors';
 import swaggerUi from 'swagger-ui-express';
+import timer from 'node:timers/promises';
+
 import swaggerFile from './swagger-output.json' assert {type: 'json'};
-
 import indexRouter from './routes/todo.js';
-
 
 var app = express();
 
