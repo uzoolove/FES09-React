@@ -27,7 +27,18 @@ app.use(
   })
 );
 
-app.use('/api', indexRouter);
+// app.use('/api', indexRouter);
+
+app.use(
+  '/api',
+  async function (req, res, next) {
+    if (req.query.delay) {
+      await timer.setTimeout(req.query.delay);
+    }
+    next();
+  },
+  indexRouter
+);
 
 // 404 에러
 app.use(function(req, res, next){
