@@ -22,12 +22,11 @@
 * 리액트 훅, useRef, useReducer
 * 리액트 훅, useMemo, useCallback
 * 사용자 정의 훅 만들기, 고차 컴포넌트
-* Context API
+* 리액트 Router
 
 ## 4주차 (2024.03.18 ~ 2024.03.22, 5일)
-* 리액트 Router
-* 리액트 상태관리 라이브러리
-* Recoil, Zustand
+* Context API
+* 전역 상태 관리, Recoil, Zustand
 * HTTP 통신(Fetch API, Axios, React Query)
 * CSR과 SSR, Next.js
 
