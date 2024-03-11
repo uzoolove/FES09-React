@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import Todo from "./Todo";
 import TodoReducer from '../../reducers/TodoReducer.mjs';
 
@@ -10,12 +10,15 @@ function TodoContainer(){
     { _id: 3, title: '라면', done: true },
   ];
 
+  const [nextId, setNextId] = useState(sampleItemList.length + 1);
+
   // const [itemList, setItemList] = useState(sampleItemList);
 
   const [itemList, itemListDispatch] = useReducer(TodoReducer, sampleItemList);
 
   function addItem(item){
-    itemListDispatch({ type: 'ADD', item });
+    itemListDispatch({ type: 'ADD', item: { ...item, _id: nextId, done: false } });
+    setNextId(nextId + 1);
   }
 
   function toggleDone(_id){
