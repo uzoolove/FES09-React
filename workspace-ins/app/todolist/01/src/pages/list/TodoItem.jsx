@@ -1,6 +1,13 @@
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 
 function TodoItem({ item, toggleDone, deleteItem }){
+
+  useEffect(() => {
+    console.log('++++++ TodoItem 마운트/업데이트');
+    return () => console.log('------ TodoItem 언마운트');
+  });
+
   return (
     <li>
       <span>{ item._id }</span>
