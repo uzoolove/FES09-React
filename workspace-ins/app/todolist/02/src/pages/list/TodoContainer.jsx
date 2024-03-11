@@ -10,6 +10,8 @@ function TodoContainer(){
     { _id: 3, title: '라면', done: true },
   ];
 
+  // const [itemList, setItemList] = useState(sampleItemList);
+
   const [itemList, itemListDispatch] = useReducer(TodoReducer, sampleItemList);
 
   function addItem(item){
@@ -18,6 +20,8 @@ function TodoContainer(){
 
   function toggleDone(_id){
     itemListDispatch({ type: 'TOGGLE', item: { _id }});
+    // => TodoReducer(itemList, { type: 'TOGGLE', item: { _id }});
+    //    setItemList(newItemList);
   }
 
   function deleteItem(_id){
