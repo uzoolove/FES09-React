@@ -177,7 +177,7 @@
 * <https://immerjs.github.io/immer>
 
 ## props의 타입 검증을 위한 PropTypes
-* <https://react-ko.dev/reference/react/Component#static-proptypes>
+* <https://www.npmjs.com/package/prop-types>
 
 ## Form 입력값 검증을 위한 react-hook-form
 * <https://react-hook-form.com>
