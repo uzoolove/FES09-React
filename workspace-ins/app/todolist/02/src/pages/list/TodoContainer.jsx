@@ -1,34 +1,27 @@
-import { produce } from 'immer';
-import { useState } from "react";
+import { useReducer } from "react";
 import Todo from "./Todo";
+import TodoReducer from '../../reducers/TodoReducer.mjs';
 
 function TodoContainer(){
   // 샘플 목록
-  const [itemList, setItemList] = useState([
+  const sampleItemList = [
     { _id: 1, title: '두부', done: true } ,
     { _id: 2, title: '계란', done: false },
     { _id: 3, title: '라면', done: true },
-  ]);
+  ];
+
+  const [itemList, itemListDispatch] = useReducer(TodoReducer, sampleItemList);
 
   function addItem(item){
-    // 데이터 갱신(상태 변경)
-    const newItemList = [ ...itemList, item ];
-    setItemList(newItemList);
+    itemListDispatch({ type: 'ADD', item });
   }
 
   function toggleDone(_id){
-    // immer
-    const newItemList = produce(itemList, (draft) => {
-      const item = draft.find(item => item._id === _id);
-      item.done = !item.done;
-    });    
-    setItemList(newItemList);
+    itemListDispatch({ type: 'TOGGLE', item: { _id }});
   }
 
   function deleteItem(_id){
-    // 데이터 갱신(상태 변경)
-    const newItemList = itemList.filter(item => item._id !== _id);
-    setItemList(newItemList);
+    itemListDispatch({ type: 'DELETE', item: { _id }});
   }
 
   return (
