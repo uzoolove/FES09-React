@@ -13,6 +13,8 @@ function Counter({ children=0 }) {
   // num.current라는 속성에 값을 저장하고 있음
   const num = useRef(1);
 
+  console.log('Counter 호출됨.');
+
   const handleDown = () => {
     // setCount(count - num);
     // Reducer에게 작업을 전달
