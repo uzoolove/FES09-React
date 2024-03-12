@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 
 
 // TODO: 1. React.memo로 컴포넌트를 메모이제이션
-function TodoItem({ item, toggleDone, deleteItem }){
+const TodoItem = memo(function TodoItem({ item, toggleDone, deleteItem }){
 
   useEffect(() => {
     console.log('++++++ TodoItem 마운트/업데이트');
@@ -17,7 +17,7 @@ function TodoItem({ item, toggleDone, deleteItem }){
       <button type="button" onClick={ () => deleteItem(item._id) }>삭제</button>
     </li>
   );
-}
+});
 
 TodoItem.propTypes = {
   item: PropTypes.object.isRequired,

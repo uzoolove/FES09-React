@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useCallback, useReducer, useState } from "react";
 import Todo from "./Todo";
 import TodoReducer from '../../reducers/TodoReducer.mjs';
 
@@ -23,14 +23,14 @@ function TodoContainer(){
   }
 
   // TODO: 2. useCallback으로 함수를 메모이제이션
-  function toggleDone(_id){
+  const toggleDone = useCallback(function toggleDone(_id){
     itemListDispatch({ type: 'TOGGLE', item: { _id }});
-  }
+  }, []);
 
   // TODO: 3. useCallback으로 함수를 메모이제이션
-  function deleteItem(_id){
+  const deleteItem = useCallback(function deleteItem(_id){
     itemListDispatch({ type: 'DELETE', item: { _id }});
-  }
+  }, []);
 
   return (
     <Todo itemList={ itemList } addItem={ addItem } toggleDone={ toggleDone } deleteItem={ deleteItem } />
