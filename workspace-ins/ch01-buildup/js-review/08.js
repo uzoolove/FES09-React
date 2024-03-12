@@ -10,6 +10,12 @@ var isPrime = memo(function(num){
     }
   }
 
+  if(num === 1){
+    prime = false;
+  }else if(num === 2){
+    prime = true;
+  }
+
   return prime;
 });
 
