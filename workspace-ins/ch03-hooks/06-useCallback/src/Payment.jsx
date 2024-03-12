@@ -6,6 +6,7 @@ Payment.propTypes = {
 };
 
 function Payment({ shippingFees, handleClick }){
+  console.log('Payment 호출됨.');
   return (
     <>
       <h2>금액</h2>      

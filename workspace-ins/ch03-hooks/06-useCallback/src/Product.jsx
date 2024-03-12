@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
+import { memo } from 'react';
 
 Product.propTypes = {
   price: PropTypes.number.isRequired
 };
 
-function Product({ price }){
+const Product = memo(function Product({ price }){
   console.log('Product 호출됨.');
   return (
     <>
@@ -15,6 +16,6 @@ function Product({ price }){
       <img src="https://market-lion.koyeb.app/api/files/sample-skibidi12.jpg" width="600" />
     </>
   );
-}
+});
 
 export default Product;
