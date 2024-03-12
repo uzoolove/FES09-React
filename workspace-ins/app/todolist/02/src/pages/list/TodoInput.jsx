@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 function TodoInput({ addItem }){
   const [title, setTitle] = useState('');
+  // 포커스를 주기 위해 DOM 객체 필요함
   const titleElem = useRef();
 
   const handleAdd = () => {
