@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 // 지정한 수가 소수인지 여부를 반환
 var isPrime = function(num){
+  console.time('소요 시간');
   // 소수 판별 코드
   let prime = true;
 
@@ -18,6 +19,7 @@ var isPrime = function(num){
     prime = true;
   }
 
+  console.timeEnd('소요 시간');
   return prime;
 };
 
@@ -25,7 +27,8 @@ function App(){
   const [name, setName] = useState('GD');
   const [num, setNum] = useState(1);
 
-  const result = isPrime(num);
+  // const result = isPrime(num);
+  const result = useMemo(() => isPrime(num), [num]);
 
   return (
     <>
