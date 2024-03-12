@@ -1,5 +1,5 @@
 // 지정한 수가 소수인지 여부를 반환
-var isPrime = function(num){
+var isPrime = memo(function(num){
   // 소수 판별 코드
   let prime = true;
 
@@ -11,31 +11,45 @@ var isPrime = function(num){
   }
 
   return prime;
-};
+});
 
 // 지정한 수가 소수인지 여부를 반환
-var isPrime = function(num){
-  // 캐시를 위한 코드
-  isPrime._cache = isPrime._cache || {};
-  if(isPrime._cache[num] !== undefined){  // 캐시되어있음(hit)
-    return isPrime._cache[num];
-  }else{
-    // 소수 판별 코드
-    let prime = true;
+// var isPrime = function(num){
+//   // 캐시를 위한 코드
+//   isPrime._cache = isPrime._cache || {};
+//   if(isPrime._cache[num] !== undefined){  // 캐시되어있음(hit)
+//     return isPrime._cache[num];
+//   }else{
+//     // 소수 판별 코드
+//     let prime = true;
 
-    for(let i=2; i<=num/2; i++){
-      if(num % i === 0){
-        prime = false;
-        break;
-      }
+//     for(let i=2; i<=num/2; i++){
+//       if(num % i === 0){
+//         prime = false;
+//         break;
+//       }
+//     }
+
+//     // 캐시를 위한 코드
+//     isPrime._cache[num] = prime;
+
+//     return prime;
+//   }
+// };
+
+// 지정한 함수에 memoize 기능 추가
+function memo(fn){
+  return (num) => {
+    fn._cache = fn._cache || {};
+    if(fn._cache[num] !== undefined){  // 캐시되어있음(hit)
+      return fn._cache[num];
+    }else{
+      return fn._cache[num] = fn(num); // isPrime(num)
     }
+  };
+}
 
-    // 캐시를 위한 코드
-    isPrime._cache[num] = prime;
-
-    return prime;
-  }
-};
+// var isPrime = memo(isPrime);
 
 console.time('소요시간');
 console.log('3 -> ', isPrime(3));
