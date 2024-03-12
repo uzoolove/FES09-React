@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Payment from "./Payment";
 import Product from "./Product";
 
@@ -15,11 +15,13 @@ function App(){
     setQuantity(newQuantity);
   };
 
-  const handleClick = () => {
-    alert(`${price * quantity + shippingFees}원 결제 하시겠습니까?`);
-    // 결제 로직...
+  // const handleClick = useCallback(() => {
+  //   alert(`${price * quantity + shippingFees}원 결제 하시겠습니까?`);
+  // }, [quantity, shippingFees]);
 
-  };
+  const handleClick = useCallback(() => {
+    alert(`상품을 결제 하시겠습니까?`);
+  }, []);
 
   return (
     <>
@@ -34,7 +36,7 @@ function App(){
         상품 가격: { price * quantity }<br/>
       </div>
 
-      <Payment shippingFees={ shippingFees } handleClick={ handleClick }/>
+      <Payment shippingFees={ shippingFees } handleClick={ handleClick } />
     </>
   );
 }

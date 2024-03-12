@@ -1,10 +1,6 @@
 import PropTypes from 'prop-types';
 import { memo } from 'react';
 
-Product.propTypes = {
-  price: PropTypes.number.isRequired
-};
-
 const Product = memo(function Product({ price }){
   console.log('Product 호출됨.');
   return (
@@ -17,5 +13,9 @@ const Product = memo(function Product({ price }){
     </>
   );
 });
+
+Product.propTypes = {
+  price: PropTypes.number.isRequired
+};
 
 export default Product;

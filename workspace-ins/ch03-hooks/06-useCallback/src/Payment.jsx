@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
+import { memo } from 'react';
 
-Payment.propTypes = {
-  shippingFees: PropTypes.number.isRequired,
-  handleClick: PropTypes.func.isRequired,
-};
+let beforeFn;
 
-function Payment({ shippingFees, handleClick }){
+const Payment = memo(function Payment({ shippingFees, handleClick }){
   console.log('Payment 호출됨.');
+  console.log(Object.is(beforeFn, handleClick));
+  beforeFn = handleClick;
   return (
     <>
       <h2>금액</h2>      
@@ -14,6 +14,11 @@ function Payment({ shippingFees, handleClick }){
       <button type="button" onClick={ handleClick }>결제</button>
     </>
   );
-}
+});
+
+Payment.propTypes = {
+  shippingFees: PropTypes.number.isRequired,
+  handleClick: PropTypes.func.isRequired,
+};
 
 export default Payment;

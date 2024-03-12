@@ -200,9 +200,9 @@ const cachedFn = useCallback(fn, dependencies);
 
 ### useMemo vs. React.memo vs. useCallback
 * useMemo는 함수를 인자로 전달하고 전달된 함수의 실행 결과(린턴값)를 memoize 함
-* React.memo는 컴포넌트를 인자로 전달하고 전달된 함수를 컴포넌트를 memoize 함
+* React.memo는 컴포넌트를 인자로 전달하고 전달된 컴포넌트의 실행 결과(리턴값)를 memoize 함
 * useCallback은 함수를 인자롤 전달하고 전달된 함수를 memoize 함
-* 함수의 리턴 값 vs. 컴포넌트 vs. 함수
+* 함수의 리턴 값 vs. 컴포넌트의 리턴값 vs. 함수
 
 ## Custom Hook
 * 개발자가 직접 작성하는 리액트 훅
