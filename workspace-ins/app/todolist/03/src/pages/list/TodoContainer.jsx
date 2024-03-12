@@ -10,6 +10,10 @@ function TodoContainer(){
     { _id: 3, title: '라면', done: true },
   ];
 
+  for(let i=4; i<=15000; i++){
+    sampleItemList.push({ _id: i, title: '샘플-' + i, done: false });
+  }
+
   const [nextId, setNextId] = useState(sampleItemList.length + 1);
   const [itemList, itemListDispatch] = useReducer(TodoReducer, sampleItemList);
 
