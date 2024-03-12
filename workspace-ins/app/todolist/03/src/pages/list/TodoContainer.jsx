@@ -10,7 +10,7 @@ function TodoContainer(){
     { _id: 3, title: '라면', done: true },
   ];
 
-  for(let i=4; i<=15000; i++){
+  for(let i=4; i<=2000; i++){
     sampleItemList.push({ _id: i, title: '샘플-' + i, done: false });
   }
 
@@ -22,10 +22,12 @@ function TodoContainer(){
     setNextId(nextId + 1);
   }
 
+  // TODO: 2. useCallback으로 함수를 메모이제이션
   function toggleDone(_id){
     itemListDispatch({ type: 'TOGGLE', item: { _id }});
   }
 
+  // TODO: 3. useCallback으로 함수를 메모이제이션
   function deleteItem(_id){
     itemListDispatch({ type: 'DELETE', item: { _id }});
   }

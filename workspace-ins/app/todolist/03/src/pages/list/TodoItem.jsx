@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 
+
+// TODO: 1. React.memo로 컴포넌트를 메모이제이션
 function TodoItem({ item, toggleDone, deleteItem }){
 
   useEffect(() => {
