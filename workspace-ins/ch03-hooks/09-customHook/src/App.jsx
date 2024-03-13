@@ -1,3 +1,5 @@
+import { ReactCsspin } from 'react-csspin';
+
 import useFetch from "./hooks/useFetch";
 
 function App(){
@@ -12,7 +14,7 @@ function App(){
       <h2>할일 목록</h2>
 
       { isLoading &&
-        <p>로딩중...</p>
+        <ReactCsspin color="black" />
       }
 
       { error && 
