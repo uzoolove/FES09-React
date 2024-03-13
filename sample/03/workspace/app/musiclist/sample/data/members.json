@@ -1,0 +1,8 @@
+[
+  { "id": 1, "name": "Maggie Adams", "photo": "photos/Mag.png" },
+  { "id": 2, "name": "Sammie Purcell", "photo": "photos/Sam.png" },
+  { "id": 3, "name": "Tim Purcell", "photo": "photos/Tim.png" },
+  { "id": 4, "name": "Scott King", "photo": "photos/King.png" },
+  { "id": 5, "name": "Johnny Pike", "photo": "photos/JPike.jpg" },
+  { "id": 6, "name": "Toby Ruckert", "photo": "photos/Toby.jpg" }
+]
