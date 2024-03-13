@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 
 const API_SERVER = 'https://todo-api.frontendschool.shop/api';
 
-function App(){
+function useFetch(fetchParams){
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    const fetchParams = { url: '/todolist' };
     console.log('api 서버 호출', fetchParams);
     request(fetchParams);
   }, []);  // 마운트때 한번만 호출됨
@@ -28,17 +27,7 @@ function App(){
     }
   };
 
-  return (
-    <>
-      <h1>Custom Hook - fetch API 사용</h1>
-      <h2>할일 목록</h2>
-      { data && (
-        <ul>
-          { data.items?.map(item => <li key={ item._id }>{ item.title }</li>) }
-        </ul>
-      ) }
-    </>
-  );
+  return { data };
 }
 
-export default App;
+export default useFetch;
