@@ -85,7 +85,8 @@
   - Nodejs 설치 <https://nodejs.org/en/download/>
   - Visual Studio Code 설치 <https://code.visualstudio.com/download>
   - Git 설치 <https://git-scm.com/downloads>
-
+  - Postman 설치 <https://www.postman.com/downloads>
+  
 ## Visual Studio Code 설정
 1. VSCode 실행
   * 이미 실행중이면 File > New Window 메뉴로 새로운 VS Code 실행
