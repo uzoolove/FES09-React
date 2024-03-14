@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function TodoDetail(){
   return (
     <div id="main">
@@ -18,8 +20,8 @@ function TodoDetail(){
         <div>
           수정일 : 2024.03.13 13:45:12
         </div>
-        <a href="./todoedit.html">수정</a>
-        <a href="./todolist.html">목록</a>
+        <Link to="/edit">수정</Link>
+        <Link to="/list">목록</Link>
       </div>
     </div>
   );

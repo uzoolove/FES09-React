@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function TodoAdd(){
   return (
     <div id="main">
@@ -10,8 +12,8 @@ function TodoAdd(){
           <label htmlFor="content">내용 :</label>
           <input type="text" id="content" />
           <br/>
-          <a href="./tododetail.html">추가</a>
-          <a href="./todolist.html">취소</a>
+          <Link to="/detail">추가</Link>
+          <Link to="/list">취소</Link>
         </form>
       </div>
     </div>
