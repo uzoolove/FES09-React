@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+</head>
+<body>
+  <div class="todoapp">
+    <header>
+      <h1>Todo List :)</h1>
+      <nav>
+        <div>
+          <ul>
+            <li><a href="./home.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./todolist.html">TodoList</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <div id="main">
+      <h2>할일 수정</h2>
+      <div class="todo">
+        <form>
+          <label htmlFor="title">제목 :</label>
+          <input type="text" id="title" value="할일1" autofocus>
+          <br>
+          <label htmlFor="content">내용 :</label>
+          <input type="text" id="content" value="내용1">
+          <br>
+          <label htmlFor="done">완료 :</label>
+          <input type="checkbox" id="done" checked />
+          <br/>
+          <a href="./tododetail.html">수정</a>
+          <a href="./todolist.html">취소</a>
+        </form>
+      </div>
+    </div>
+    <footer>
+      <p>Front-End School 9기</p>
+    </footer>
+  </div>
+</body>
+</html>
