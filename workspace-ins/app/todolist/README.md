@@ -25,7 +25,7 @@
   ```
 
 ### UI 컴포넌트 작성
-* sample/03/workspace/app/todolist/sample 폴더의 html 코드를 컴포넌트로 이동
+* app/todolist/sample 폴더의 html 코드를 컴포넌트로 이동
   - header 태그는 Header.jsx에서 사용
   - footer 태그는 Footer.jsx에서 사용
   - div id="main" 태그는 각 페이지의 컴포넌트에서 사용
