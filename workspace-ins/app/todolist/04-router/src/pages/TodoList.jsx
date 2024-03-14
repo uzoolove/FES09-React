@@ -4,6 +4,10 @@ import TodoListItem from "./TodoListItem";
 
 function TodoList(){
 
+  // TODO: 로딩중에 스피너 보여주기
+  // TODO: error 있으면 출력하기
+  // TODO: index.css에 스타일 추가하기
+  
   const { isLoading, data, error } = useAxios({
     url: '/todolist?delay=1000'
   });
