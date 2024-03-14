@@ -1,11 +1,14 @@
+import MyLink from './MyLink';
+
 function Header(){
   return (
     <header>
-      <a href="home.html">home</a>
+      <h1>리액트 라우터 - 클라이언트 라우팅 직접 구현</h1>
+      <MyLink to="/">home</MyLink>
       <br/>
-      <a href="page1.html">page1</a>
+      <MyLink to="/page1">page1</MyLink>
       <br/>
-      <a href="page2.html">page2</a>
+      <MyLink to="/page2">page2</MyLink>
     </header>
   );
 }
