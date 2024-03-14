@@ -47,7 +47,7 @@
   - TodoList.jsx
 
 ### vite.config.js에 alias 추가
-* 참고: <https://uzoolove.github.io/FES09-React/workspace-ins/ch02-start/#vite.config.js>
+* 참고: <https://uzoolove.github.io/FES09-React/workspace-ins/ch02-start/#viteconfigjs>
 
 ### 레이아웃 컴포넌트 작성
 * src/components/Layout.jsx 파일 생성

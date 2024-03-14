@@ -130,6 +130,7 @@
         { find: "@", replacement: "/src" },
         { find: "@components", replacement: "/src/components" },
         { find: "@pages", replacement: "/src/pages" },
+        { find: "@hooks", replacement: "/src/hooks" },
       ],
     },
   })
