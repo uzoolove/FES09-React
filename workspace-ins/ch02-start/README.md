@@ -115,6 +115,26 @@
     + create는 init의 별칭
   - npm init vite == npm create vite == npx create-vite
 
+##### vite.config.js
+*  Vite 설정파일
+  - 참고: <https://ko.vitejs.dev/config>
+* import에서 사용할 alias 추가
+  ```
+  import { defineConfig } from 'vite'
+  import react from '@vitejs/plugin-react'
+
+  export default defineConfig({
+    plugins: [react()],
+    resolve: {
+      alias: [
+        { find: "@", replacement: "/src" },
+        { find: "@components", replacement: "/src/components" },
+        { find: "@pages", replacement: "/src/pages" },
+      ],
+    },
+  })
+  ```
+
 ## 2-3 리액트 애플리케이션 배포
 ### 프로젝트 빌드
 * 프로덕션 배포용 파일 생성
@@ -382,13 +402,14 @@
 * 컴포넌트가 렌더링 되는 동안에만 사용할 수 있는 특별한 함수(훅, Hooks)
 * 컴포넌트의 최상위 수준이나 커스텀 훅 내부에서만 사용 가능(조건문, 반복문, 일반 함수 같은 블럭{ } 내부에서는 사용 불가)
 * 컴포넌트 내에서 여러번 사용하면 리액트가 관리하는 배열에 저장되므로 컴포넌트가 리렌더링 될때 마다 순서가 정확히 지켜져야 한다.
-  ```
-  const [firstName, setFirstName] = useState('Dragon');
-  if(firstName === 'Dragon'){
-    const [lastName, setLastName] = useState('Gil');
-  }  
-  const [age, setAge] = useState(36);
-  ```
+  - 잘못된 사용 예시
+    ```
+    const [firstName, setFirstName] = useState('Dragon');
+    if(firstName === 'Dragon'){
+      const [lastName, setLastName] = useState('Gil');
+    }  
+    const [age, setAge] = useState(36);
+    ```
 * state로 만든 변수는 컴포넌트를 여러곳에서 사용해도 각각의 값을 따로 관리
   - 컴포넌트 외부에 선언한 변수는 컴포넌트 리렌더링 되어도 값이 유지되지만 해당 컴포넌트를 여러곳에서 사용할 경우 모든 컴포넌트가 공유하는 값이 되므로 컴포넌트 내부의 상태관리에 적합하지 않음
 
