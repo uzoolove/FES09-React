@@ -54,48 +54,33 @@ npm i react-router-dom
 * Node.js에서 웹 앱을 렌더링하는데 사용
 
 #### 사용 예시
-* routes.jsx
-  ```js
-  import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+```js
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-  import Page1 from "./Page1";
-  import Page2 from "./Page2";
-  import Home from "./Home";
-  import Layout from "./Layout";
+import Page1 from "./Page1";
+import Page2 from "./Page2";
+import Home from "./Home";
+import Layout from "./Layout";
 
-  function App(){  
-    const router = createBrowserRouter([
-      {
-        path: '/',
-        element: <Layout />,
-        children: [
-          { index: true, element: <Home /> },
-          { path: 'page1', element: <Page1 /> },
-          { path: 'page2', element: <Page2 /> }
-        ]
-      },
-    ]);
-    return (
-      <RouterProvider router={ router } />
-    );
-  }
+function App(){  
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Layout />,
+      children: [
+        { index: true, element: <Home /> },
+        { path: 'page1', element: <Page1 /> },
+        { path: 'page2', element: <Page2 /> }
+      ]
+    },
+  ]);
+  return (
+    <RouterProvider router={ router } />
+  );
+}
 
-  export default App;
-  ```
-
-* App.jsx
-  ```js
-  import { RouterProvider } from "react-router-dom";
-  import router from "./routes";
-
-  function App() {
-    return (
-      <RouterProvider router={ router } />
-    );
-  }
-
-  export default App;
-  ```
+export default App;
+```
 
 ## 리액트 라우터가 제공하는 컴포넌트
 
