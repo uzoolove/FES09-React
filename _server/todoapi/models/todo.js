@@ -61,7 +61,7 @@ const todo = {
       createdAt,
       updatedAt: createdAt,
     };
-    db.data.items.push(newTodo);
+    db.data.items.unshift(newTodo);
     db.write();
     return newTodo;
   },
