@@ -15,9 +15,19 @@ initDB();
 
 const todo = {
   // 할일 목록 조회
-  list({page, limit} = {}){
+  list({ keyword, page, limit } = {}){
+    let items = db.data.items;
+
+    // 검색어
+    if(keyword){
+      items = _.filter(items, item => {
+        return item.title.includes(keyword) || item.content.includes(keyword);
+      });
+    }
+
     // content 속성 제거
-    let items = db.data.items.map(item => _.omit(item, 'content'));
+    items = items.map(item => _.omit(item, 'content'));
+    
     let pagination = {};
     if(page){
       page = Number(page);
@@ -56,8 +66,8 @@ const todo = {
     return newTodo;
   },
   // 할일 수정
-  update(_id, todo){
-    const index = _.findLastIndex(db.data.items, {_id});
+  update(todo){
+    const index = _.findLastIndex(db.data.items, { _id: todo._id });
     console.log(index);
     if(index < 0){
       return;

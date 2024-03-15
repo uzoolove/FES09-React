@@ -10,7 +10,14 @@ router.get('/todolist', function(req, res, next) {
   // #swagger.tags = ['Todo List']
   // #swagger.summary  = '할일 목록 조회'
   // #swagger.description = '할일 목록을 조회합니다.<br>page, limit 파라미터는 선택사항이며 page를 전달하지 않으면 전체 할일 목록을 조회합니다.<br>page만 전달할 경우 limit 값은 기본 10으로 지정됩니다.'
+
   /* 
+    #swagger.parameters['keyword'] = {
+      required: 'false',
+      in: 'query',
+      type: 'string',
+      description: '검색어'
+    },
     #swagger.parameters['page'] = {
       required: 'false',
       in: 'query',
@@ -118,7 +125,7 @@ router.get('/todolist/:_id', function(req, res, next) {
 });
 
 // 할일 수정
-router.patch('/todolist/:_id', function(req, res, next) {
+router.patch('/todolist', function(req, res, next) {
   // #swagger.tags = ['Todo List']
   // #swagger.summary  = '할일 수정'
   // #swagger.description = '할일을 수정합니다. 할일을 수정한 후 수정된 할일을 반환합니다.<br>바디로 전달한 속성에 대해서만 수정되고 전달하지 않은 속성은 유지됩니다.'
@@ -145,7 +152,7 @@ router.patch('/todolist/:_id', function(req, res, next) {
     }
   */
   try{
-    const item = model.update(Number(req.params._id), req.body);
+    const item = model.update(req.body);
     if(item){
       res.json({ok: 1, item});
     }else{
@@ -180,11 +187,21 @@ router.delete('/todolist/init', async function(req, res, next) {
 });
 
 // 할일 삭제
-router.delete('/todolist/:_id', function(req, res, next) {
+router.delete('/todolist', function(req, res, next) {
   // #swagger.tags = ['Todo List']
   // #swagger.summary  = '할일 삭제'
   // #swagger.description = '할일을 삭제합니다.'
+  
   /* 
+    #swagger.parameters['_id'] = {
+      required: 'true',
+      in: 'body',
+      schema: {
+        $ref: '#/definitions/ItemDeleteRequest'
+      },
+      description: '삭제할 id'
+    },
+
     #swagger.responses[200] = {
       description: '성공',
       schema: { $ok: 1 }
@@ -199,7 +216,7 @@ router.delete('/todolist/:_id', function(req, res, next) {
     }
   */
   try{
-    const result = model.remove(Number(req.params._id));
+    const result = model.remove(Number(req.body._id));
     if(result > 0){
       res.json({ok: 1});
     }else{
