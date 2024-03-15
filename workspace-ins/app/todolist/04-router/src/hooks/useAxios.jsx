@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://todo-api.frontendschool.shop/api';
-axios.defaults.timeout = 1500;
+axios.defaults.timeout = 3000;
 
 function useAxios(fetchParams){
   const [data, setData] = useState(null);
