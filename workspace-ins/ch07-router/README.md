@@ -305,7 +305,7 @@ const state = location.state;
 
 #### 사용 예시
 ```jsx
-<Outlet context={{ itemList }} />
+<Outlet context={ itemList } />
 ```
 ```js
 const { itemList } = useOutletContext();
