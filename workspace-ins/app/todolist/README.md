@@ -343,7 +343,7 @@
         }) } />
       <br/>
       <label htmlFor="content">내용</label>
-      <textarea type="text" id="content" cols="23" rows="5" { ...register('content', {
+      <textarea id="content" cols="23" rows="5" { ...register('content', {
           required: '내용을 입력하세요.',
         }) } />
       <br/>
@@ -440,7 +440,7 @@
             }) } />
           <br/>
           <label htmlFor="content">내용 :</label>
-          <textarea rows="5" cols="23" type="text" id="content" { ...register('content', {
+          <textarea rows="5" cols="23" id="content" { ...register('content', {
             required: '내용을 입력하세요.',
           }) } />
           <br/>
