@@ -54,33 +54,48 @@ npm i react-router-dom
 * Node.js에서 웹 앱을 렌더링하는데 사용
 
 #### 사용 예시
-```js
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+* routes.jsx
+  ```js
+  import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import Page1 from "./Page1";
-import Page2 from "./Page2";
-import Home from "./Home";
-import Layout from "./Layout";
+  import Page1 from "./Page1";
+  import Page2 from "./Page2";
+  import Home from "./Home";
+  import Layout from "./Layout";
 
-function App(){  
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <Layout />,
-      children: [
-        { index: true, element: <Home /> },
-        { path: 'page1', element: <Page1 /> },
-        { path: 'page2', element: <Page2 /> }
-      ]
-    },
-  ]);
-  return (
-    <RouterProvider router={ router } />
-  );
-}
+  function App(){  
+    const router = createBrowserRouter([
+      {
+        path: '/',
+        element: <Layout />,
+        children: [
+          { index: true, element: <Home /> },
+          { path: 'page1', element: <Page1 /> },
+          { path: 'page2', element: <Page2 /> }
+        ]
+      },
+    ]);
+    return (
+      <RouterProvider router={ router } />
+    );
+  }
 
-export default App;
-```
+  export default App;
+  ```
+
+* App.jsx
+  ```js
+  import { RouterProvider } from "react-router-dom";
+  import router from "./routes";
+
+  function App() {
+    return (
+      <RouterProvider router={ router } />
+    );
+  }
+
+  export default App;
+  ```
 
 ## 리액트 라우터가 제공하는 컴포넌트
 
@@ -101,9 +116,9 @@ export default App;
 * className, style 속성에 함수를 정의하면 현재 URI가 NavLink의 to 속성과 일치하는 경우 true, 일치하지 않으면 false를 인자로 함수가 호출되므로 URI 매칭 여부에 따라서 각각 다른 스타일 적용 가능
 * 사용 예시
   ```jsx
-  <NavLink className={ ({ isActive }) => isActive ? 'menu-dark' : 'menu' } to="./home">Home</NavLink>
-  <NavLink className={ ({ isActive }) => isActive ? 'menu-dark' : 'menu' } to="./about">About</NavLink>
-  <NavLink className={ ({ isActive }) => isActive ? 'menu-dark' : 'menu' } to="./list">TodoList</NavLink>
+  <NavLink className={ ({ isActive }) => isActive ? 'menu-dark' : 'menu' } to="/home">Home</NavLink>
+  <NavLink className={ ({ isActive }) => isActive ? 'menu-dark' : 'menu' } to="/about">About</NavLink>
+  <NavLink className={ ({ isActive }) => isActive ? 'menu-dark' : 'menu' } to="/list">TodoList</NavLink>
   ```
 
 ### Navigate
@@ -122,7 +137,7 @@ export default App;
 ```jsx
 { path: 'list/:_id', element: <TodoDetail /> },
 ```
-```js
+```jsx
 const { _id } = useParams();
 ```
 
@@ -167,7 +182,7 @@ const { _id } = useParams();
 
 #### fallback UI
 * 리액트는 SPA 이므로 모든 페이지 구성 요소(js, css)가 번들링 된 후 하나의 시작 페이지에 포함됨(index.html)
-* 사용자가 시작 페이지부터 순차적으로 리액트 라우트에 의해 라우팅 하지 않고 웹브라우저 주소창에 /detail/3 처럼 URI를 직접 입력할 경우 서버측에는 /detail/3 URI가 존재하지 않으므로 일반적으로 404 에러 메세지를 보내지만 SPA를 서비스하는 웹서버라면 모든 URI 요청에 시작 페이지를(index.html) 전송하도록 구성해야 리액트 라우터에 의해 해당 페이지로 라우팅 되는데 이를 fallback UI라고 함
+* 사용자가 시작 페이지부터 순차적으로 리액트 라우트에 의해 라우팅 하지 않고 웹브라우저 주소창에 /list/3 처럼 URI를 직접 입력할 경우 서버측에는 /list/3 URI가 존재하지 않으므로 일반적으로 404 에러 메세지를 보내지만 SPA를 서비스하는 웹서버라면 모든 URI 요청에 시작 페이지를(index.html) 전송하도록 구성해야 리액트 라우터에 의해 해당 페이지로 라우팅 되는데 이를 fallback UI라고 함
 
 ##### Node.js의 serve 모듈로 웹서버를 구성할 경우 fallback UI 지정 예시
 ```
@@ -211,7 +226,7 @@ npx serve dist
 ## 리액트 라우터가 제공하는 Hook
 
 ### useRouteError
-* 에러처리 전용 라우트
+* 에러처리 전용 라우트에 제공되는 Error 객체를 반환
 
 #### 사용 예시
 ```js
@@ -305,10 +320,10 @@ const state = location.state;
 
 #### 사용 예시
 ```jsx
-`<Outlet context={ itemList } />`
+<Outlet context={ itemList } />
 ```
 ```js
-const { itemList } = useOutletContext();
+const itemList = useOutletContext();
 ```
 
 ## 레이지 로딩 (lazy loading)

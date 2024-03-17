@@ -13,7 +13,7 @@
 * super(props)를 호출하지 않으면 this를 사용하지 못하므로 this.state, this.props 사용 불가
 * 상태를 초기화하는 코드 작성
 * 상태를 초기화할 필요가 없으면 생성자를 작성할 필요 없음
-  ```
+  ```js
   constructor(props){
     super(props);
     this.state = { count: 0 };
@@ -28,9 +28,9 @@
 #### 1-3 render()
 * 주로 JSX를 이용해서 UI를 리턴하도록 작성함
 
-#### 1-4 componentDidMount() (useEffect로 사용 가능)
+#### 1-4 componentDidMount() (함수형 컴포넌트에서는 useEffect로 사용 가능)
 * 컴포넌트 마운트가 완료되고 브라우저 DOM 트리에 반영된 후 호출됨
-  - 컴포넌트가 화면에 보기 직전에 호출
+  - 컴포넌트가 화면에 보이기 직전에 호출
 
 ### 2 updating
 
@@ -49,14 +49,14 @@
 * render() 메서드가 호출되어 가상 DOM으로 쓰기 완료되고 브라우저 DOM에 업데이트 되기 전에 호출
 * 이 메서드의 리턴값이 2.5 componentDidUpdate()의 세번째 인자로 전달됨
 
-#### 2-5 componentDidUpdate(prevProps, prevState, snapshot) (useEffect로 사용 가능)
+#### 2-5 componentDidUpdate(prevProps, prevState, snapshot) (함수형 컴포넌트에서는 useEffect로 사용 가능)
 * 브라우저 DOM 업데이트 완료 후
 * 현재 속성 this.props, this.state와 이전 값 prevProps, prevState가 다르다면 외부 API 호출 등의 작업 수행
 * 2-4 에서 리턴한 값이 세번째 인자 snapshot으로 전달되므로 보통 2-4와 같이 사용됨
 
 ### 3 unmounting
 
-#### 3-1 componentWillUnmount() (useEffect로 사용 가능)
+#### 3-1 componentWillUnmount() (함수형 컴포넌트에서는 useEffect로 사용 가능)
 * 컴포넌트가 애플리케이션의 컴포넌트 트리에서 삭제되기 직전에 실행
 * 주로 1-4 componentDidMount()와 짝으로 사용
   - 웹소켓을 사용할 경우 1-4에서 연결하고 3-1에서 연결 해제

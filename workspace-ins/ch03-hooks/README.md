@@ -11,7 +11,7 @@
 * 상태값(컴포넌트에서 관리하는 데이터)을 추가하기 위한 훅
 
 ### API
-```
+```jsx
 const [state, setState] = useState(initialState);
 ```
 
@@ -32,7 +32,7 @@ const [state, setState] = useState(initialState);
   - ...
 
 ### API
-```
+```jsx
 useEffect(setup, dependencies?);
 ```
 
@@ -58,7 +58,7 @@ useEffect(setup, dependencies?);
 * 리듀서를 사용하여 어플리케이션 전역 수준의 상태를 관리하는 라이브러리가 Redux
 
 ### API
-```
+```jsx
 function reducer(state, action){ ... }
 const [state, dispatch] = useReducer(reducer, initialArg, init?);
 ```
@@ -78,14 +78,15 @@ const [state, dispatch] = useReducer(reducer, initialArg, init?);
 
 #### 코드 크기
 * useReducer를 사용하면 reducer 함수와 dispatch 액션을 작성해야 하기 때문에 기본적으로 코드 크기가 useState를 사용할 때 보다 많아짐
-  ```
+  ```jsx
   const TodoReducer = function(state, action){
     ......
   };
   itemListDispatch({ type: 'TOGGLE', item: { _id }});
   ```
+
 * 여러 이벤트 핸들러가 비슷한 상태 관리 로직을 가지고 있다면 reducer 함수에 공통으로 작성해서 코드를 줄일 수 있음
-  ```
+  ```jsx
   const TodoReducer = function(state, action){
     const index = state.findIndex(item => item._id === action.item._id);
     switch(action.type){
@@ -122,7 +123,7 @@ const [state, dispatch] = useReducer(reducer, initialArg, init?);
   - 포커스, 미디에 재생, 애니메이션 실행 등과 같은 작업은 useRef를 사용해서 브라우저 DOM에 직접 접근해서 제어해야 함 
 
 ### API
-```
+```jsx
 const ref = useRef(initialValue);
 ```
 
@@ -136,7 +137,7 @@ const ref = useRef(initialValue);
 * 지정한 함수를 호출해서 반환받은 결과값을 내부에 저장(캐싱)하고 있는 함수
 
 ### API
-```
+```jsx
 const calculateValue = function(){ ... };
 const cachedValue = useMemo(calculateValue, dependencies);
 ```
@@ -153,11 +154,11 @@ const cachedValue = useMemo(calculateValue, dependencies);
 * 다음 렌더링 중에는 dependencies가 변경되지 않았으면 캐시된 결과를, 변경되었으면 calculateValue() 함수를 다시 호출한 결과값
 
 ### React.memo
-* 컴포넌트를 memoize 한 후 리렌더링 될 때 props가 변경되지 않았으면 memoize 된 컴포넌트를 재사용
+* 컴포넌트를 memoize 한 후 리렌더링 될 때 props가 변경되지 않았으면 memoize 된 컴포넌트를 반환
 * 컴포넌트가 리렌더링 될 때 props가 변경되지 않았으면 최종적으로 브라우저 DOM에 쓰기 작업이 되진 않겠지만 가상 DOM을 생성하고 비교하는 동작에도 리소스가 사용되므로 memoize 된 컴포넌트는 성능 향상에 도움을 줄 수 있음
 
 #### API
-```
+```jsx
 const MemoizedComponent = memo(SomeComponent, arePropsEqual?)
 ```
 
@@ -166,7 +167,7 @@ const MemoizedComponent = memo(SomeComponent, arePropsEqual?)
 * arePropsEqual(선택): memoize된 컴포넌트를 반환할지 컴포넌트를 다시 호출할지를 결정하는 함수
   - 컴포넌트의 이전 prop 및 새로운 prop을 인자로 받는 함수
   - true를 반환하면 memoize된 컴포넌트를 사용하겠다는 의미이고 false를 반환하면 컴포넌트를 다시 호출한 결과값을 사용
-  - 생략하면 이전 prop과 새로운 prop의 얕은 비교를 통해 같다면 true, 다르다면 false를 반환가 기본으로 지정됨
+  - 생략하면 이전 prop과 새로운 prop의 얕은 비교를 통해 같다면 true, 다르다면 false를 반환하는 동작으로 기본 지정됨
   
 ##### 리턴값
 * memoize된 SomeComponent
@@ -184,7 +185,7 @@ const MemoizedComponent = memo(SomeComponent, arePropsEqual?)
   - useCallback()을 이용하면 부모 컴포넌트가 재호출 되어도 리스너가 수정되지 않고 유지되므로 자식도 기존 DOM을 재사용해서 성능 좋아짐.
 
 ### API
-```
+```jsx
 const cachedFn = useCallback(fn, dependencies);
 ```
 
@@ -208,8 +209,7 @@ const cachedFn = useCallback(fn, dependencies);
 * 개발자가 직접 작성하는 리액트 훅
 * 리액트의 내장훅(useState, useEffect ...)을 이용해 사용자 정의 훅을 만들면 여러 컴포넌트에서 재사용 가능
 * 일반 함수에서는 리액트의 내장훅을 사용할 수 없기 때문에 내장훅을 사용하기 위해서는 커스텀 훅을 만들어야 함
-* useXXX 형태의 이름으로 작성해야 함
-  - use로 시작하는 이름이 아닐경우 일반 함수로 인식하고 일반 함수에서는 내장훅을 사용할 수 없음
+* 명시적으로 리액트 훅 임을 나타내기 위해서 useXXX 형태의 이름으로 작성하는걸 권장
 
 ## 훅 사용시 주의사항
 * 클래스 기반 컴포넌트에서는 사용할 수 없음

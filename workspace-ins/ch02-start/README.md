@@ -29,7 +29,7 @@
 
 #### JSX (Javascript XML)
 * HTML 마크업과 비슷한 문법을 사용해서 UI 정의하면 Babel 같은 변환 도구에 의해 자바스크립트 코드로 변환됨
-  ```
+  ```html
   <div class="todolist">
     <ul>
       <li>두부</li>
@@ -38,7 +38,7 @@
     </ul>
   </div>
   ```
-  ```
+  ```js
   /*#__PURE__*/_jsx("div", {
     class: "todolist",
     children: /*#__PURE__*/_jsxs("ul", {
@@ -79,7 +79,7 @@
 * 리액트 개발팀에서 만든 리액트 전용 툴체인
 * workspace/ch02-start 폴더로 이동 후 다음 명령 실행
   - Need to install the following packages 메세지가 나오면 y 입력후 엔터
-  ```
+  ```powershell
   npx create-react-app cra
   # 생성한 프로젝트 폴더로 이동
   cd cra
@@ -92,14 +92,14 @@
 * Webpack을 번들러로 사용하는 CRA 대비 Esbuild와 Rollup을 번들러로 사용하면서 10~100배 빠른 속도로 개발 서버 구동
 * CRA는 리액트만 지원하는 반면 Vite는 Vanilla JS, React, Svelte, Solid 등의 다양한 SPA 개발 환경을 지원
 * workspace/ch02-start 폴더로 이동 후 다음 명령 실행
-  ```
+  ```powershell
   npm init vite@latest
   ```
   - 프로젝트 명: vite
   - 개발환경 선택: React
   - 개발언어 선택: JavaScript
 
-  ```
+  ```powershell
   # 생성한 프로젝트 폴더로 이동
   cd vite
   # 필요 패키지 설치
@@ -119,7 +119,7 @@
 *  Vite 설정파일
   - 참고: <https://ko.vitejs.dev/config>
 * import에서 사용할 alias 추가
-  ```
+  ```js
   import { defineConfig } from 'vite'
   import react from '@vitejs/plugin-react'
 
@@ -136,10 +136,26 @@
   })
   ```
 
+* VSCode에서 alias를 기준으로 import 자동완성 및 Ctrl + 클릭시 해당 컴포넌트로 바로 이동하도록 설정
+  - 프로젝트 루트에 jsconfig.json 파일 생성
+    ```json
+    {
+      "compilerOptions": {
+        "baseUrl": "./src",
+        "paths": {
+          "@/*": ["/*"],
+          "@components/*": ["components/*"],
+          "@pages/*": ["pages/*"],
+          "@hooks/*": ["hooks/*"],
+        }
+      }
+    }
+    ```
+
 ## 2-3 리액트 애플리케이션 배포
 ### 프로젝트 빌드
 * 프로덕션 배포용 파일 생성
-  ```
+  ```powershell
   npm run build
   ```
 * 프로젝트 빌드
@@ -153,11 +169,11 @@
 
 ### 빌드된 파일로 서버 실행
 * CRA
-  ```
+  ```powershell
   npx serve -s build
   ```
 * Vite
-  ```
+  ```powershell
   npm run preview
   ```
 * serve의 -s 옵션: 리액트는 index.html 파일 하나에서 모든 페이지를 서비스하므로 클라이언트가 요청한 모든 URL에 대해서 index.html을 응답함
@@ -174,7 +190,7 @@
 * JSX는 자바스크립트 객체로 변환되는데 함수가 여러 객체를 반환 할 수 없으므로 단일 객체를 반환하도록 해야함
 * Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? 에러 발생
   
-  ```
+  ```jsx
   return (
     <h1>Todo List</h1>
     <div>...</div>
@@ -182,7 +198,7 @@
   ```
 
 * 루트 요소를 추가
-  ```
+  ```jsx
   return (
     <div>
       <h1>Todo List</h1>
@@ -194,7 +210,7 @@
 * Fragment 사용
   - 렌더링 결과에는 영향을 미치지 않음
 
-  ```
+  ```jsx
   return (
     <Fragment>
       <h1>Todo List</h1>
@@ -204,7 +220,7 @@
   ```
 
 * Fragment의 약어 사용
-  ```
+  ```jsx
   return (
     <>
       <h1>Todo List</h1>
@@ -216,7 +232,7 @@
 2 모든 태그는 닫는다.
 * HTML에서는 닫는 태그를 생략 할 수 있지만 JSX는 XML과 유사한 문법이므로 닫는 태그를 항상 작성해야 함
   - HTML 예시
-    ```
+    ```html
     <img src="./logo.png">
     <br>
     <ul>
@@ -227,7 +243,7 @@
     ```
 
   - JSX 예시
-    ```
+    ```html
     <img src="./logo.png" />
     <br />
     <ul>
@@ -244,22 +260,22 @@
   - onkeyup -> onKeyUp
 
 * HTML에서 class 속성 추가
-  ```
+  ```html
   <div id="todolist" class="todo"></div>
   ```
 
 * 자바스크립트에서 class 속성 추가
-  ```
+  ```js
   document.querySelector('#todolist').className = 'todo';
   ```
 
 * JSX에서 class 속성 추가
-  ```
+  ```html
   <div id="todolist" className="todo"></div>
   ```
 
 * JSX에서 class 속성을 동적으로 추가
-  ```
+  ```jsx
   const todoClass = 'todo';
   <div id="todolist" className={ todoClass }></div>
   ```
@@ -268,18 +284,18 @@
 * { } 안에는 변수값, 메서드 리턴값 등 값만 사용 가능
 * if문, for 문 등은 사용할 수 없음
   - if문 대신 삼항 연산자 사용
-    ```
+    ```jsx
     (item.done ? <s>두부</s> : '두부')
     ```
   - for 문 대신 forEach(), map() 등 사용
-    ```
+    ```jsx
     {
       for(let i=0; i<itemList.length; i++){
         return item.title;
       }
     }
     ```
-    ```
+    ```jsx
     { itemList.map(item => item.title) }
     ```
 
@@ -288,7 +304,7 @@
   - XSS (Cross Site Scripting) 같은 공격에 대비하기 위한 규칙
 
 * 예시
-  ```
+  ```jsx
   const App(){
     const msg = '<i>World</i>';
     return <span>Hello { msg }</span>
@@ -300,7 +316,7 @@
 * 해결 방법
   1. dangerouslySetInnerHTML 속성을 사용하면 HTML 태그를 인코딩하지 않음
 
-    ```
+    ```jsx
     const App(){
       // { msg }를 <span dangerouslySetInnerHTML={{ __html: msg }}></span>로 변경
       const msg = '<i>World</i>';
@@ -309,7 +325,7 @@
     ```
   2. JSX는 XSS 공격에 안전하므로 JSX를 사용
 
-    ```
+    ```jsx
     const App(){
       // const msg = '<i>World</i>';
       const msg = <i>World</i>;
@@ -319,7 +335,7 @@
 
 ## 2-5 속성 (Props)
 * 상위 컴포넌트에서 하위 컴포넌트로 데이터를 전달할 때 사용
-  ```
+  ```jsx
   // ch02-start/todo/03.html
   function App(){
     const title = 'React Props';
@@ -368,7 +384,7 @@
 * 기본값 매개변수를 사용하면 Props가 전달되지 않거나 undefined가 명시적으로 전달될 때 적용됨
   - null, 0 값은 기본값으로 대체되지 않음
 * 자신이 전달받은 Props 전체를 하위 컴포넌트에 전달하고 싶을때는 전개 연산자를 사용
-  ```
+  ```jsx
   function Profile(props) {
     return (
       <div>
@@ -388,7 +404,7 @@
 * 상태값(컴포넌트에서 관리하는 데이터)을 추가하기 위한 훅(Hook)
 
 #### API
-  ```
+  ```jsx
   const [state, setState] = useState(initialState);
   ```
 
@@ -404,7 +420,7 @@
 * 컴포넌트의 최상위 수준이나 커스텀 훅 내부에서만 사용 가능(조건문, 반복문, 일반 함수 같은 블럭{ } 내부에서는 사용 불가)
 * 컴포넌트 내에서 여러번 사용하면 리액트가 관리하는 배열에 저장되므로 컴포넌트가 리렌더링 될때 마다 순서가 정확히 지켜져야 한다.
   - 잘못된 사용 예시
-    ```
+    ```jsx
     const [firstName, setFirstName] = useState('Dragon');
     if(firstName === 'Dragon'){
       const [lastName, setLastName] = useState('Gil');
@@ -426,7 +442,7 @@
   - 기본 데이터타입은 불변성을 가짐
   - 참조형 데이터타입은 불변성을 가지도록 객체나 배열을 복사해서 구현
 * 중첩 객체일 경우에는 불변성을 위해 수정될 속성을 포함한 객체와 그 객체를 포함하는 객체를 루트 객체까지 거슬러 올라가면서 전부 교체해야할 수 있음 
-  ```
+  ```json
   {
     "_id": 4,
     "email": "u1@market.com",
@@ -464,12 +480,12 @@
 * immer 라이브러리
   - 객체를 불변성으로 만들어주는 라이브러리
   - 설치
-    ```
+    ```powershell
     npm i immer
     ```
 
   - 상태의 불변성을 유지하기 위한 예시
-    ```
+    ```js
     const newAddressBook = user.extra.addressBook.map(address => {
       if(address.id === Number(e.target.name)){
         return { ...address, value: e.target.value };
@@ -490,7 +506,7 @@
     ```
 
   - immer 사용 예시
-    ```
+    ```js
     const newState = produce(user, draft => {
       const address = draft.extra.addressBook.find(address => address.id === Number(e.target.name));
       address.value = e.target.value;
@@ -503,12 +519,12 @@
 ### Props의 유효성 검증
 * 컴포넌트가 전달받은 Props의 유효성을 검증하는 기능
 * 설치
-  ```
+  ```powershell
   npm i prop-types
   ```
 
 * 사용 사례
-  ```
+  ```jsx
   import PropTypes from 'prop-types';
   import TodoItem from "./TodoItem";
   function TodoList(props){
@@ -529,7 +545,7 @@
   export default TodoList;
   ```
 
-  ```
+  ```jsx
   import PropTypes from 'prop-types';
   function TodoItem(props){
     return (
@@ -556,7 +572,7 @@
   ```
 
 * 사용 방법
-  ```
+  ```jsx
   import PropTypes from 'prop-types';
 
   MyComponent.propTypes = {
@@ -621,7 +637,7 @@
     customProp: function(props, propName, componentName) {
       if (!/matchme/.test(props[propName])) {
         return new Error(
-          `'${componentName}' 컴포넌트의 prop '${propName}' 값 검증 실패.'
+          `'${componentName}' 컴포넌트의 prop '${propName}' 값 검증 실패.`
         );
       }
     },
@@ -649,7 +665,7 @@
 ### Form의 유효성 검증
 * Form 태그의 사용자의 입력 데이터를 검증
 * react-hook-form 설치
-  ```
+  ```powershell
   npm i react-hook-form
   ```
 
