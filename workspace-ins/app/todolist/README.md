@@ -107,7 +107,7 @@
 * 리액트 라우터 추가
   ```jsx
   import { RouterProvider } from "react-router-dom";
-  import router from "./routes";
+  import router from "@/routes";
 
   function App() {
     return (
@@ -323,7 +323,7 @@
   ```
 
 * TodoAdd.jsx 수정
- - react-hook-form으로 form 요소 관리
+  - react-hook-form으로 form 요소 관리
     ```jsx
     import { useForm } from "react-hook-form";
     ```
