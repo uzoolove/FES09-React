@@ -229,17 +229,18 @@ npx serve dist
 * 에러처리 전용 라우트에 제공되는 Error 객체를 반환
 
 #### 사용 예시
-```js
-import { useRouteError } from "react-router";
+```jsx
+import { useRouteError } from "react-router-dom";
+
 function ErrorPage(){
-  const error = useRouteError();
-  const message = error.status === 404 ? '존재하지 않는 페이지입니다.' : '예상하지 못한 에러가 발생했습니다.';
+  const err = useRouteError();
+  const message = err.status === 404 ? '존재하지 않는 페이지입니다.' : '예상하지 못한 에러가 발생했습니다.';
   return (
-    <div>
-      <Header />
-      <h2>에러 발생</h2>
-      <p>{ message }</p>
-      <Footer />
+    <div id="main">
+      <div className="todo">
+        <h2>에러 발생</h2>
+        <p>{ message }</p>
+      </div>
     </div>
   );
 }
@@ -298,7 +299,9 @@ const TodoEdit = function(){
 ```js
 const navigate = useNavigate();
 // navigate(to, options)
-navigate('/', { state: { from: '/list' } });
+navigate('/', { state: { from: '/list' } }); // history.putState(state, '', '/')
+navigate('/list?keyword=hello', { replace: true }); // history.replaceState(null, '', '/')
+navigate('..', { relative: 'path' }); // 상대경로 지정
 ```
 
 ### useLocation
@@ -346,10 +349,12 @@ const Home = React.lazy(() => import('./Home'));
 * Suspense 컴포넌트를 이용하면 쉽게 구현 가능
 
 #### 사용 사례
-```jsx
-<React.Suspense fallback={<Loading />}>
-  <Router>
-  ...
-  </Router>
-</React.Suspense>
-```
+* App.jsx
+  ```jsx
+  import { Suspense } from "react";
+  ```
+  ```jsx
+  <Suspense fallback={ <div>Loading...</div> }>
+    <RouterProvider router={ router } />
+  </Suspense>
+  ```
