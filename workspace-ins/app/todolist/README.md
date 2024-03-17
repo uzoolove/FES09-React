@@ -208,8 +208,8 @@
 * 할일 목록 구성
 * 할일 목록 출력
   ```jsx
-  import useAxios from "../hooks/useAxios";
-  import TodoListItem from "./TodoListItem";
+  import useAxios from "@hooks/useAxios";
+  import TodoListItem from "@pages/TodoListItem";
 
   function TodoList(){
     // API 서버 호출
@@ -223,7 +223,7 @@
       <div id="main">
         <h2>할일 목록</h2>
         <div className="todo">
-          <a href="./add">추가</a>
+          <a href="/add">추가</a>
           <br/>
           <div className="search">
             <input type="text" autoFocus />
@@ -250,7 +250,7 @@
 * TodoDetail.jsx 수정
   ```jsx
   import { Link, useParams } from "react-router-dom";
-  import useAxios from "../hooks/useAxios";
+  import useAxios from "@hooks/useAxios";
 
   function TodoDetail(){
     // URL의 파라미터 추출
@@ -461,8 +461,14 @@
 
     ```jsx
     const onSubmit = async formData => {
-      await axios.patch(`/todolist/${_id}`, formData);
-      navigate(`/list/${_id}`); // 페이지 이동
+      try{
+        await axios.patch(`/todolist/${_id}`, formData);
+        alert('할일을 수정했습니다.');
+        navigate('..', { relative: 'path' }); // 상대 경로 사용
+      }catch(err){
+        console.error(err);
+        alert('할일 수정에 실패했습니다.');
+      }
     };
     ```
 
@@ -516,10 +522,7 @@
     ```
 
 ## 3단계
-* NavLink 추가
-* 동적 세그먼트로 리액트 라우터 수정
-* 이벤트 추가
-* axios로 API 서버 호출
+* 리액트 라우터의 다양한 기능 사용
 
 ### NavLink 추가
 * index.css 파일에 메뉴 관련 스타일 추가
@@ -562,6 +565,10 @@
 
 * TodoDetail.jsx에 Outlet 컴포넌트 추가
   ```jsx
+  import { Link, Outlet, useParams } from "react-router-dom";
+  ```
+
+  ```jsx
   <div id="main">
     <h2>할일 상세 보기</h2>
     { item && (
@@ -572,25 +579,37 @@
   ```
 
 #### 할일 수정 후 상세보기 정보가 갱신되지 않는 문제
-* /list/:_id/edit에서 /list/:_id로 이동 될 때 중첩 라우트로 구성되지 않았을 때는 URL이 변경 되면서 매칭되는 컴포넌트가 마운트 되면 API 서버를 호출하고 상세 정보를 다시 출력
+* list/:_id/edit에서 list/:_id로 이동 될 때 중첩 라우트로 구성되지 않았을 때는 TodoDetail 컴포넌트가 마운트 되면서 API 서버를 호출하고 상세 정보를 다시 출력
+  - routes.jsx
+    ```jsx
+    // 두 컴포넌트는 아무런 관계가 없음
+    { path: 'list/:_id', element: <TodoDetail /> },
+    { path: 'list/:_id/edit', element: <TodoEdit /> }
+    ```
+
   - useAxios.jsx
     ```jsx
+    const [data, setData] = useState(null);
+
     useEffect(() => {
       request(fetchParams);
     }, []);  // 마운트때 한번만 호출됨
     ```
 
-* /list/:_id/edit를 /list/:_id의 자식으로 라우팅 구성을 하면 URL이 변경되더라도 이미 마운트 된 부모 컴포넌트는 리렌더링만 되므로 기존의 상태값(data)이 바뀌지 않았다면 화면도 바뀌지 않음
+* TodoDetail 컴포넌트의 자식으로 TodoEdit를 라우팅 구성하면 URL이 변경되더라도 이미 마운트 된 부모 컴포넌트는 리렌더링만 되므로 기존의 상태값(data)이 바뀌지 않아서 화면도 바뀌지 않음
+  - list/:_id/edit 화면을 구성할때 TodoDetail과 TodoEdit가 마운트 됨
+  - list/:_id로 URL이 변경되면 이미 마운트된 TodoDetail은 리렌더링만 됨
 
 ##### 해결 방법 1
-* data를 변경하는 함수를 useAxios에서 -> TodoDetail -> TodoEdit로 전달 하고 TodoEdit에서 전달 받은 함수를 이용해서 상태 변경
+* 상태값(data)를 변경하는 함수(setData)를 useAxios에서 -> TodoDetail -> TodoEdit로 전달하고 TodoEdit에서 전달 받은 함수를 이용해 상태 변경
 * useAxios.jsx
   ```jsx
   return { isLoading, data, error, setData };
   ```
 
 * TodoEdit.jsx에서 useOutletContext 훅 사용
-  - TodoDetail에서 TodoEdit는 Outlet 컴포넌트로 지정한 자식 컴포넌트이고 이때는 자식 컴포넌트에 데이터를 전달할때 props 대신 context 속성을 사용하고 자식 컴포넌트는 useOutletContext 훅을 이용해서 꺼낼 수 있음
+  - TodoDetail에서 TodoEdit는 Outlet 컴포넌트로 지정한 자식 컴포넌트이고 이때는 자식 컴포넌트에 데이터를 전달할때 context 속성을 사용함
+  - 자식 컴포넌트는 useOutletContext 훅을 이용해서 부모가 전달한 context 속성을 꺼낼 수 있음
   - TodoDetail.jsx
     ```jsx
     const { data, setData } = useAxios({
@@ -618,7 +637,7 @@
 * TodoDetail에서 API 서버 재호출
   - 다음 코드 제거
     ```jsx
-    import useAxios from "../hooks/useAxios";
+    import useAxios from "@hooks/useAxios";
     ```
     ```jsx
     const { data, setData } = useAxios({
@@ -647,7 +666,7 @@
     }, []);
     ```
     ```jsx
-    <Outlet context={{ reFetch: fetchDetail }} />
+    <Outlet context={ { reFetch: fetchDetail } } />
     ```
 
 * TodoEdit.jsx에서 useOutletContext 훅 사용
