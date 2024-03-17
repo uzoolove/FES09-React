@@ -670,7 +670,6 @@
     ```
 
 * TodoEdit.jsx에서 useOutletContext 훅 사용
-  - TodoDetail에서 TodoEdit는 Outlet 컴포넌트로 지정한 자식 컴포넌트이고 이때는 자식 컴포넌트에 데이터를 전달할때 props 대신 context 속성을 사용하고 자식 컴포넌트는 useOutletContext 훅을 이용해서 꺼낼 수 있음
   - TodoEdit.jsx
     ```jsx
     import { useParams, useNavigate, useOutletContext } from "react-router-dom";
