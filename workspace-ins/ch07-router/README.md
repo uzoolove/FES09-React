@@ -32,7 +32,7 @@
 * 화면에 렌더링하는 컴포넌트와 URI 경로를 동기화 하면서 새로운 화면과 흐름을 애플리케이션에 추가할 수 있는 클라이언트 라우팅 기능 제공
 
 ## 패키지 설치
-```bash
+```powershell
 npm i react-router-dom
 ```
 
@@ -55,7 +55,7 @@ npm i react-router-dom
 
 #### 사용 예시
 * routes.jsx
-  ```js
+  ```jsx
   import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
   import Page1 from "./Page1";
@@ -84,7 +84,7 @@ npm i react-router-dom
   ```
 
 * App.jsx
-  ```js
+  ```jsx
   import { RouterProvider } from "react-router-dom";
   import router from "./routes";
 
@@ -100,7 +100,7 @@ npm i react-router-dom
 ## 리액트 라우터가 제공하는 컴포넌트
 
 ### Link
-* 사용자가 클릭해서 다른 페이지로 이동할 수 있게 a 요소를 랜더링 해주는 컴포넌트
+* 사용자가 클릭해서 다른 페이지로 이동할 수 있게 a 요소를 렌더링 해주는 컴포넌트
 * 주요 속성
   - to: 이동할 URI 지정
   - replace: history 스택에 추가하지 않고 현재 스택을 교체
@@ -135,7 +135,7 @@ npm i react-router-dom
 
 #### 사용 예시
 ```jsx
-{ path: 'list/:_id', element: <TodoDetail /> },
+{ path: 'list/:_id', element: <TodoDetail /> }
 ```
 ```jsx
 const { _id } = useParams();
@@ -147,6 +147,8 @@ const { _id } = useParams();
 * 부모 컴포넌트에는 자식 컴포넌트가 렌더링될 영역에 Outlet 컴포넌트 추가
 
 #### 사용 예시
+* list/3 요청에는 TodoDetail이 렌더링 되고 수정 링크를 누르면 주소가 /list/3/edit 형태로 바뀌면서 /list/3/edit에 매칭되는 자식 컴포넌트가 Outlet 컴포넌트 영영에서 추가로 렌더링 됨
+* Router 설정
 ```jsx
 { 
   path: 'list/:_id',
@@ -156,6 +158,8 @@ const { _id } = useParams();
   ]
 }
 ```
+
+* TodoDetail.jsx
 ```jsx
 <Link to="edit">수정</Link>
 <Link to="/list">목록</Link>
@@ -181,11 +185,11 @@ const { _id } = useParams();
 ### fallback UI와 404 라우트
 
 #### fallback UI
-* 리액트는 SPA 이므로 모든 페이지 구성 요소(js, css)가 번들링 된 후 하나의 시작 페이지에 포함됨(index.html)
+* 리액트는 SPA(Single Page Application) 개발을 위해 사용되는 라이브러리 이므로 모든 페이지 구성 요소(js, css)가 번들링 된 후 하나의 시작 페이지에 포함됨(index.html)
 * 사용자가 시작 페이지부터 순차적으로 리액트 라우트에 의해 라우팅 하지 않고 웹브라우저 주소창에 /list/3 처럼 URI를 직접 입력할 경우 서버측에는 /list/3 URI가 존재하지 않으므로 일반적으로 404 에러 메세지를 보내지만 SPA를 서비스하는 웹서버라면 모든 URI 요청에 시작 페이지를(index.html) 전송하도록 구성해야 리액트 라우터에 의해 해당 페이지로 라우팅 되는데 이를 fallback UI라고 함
 
 ##### Node.js의 serve 모듈로 웹서버를 구성할 경우 fallback UI 지정 예시
-```
+```powershell
 // dist 폴더 하위에 컨텐츠가 있을 경우
 // fallback UI 지정(존재하지 않는 URI 요청에 index.html 응답)
 npx serve -s dist
@@ -194,7 +198,20 @@ npx serve -s dist
 npx serve dist
 ```
 
-#### 에러처리 전용 라우트
+##### Vite 기반으로 개발할 경우 fallback UI 지정 예시
+* Vite의 개발 서버에 기본으로 fallback UI가 지정되어 있음
+```powershell
+// 개발 서버 구동
+npm run dev
+
+// 프로젝트 빌드
+npm run build
+
+// 서버 구동
+npm run preview
+```
+
+#### 에러 처리 전용 라우트
 * 요청한 URI와 일치하는 라우터가 없을 경우 보여줄 컴포넌트 지정(404 에러 처리)
 * 컴포넌트 내부의 오류 발생시 보여줄 컴포넌트 지정
 * errorElement 속성으로 사용
@@ -252,18 +269,21 @@ export default ErrorPage;
 * URI 파라미터 값을 꺼낼 때 사용
 
 #### 사용 예시
-```jsx
-{ 
-  path: 'list/:_id',
-  element: <TodoDetail />
-}
-```
-```js
-const params = useParems();
-const _id = params._id;
-// 또는
-const { _id } = useParams();
-```
+* Router 설정
+  ```jsx
+  { 
+    path: 'list/:_id',
+    element: <TodoDetail />
+  }
+  ```
+
+* TodoDetail.jsx
+  ```jsx
+  const params = useParems();
+  const _id = params._id;
+  // 또는
+  const { _id } = useParams();
+  ```
 
 ### useMatch
 * 현재 요청된 URI 경로가 인자로 전달한 경로 패턴과 매칭되는지 확인 후 PathMatch 객체를 반환
@@ -273,7 +293,7 @@ const { _id } = useParams();
   - pattern: 요청된 경로 패턴
 
 #### 사용 예시
-```js
+```jsx
 const TodoEdit = function(){
   const pathMatch = useMatch('/list/:_id/edit');
   const paramId = pathMatch?.params?.id ? Number(pathMatch.params._id) : -1;
@@ -283,7 +303,7 @@ const TodoEdit = function(){
 
 ### useSearchParams
 * 쿼리 스트링(URI에 포함된 ? 뒷부분) 정보를 읽거나 설정하는데 사용
-  ```js
+  ```jsx
   // list?page=2 요청시
   const [searchParams, setSearchParams] = useSearchParams();
   const page = Number(searchParams.get('page') || 1);
@@ -296,7 +316,7 @@ const TodoEdit = function(){
 * 페이지를 이동할 수 있는 navigate 함수 반환
 
 #### 사용 예시
-```js
+```jsx
 const navigate = useNavigate();
 // navigate(to, options)
 navigate('/', { state: { from: '/list' } }); // history.putState(state, '', '/')
@@ -313,24 +333,27 @@ navigate('..', { relative: 'path' }); // 상대경로 지정
 * state: navigate()로 이동할 때 전달된 state 객체
 
 #### 사용 예시
-```js
+```jsx
 const location = useLocation();
 const state = location.state;
 ```
 
 ### useOutletContext
-* 중첩 라우팅에서 Outlet 컴포넌트 사용 시 부모가 context 속성으로 전달한 값을 접근
+* 중첩 라우팅에서 부모가 Outlet 컴포넌트의 context 속성으로 전달한 값을 접근
 
 #### 사용 예시
-```jsx
-<Outlet context={ itemList } />
-```
-```js
-const itemList = useOutletContext();
-```
+* 부모 컴포넌트
+  ```jsx
+  <Outlet context={ itemList } />
+  ```
+
+* 자식 컴포넌트
+  ```jsx
+  const itemList = useOutletContext();
+  ```
 
 ## 레이지 로딩 (lazy loading)
-* SPA는 하나의 시작 페이지(index.html)와 모든 컴포넌트를 포함하는 하나 또는 몇개의 큰 js 파일, 모든 CSS를 포함한 하나 또는 몇개의 큰 CSS 파일로 구성됨
+* SPA는 하나의 시작 페이지(index.html)와 모든 컴포넌트를 포함하는 하나 또는 몇 개의 큰 js 파일, 모든 CSS를 포함한 하나 또는 몇 개의 큰 CSS 파일로 구성됨
 * 첫 페이지를 접근할 때 번들링된 큰 파일을 로딩하면 초기 로딩 속도가 느려짐
 * 레이지 로딩을 적용할 경우 초기 페이지에 필요한 js만 로딩하고 다른 js 파일은 해당 URI에 접근할때 추가로 서버에서 다운 받을 수 있어서 초기 로딩 속도 개선에 도움이 됨
 * 컴포넌트의 import를 동적으로 변경하면 번들링 시 해당 컴포넌트는 따로 js 파일로 생성
@@ -349,12 +372,11 @@ const Home = React.lazy(() => import('./Home'));
 * Suspense 컴포넌트를 이용하면 쉽게 구현 가능
 
 #### 사용 사례
-* App.jsx
-  ```jsx
-  import { Suspense } from "react";
-  ```
-  ```jsx
-  <Suspense fallback={ <div>Loading...</div> }>
-    <RouterProvider router={ router } />
-  </Suspense>
-  ```
+```jsx
+import { Suspense } from "react";
+```
+```jsx
+<Suspense fallback={ <div>Loading...</div> }>
+  <RouterProvider router={ router } />
+</Suspense>
+```
