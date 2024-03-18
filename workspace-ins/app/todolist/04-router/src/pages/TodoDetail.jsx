@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import useAxios from "../hooks/useAxios";
+import useAxios from "@hooks/useAxios";
 
 function TodoDetail(){
 
@@ -7,7 +7,7 @@ function TodoDetail(){
   console.log(params._id);
 
   // 상세 정보 API 서버 호출해서 받은 후 서버에서 받은 실데이터로 보여주기
-  const { isLoading, data, error } = useAxios({
+  const { data } = useAxios({
     url: `/todolist/${params._id}`
   });
 
