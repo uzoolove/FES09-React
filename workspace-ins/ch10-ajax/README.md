@@ -88,10 +88,10 @@ async function getTodoList() {
       return jsonData;
     }else{
       // 404 같은 HTTP 응답 오류에 대한 처리
-    }    
+    }
   }catch(err){
     // 네트워크 에러에 대한 처리
-  }  
+  }
 }
 ```
 
@@ -110,7 +110,7 @@ async function getTodoList(){
     return response.data;
   }catch(err){
     // 네트워크 에러나 HTTP 응답 에러 처리
-  }  
+  }
 }
 ```
 
