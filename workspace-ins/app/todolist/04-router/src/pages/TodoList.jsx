@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import useAxios from '@hooks/useAxios';
 import TodoListItem from "./TodoListItem";
+import { ReactCsspin } from 'react-csspin';
+import 'react-csspin/dist/style.css';
 
 function TodoList(){
-
-  // TODO: 로딩중에 스피너 보여주기
-  // TODO: error 있으면 출력하기
-  // TODO: index.css에 스타일 추가하기
+  // 로딩중에 스피너 보여주기
+  // error 있으면 출력하기
+  // index.css에 스타일 추가하기
   
   const { isLoading, data, error } = useAxios({
     url: '/todolist?delay=1000'
@@ -17,6 +18,15 @@ function TodoList(){
   return (
     <div id="main">
       <h2>할일 목록</h2>
+
+      { isLoading &&
+        <ReactCsspin message="로딩중..." />
+      }
+
+      { error && 
+        <p style={{ color: 'red' }}>{ error.message }</p>
+      }
+      
       <div className="todo">
         <Link to="/add">추가</Link>
         <br/>
