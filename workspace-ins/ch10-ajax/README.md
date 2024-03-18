@@ -61,14 +61,14 @@
 #### 사용 예시
 ```js
 function getTodoList(callback){
-  const xhr = new XMLHttpRequest();
-  xhr.onload = () => {
-    const data = xhr.responseText;
-    const jsonData = JSON.parse(data);
-    callback(jsonData);
-  };
-  xhr.open('GET', 'http://example.com/todolist', true);
-  xhr.send();
+  const xhr = new XMLHttpRequest();
+  xhr.onload = () => {
+    const data = xhr.responseText;
+    const jsonData = JSON.parse(data);
+    callback(jsonData);
+  };
+  xhr.open('GET', 'http://example.com/todolist', true);
+  xhr.send();
 }
 ```
 
@@ -81,16 +81,16 @@ function getTodoList(callback){
 #### 사용 예시
 ```js
 async function getTodoList() {
-  try{
-    const response = await fetch('http://example.com/todolist');
-    if (response.ok) {
-      const jsonData = await response.json();
-      return jsonData;
-    }else{
-      // 404 같은 HTTP 응답 오류에 대한 처리
+  try{
+    const response = await fetch('http://example.com/todolist');
+    if (response.ok) {
+      const jsonData = await response.json();
+      return jsonData;
+    }else{
+      // 404 같은 HTTP 응답 오류에 대한 처리
     }    
-  }catch(err){
-    // 네트워크 에러에 대한 처리
+  }catch(err){
+    // 네트워크 에러에 대한 처리
   }  
 }
 ```
@@ -105,11 +105,11 @@ async function getTodoList() {
 #### 사용 예시
 ```js
 async function getTodoList(){
-  try{
-    const response = await axios.get('http://example.com/todolist');
-    return response.data;
-  }catch(err){
-    // 네트워크 에러나 HTTP 응답 에러 처리
+  try{
+    const response = await axios.get('http://example.com/todolist');
+    return response.data;
+  }catch(err){
+    // 네트워크 에러나 HTTP 응답 에러 처리
   }  
 }
 ```
