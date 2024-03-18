@@ -1,12 +1,13 @@
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function TodoEdit(){
   const { _id } = useParams();
+  const navigate = useNavigate(); // 페이지 이동시 사용
   const axios = useAxiosInstance();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const [item, setItem] = useState();
 
   // 상세 정보 조회
@@ -19,11 +20,22 @@ function TodoEdit(){
     fetchDetail();
   }, []); // 최초 마운트시 한번만 호출
 
+  // reset이 호출되면 컴포넌트가 리렌더링되므로 
+  useEffect(() => {
+    if(item) reset({
+      title: item.title,
+      content: item.content,
+      done: item.done
+    });
+  }, [item]); // item이 변경되면 form 값을 item으로 초기화한다.
+
   // 할일 수정
   const onSubmit = async (formData) => {
     try{
       await axios.patch(`/todolist/${ _id }`, formData);
       alert('할일이 수정 되었습니다.');
+      navigate('..', { relative: 'path' }); // 상대경로 사용
+      // navigate(`/todolist/${ _id }`);
     }catch(err){
       console.error(err);
       alert('할일 수정에 실패했습니다.');
@@ -41,7 +53,6 @@ function TodoEdit(){
               type="text" 
               id="title" 
               autoFocus 
-              value={ item.title }
               { ...register('title', { required: '제목을 입력하세요.' }) }
             />
             <br/>
@@ -50,7 +61,6 @@ function TodoEdit(){
               id="content" 
               cols="25" 
               rows="8" 
-              value={ item.content }
               { ...register('content', { required: '내용을 입력하세요.' }) }
             />
             <br/>
