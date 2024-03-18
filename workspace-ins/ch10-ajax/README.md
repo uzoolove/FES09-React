@@ -129,8 +129,7 @@ npm i axios
   ```
 
   ```js
-  const itemList = await axios({
-    url: 'https://todo-api.frontendschool.shop/api/todolist',
+  const itemList = await axios('https://todo-api.frontendschool.shop/api/todolist', {
     method: 'post',
     data: {
       title: '할일 1',
