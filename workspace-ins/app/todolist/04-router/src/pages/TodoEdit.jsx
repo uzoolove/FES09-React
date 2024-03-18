@@ -73,7 +73,7 @@ function TodoEdit(){
             />
             <br/>
             <button type="submit">수정</button>
-            <button type="reset">취소</button>
+            <button type="reset" onClick={ () => navigate(-1) }>취소</button>
           </form>
         </div>
       ) }

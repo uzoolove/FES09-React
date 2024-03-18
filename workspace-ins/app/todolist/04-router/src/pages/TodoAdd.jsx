@@ -1,7 +1,9 @@
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 function TodoAdd(){
+  const navigate = useNavigate();
   const axios = useAxiosInstance();
   const { register, handleSubmit, reset, setFocus } = useForm();
 
@@ -42,7 +44,7 @@ function TodoAdd(){
           />
           <br/>
           <button type="submit">추가</button>
-          <button type="reset">취소</button>
+          <button type="reset" onClick={ () => navigate(-1) }>취소</button>
         </form>
       </div>
     </div>
