@@ -1,19 +1,29 @@
-import { Link } from "react-router-dom";
+import useAxios from "@hooks/useAxios";
 
 function TodoAdd(){
+
+  const onSubmit = () => {
+    
+  };
+
+
+
+
+
+
   return (
     <div id="main">
       <h2>할일 추가</h2>
       <div className="todo">
-        <form>
+        <form onSubmit={ onSubmit }>
           <label htmlFor="title">제목 :</label>
           <input type="text" id="title" autoFocus />
           <br/>
           <label htmlFor="content">내용 :</label>
-          <input type="text" id="content" />
+          <textarea id="content" cols="25" rows="8" />
           <br/>
-          <Link to="/detail">추가</Link>
-          <Link to="/list">취소</Link>
+          <button type="submit">추가</button>
+          <button type="reset">취소</button>
         </form>
       </div>
     </div>
