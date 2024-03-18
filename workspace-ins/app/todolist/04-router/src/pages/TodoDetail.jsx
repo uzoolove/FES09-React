@@ -33,7 +33,7 @@ function TodoDetail(){
           <div>
             수정일 : { item.updatedAt }
           </div>
-          <Link to="/edit">수정</Link>
+          <Link to="edit">수정</Link>
           <Link to="/list">목록</Link>
         </div>
       ) }
