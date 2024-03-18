@@ -3,17 +3,30 @@ import useAxios from '@hooks/useAxios';
 import TodoListItem from "./TodoListItem";
 import { ReactCsspin } from 'react-csspin';
 import 'react-csspin/dist/style.css';
+import useAxiosInstance from "@hooks/useAxiosInstance";
 
 function TodoList(){
-  // 로딩중에 스피너 보여주기
-  // error 있으면 출력하기
-  // index.css에 스타일 추가하기
+  const axios = useAxiosInstance();
   
   const { isLoading, data, error } = useAxios({
     url: '/todolist?delay=1000'
   });
 
-  const itemList = data?.items.map(item => <TodoListItem key={ item._id } item={ item } />);
+  const handleDelete = async _id => {
+    try{
+      await axios.delete(`/todolist/${ _id }`);
+      alert('할일이 삭제 되었습니다.');
+      // API 서버에서 목록 조회
+      
+    }catch(err){
+      console.error(err);
+      alert('할일 삭제에 실패했습니다.');
+    }
+  };
+
+  const itemList = data?.items.map(item => <TodoListItem key={ item._id } item={ item } handleDelete={ handleDelete } />);
+
+
 
   return (
     <div id="main">
