@@ -77,7 +77,7 @@ function getTodoList(callback){
 * 콜백 기반인 XMLHttpRequest 와 달리 Promise 기반으로 설계된 HTTP 클라이언트
 * XMLHttpRequest를 대체해서 사용할 수 있는 표준 API
 * XMLHttpRequest보다는 나은 선택이지만 응답 객체에서 본문을 바로 꺼내지 못하고 JSON이나 다른 데이터 타입으로 파싱해야하고 네트워크 에러를 제외한 HTTP 응답 에러에 대해서 오류가 발생하지 않으므로 따로 체크를 해야 하는 등 axios 라이브러리 대비 사용이 불편
-
+  
 #### 사용 예시
 ```js
 async function getTodoList() {
