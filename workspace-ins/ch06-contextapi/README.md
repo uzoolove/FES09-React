@@ -11,10 +11,12 @@
 
 * 상태 끌어올리기
 <img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-lifting.webp">
+
 <img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-lifting2.webp">
 
 * prop drilling
 <img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-propdrilling.webp">
+
 <img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-propdrilling2.webp">
 
 ## 사용 방법
