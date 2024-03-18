@@ -2,6 +2,7 @@ function f1(){
   console.log(`2. f1 작업 시작.`);
   console.log(`3. f1 작업중...`);
   // ......
+  // for(let i=0; i<10000000000; i++) {}
   console.log(`4. f1 작업 종료.`);
   return (`f1의 결과물`);
 }
