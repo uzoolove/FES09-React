@@ -2,27 +2,28 @@
 * 소스 코드(GitHub): <https://github.com/uzoolove/FES09-React/tree/main/workspace-ins/ch06-contextapi>
 * 코드 실행(GitHub Page): <https://uzoolove.github.io/FES09-React/workspace-ins/index.html#06>
 
+## 컨텍스트 API란?
 * 컴포넌트 트리에서 부모 컴포넌트의 상태나 데이터를 자식 컴포넌트에 전달할 때 보통 props를 이용하는데 이 방법은 컴포넌트 트리가 깊을 경우 불편함
   - 컴포넌트 트리가 깊을 경우 상단의 데이터를 말단의 컴포넌트에게 전달하기 위해서 거쳐가는 중계 컴포넌트가 많아져서 코드양이 많아짐
   - prop 이름이 변경되거나 새로운 props를 추가하면 모든 중계 컴포넌트가 수정되어야 함
   - 데이터가 변경되면 중계 컴포넌트의 불필요한 리렌더링이 발생
-* Context API를 사용하면 매번 자식에게 prop을 전달하지 않아도 컴포넌트에 필요한 데이터 전달이 가능
+* 컨텍스트 API를 사용하면 매번 자식에게 prop을 전달하지 않아도 컴포넌트에 필요한 데이터 전달이 가능
 
 * 상태 끌어올리기
 <img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-lifting.webp">
-<img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-lifting2.webm">
+<img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-lifting2.webp">
 
 * prop drilling
-<img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-propdrilling.webm">
-<img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-propdrilling2.webm">
+<img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-propdrilling.webp">
+<img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-propdrilling2.webp">
 
 ## 사용 방법
-### Context 객체 생성
+### 컨텍스트 객체 생성
 * React.createContext() 함수로 생성
 
 ### Provider 컴포넌트 작성
 * 상태와 상태 변경 함수를 관리할 컴포넌트 작성
-* Context 객체가 제공하는 Provider 컴포넌트를 사용해서 자식 컴포넌트를 렌더링하고 이때 Provider의 value 속성으로 전달할 Context를 지정
+* 컨텍스트 객체가 제공하는 Provider 컴포넌트를 사용해서 자식 컴포넌트를 렌더링하고 이때 Provider의 value 속성으로 전달할 컨텍스트를 지정
   ```jsx
   import { createContext, useState } from "react";
 
@@ -53,7 +54,7 @@
   export default CounterContext;
   ```
 
-### 자식 컴포넌트에 Context 제공
+### 자식 컴포넌트에 컨텍스트 제공
 ```jsx
 import { CounterProvider } from '@context/CounterContext';
 ```
@@ -64,7 +65,7 @@ import { CounterProvider } from '@context/CounterContext';
 </CounterProvider>
 ```
 
-### 자식 컴포넌트에서 Context 사용
+### 자식 컴포넌트에서 컨텍스트 사용
 * React.useContext 훅을 이용해 컨텍스트를 꺼내서 사용
 ```jsx
 import CounterContext from '@context/CounterContext';
