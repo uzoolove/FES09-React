@@ -147,7 +147,7 @@ const { _id } = useParams();
 * 부모 컴포넌트에는 자식 컴포넌트가 렌더링될 영역에 Outlet 컴포넌트 추가
 
 #### 사용 예시
-* list/3 요청에는 TodoDetail이 렌더링 되고 수정 링크를 누르면 주소가 /list/3/edit 형태로 바뀌면서 /list/3/edit에 매칭되는 자식 컴포넌트가 Outlet 컴포넌트 영영에서 추가로 렌더링 됨
+* list/3 요청에는 TodoDetail이 렌더링 되고 수정 링크를 누르면 주소가 list/3/edit 형태로 바뀌면서 list/3/edit에 매칭되는 자식 컴포넌트가 Outlet 컴포넌트 영영에서 추가로 렌더링 됨
 * Router 설정
   ```jsx
   { 
@@ -190,11 +190,11 @@ const { _id } = useParams();
 
 ##### Node.js의 serve 모듈로 웹서버를 구성할 경우 fallback UI 지정 예시
 ```powershell
-// dist 폴더 하위에 컨텐츠가 있을 경우
-// fallback UI 지정(존재하지 않는 URI 요청에 index.html 응답)
+# dist 폴더 하위에 컨텐츠가 있을 경우
+# fallback UI 지정(존재하지 않는 URI 요청에 index.html 응답)
 npx serve -s dist
 
-// fallback UI 지정 안함(존재하지 않는 URI 요청에 404 에러 응답)
+# fallback UI 지정 안함(존재하지 않는 URI 요청에 404 에러 응답)
 npx serve dist
 ```
 
