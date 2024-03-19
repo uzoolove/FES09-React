@@ -82,7 +82,7 @@ import { CounterProvider } from '@context/CounterContext';
   const { state: { count } } = useContext(CounterContext);
   ```
 
-## 컨텍스트 남용
+## 컨텍스트 남용 주의
 * props 전달
   - props를 사용하면 어떤 컴포넌트가 어떤 데이터를 사용하는지 쉽게 파악이 가능해서 데이터 흐름을 명확히 파악할 수 있음
 * Context 사용
