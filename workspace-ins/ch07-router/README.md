@@ -201,13 +201,13 @@ npx serve dist
 ##### Vite 기반으로 개발할 경우 fallback UI 지정 예시
 * Vite의 개발 서버에 기본으로 fallback UI가 지정되어 있음
 ```powershell
-// 개발 서버 구동
+# 개발 서버 구동
 npm run dev
 
-// 프로젝트 빌드
+# 프로젝트 빌드
 npm run build
 
-// 서버 구동
+# 서버 구동
 npm run preview
 ```
 
