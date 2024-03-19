@@ -73,14 +73,14 @@ import { CounterProvider } from '@context/CounterContext';
 
 ### 자식 컴포넌트에서 컨텍스트 사용
 * React.useContext 훅을 이용해 컨텍스트를 꺼내서 사용
-```jsx
-import CounterContext from '@context/CounterContext';
-import { useContext } from 'react';
-```
+  ```jsx
+  import CounterContext from '@context/CounterContext';
+  import { useContext } from 'react';
+  ```
 
-```jsx
-const { state: { count } } = useContext(CounterContext);
-```
+  ```jsx
+  const { state: { count } } = useContext(CounterContext);
+  ```
 
 ## 컨텍스트 남용
 * props 전달
