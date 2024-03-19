@@ -186,7 +186,7 @@ const { _id } = useParams();
 
 #### fallback UI
 * 리액트는 SPA(Single Page Application) 개발을 위해 사용되는 라이브러리 이므로 모든 페이지 구성 요소(js, css)가 번들링 된 후 하나의 시작 페이지에 포함됨(index.html)
-* 사용자가 시작 페이지부터 순차적으로 리액트 라우트에 의해 라우팅 하지 않고 웹브라우저 주소창에 /list/3 처럼 URI를 직접 입력할 경우 서버측에는 /list/3 URI가 존재하지 않으므로 일반적으로 404 에러 메세지를 보내지만 SPA를 서비스하는 웹서버라면 모든 URI 요청에 시작 페이지를(index.html) 전송하도록 구성해야 리액트 라우터에 의해 해당 페이지로 라우팅 되는데 이를 fallback UI라고 함
+* 사용자가 시작 페이지부터 순차적으로 리액트 라우트에 의해 라우팅 하지 않고 웹브라우저 주소창에 list/3 처럼 URI를 직접 입력할 경우 서버측에는 list/3 URI가 존재하지 않으므로 일반적으로 404 에러 메세지를 보내지만 SPA를 서비스하는 웹서버라면 모든 URI 요청에 시작 페이지를(index.html) 전송하도록 구성해야 리액트 라우터에 의해 해당 페이지로 라우팅 되는데 이를 fallback UI라고 함
 
 ##### Node.js의 serve 모듈로 웹서버를 구성할 경우 fallback UI 지정 예시
 ```powershell
@@ -200,16 +200,16 @@ npx serve dist
 
 ##### Vite 기반으로 개발할 경우 fallback UI 지정 예시
 * Vite의 개발 서버에 기본으로 fallback UI가 지정되어 있음
-```powershell
-# 개발 서버 구동
-npm run dev
+  ```powershell
+  # 개발 서버 구동
+  npm run dev
 
-# 프로젝트 빌드
-npm run build
+  # 프로젝트 빌드
+  npm run build
 
-# 서버 구동
-npm run preview
-```
+  # 서버 구동
+  npm run preview
+  ```
 
 #### 에러 처리 전용 라우트
 * 요청한 URI와 일치하는 라우터가 없을 경우 보여줄 컴포넌트 지정(404 에러 처리)
