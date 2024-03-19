@@ -177,7 +177,7 @@
 ## JSX 변환기 (HTML을 JSX로 변환)
 * <https://transform.tools/html-to-jsx>
 
-## 객체 불변성 라이브러리 immer님
+## 객체 불변성 라이브러리 immer
 * <https://immerjs.github.io/immer>
 
 ## props의 타입 검증을 위한 PropTypes
@@ -191,3 +191,9 @@
 
 ## 초보자를 위한 리액트
 * <https://react.vlpt.us>
+
+## Recoil
+* <https://recoiljs.org/ko>
+
+## Zustand
+* <https://docs.pmnd.rs/zustand>
