@@ -5,7 +5,8 @@ function App() {
   return (
     <div id="app">
       <Header />
-      <Counter />
+      <Counter>10</Counter>
+      <Counter>20</Counter>
     </div>
   )
 }
