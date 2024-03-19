@@ -366,7 +366,7 @@ import Home from './Home';
 const Home = React.lazy(() => import('./Home'));
 ```
 
-### Suspense 컴포넌트
+### React.Suspense 컴포넌트
 * 동적 import를 사용하면 해당 컴포넌트는 서버에서 네트워크를 통해 가져오기 때문에 지연시간이 발생할 수 있음
 * 사용자에게 로딩중임을 나타내는 적절한 UI 필요
 * Suspense 컴포넌트를 이용하면 쉽게 구현 가능
