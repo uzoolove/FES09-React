@@ -319,7 +319,7 @@ const TodoEdit = function(){
 ```jsx
 const navigate = useNavigate();
 // navigate(to, options)
-navigate('/', { state: { from: '/list' } }); // history.putState(state, '', '/')
+navigate('/', { state: { from: '/list' } }); // history.pushState(state, '', '/')
 navigate('/list?keyword=hello', { replace: true }); // history.replaceState(null, '', '/')
 navigate('..', { relative: 'path' }); // 상대경로 지정
 ```
