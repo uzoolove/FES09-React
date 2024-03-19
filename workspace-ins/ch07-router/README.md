@@ -149,22 +149,22 @@ const { _id } = useParams();
 #### 사용 예시
 * list/3 요청에는 TodoDetail이 렌더링 되고 수정 링크를 누르면 주소가 /list/3/edit 형태로 바뀌면서 /list/3/edit에 매칭되는 자식 컴포넌트가 Outlet 컴포넌트 영영에서 추가로 렌더링 됨
 * Router 설정
-```jsx
-{ 
-  path: 'list/:_id',
-  element: <TodoDetail />,
-  children: [
-    { path: 'edit', element: <TodoEdit /> }
-  ]
-}
-```
+  ```jsx
+  { 
+    path: 'list/:_id',
+    element: <TodoDetail />,
+    children: [
+      { path: 'edit', element: <TodoEdit /> }
+    ]
+  }
+  ```
 
 * TodoDetail.jsx
-```jsx
-<Link to="edit">수정</Link>
-<Link to="/list">목록</Link>
-<Outlet />
-```
+  ```jsx
+  <Link to="edit">수정</Link>
+  <Link to="/list">목록</Link>
+  <Outlet />
+  ```
 
 #### index 라우트
 * URI가 자식 경로와 매칭 되지 않는 경우 기본으로 렌더링 할 자식 라우트 지정
