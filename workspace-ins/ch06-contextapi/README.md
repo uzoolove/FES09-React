@@ -47,7 +47,7 @@
     // 자식 컴포넌트에 전달할 Context
     const values = {
       state: { count },
-      actions: { countUp, countDown }
+      actions: { countUp }
     };
 
     return (
