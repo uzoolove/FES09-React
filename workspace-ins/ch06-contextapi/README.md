@@ -9,15 +9,15 @@
   - 데이터가 변경되면 중계 컴포넌트의 불필요한 리렌더링이 발생
 * 컨텍스트 API를 사용하면 매번 자식에게 prop을 전달하지 않아도 컴포넌트에 필요한 데이터 전달이 가능
 
-* 상태 끌어올리기
-  <img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-lifting.webp">
+### 상태 끌어올리기
+<img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-lifting.webp">
 
-  <img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-lifting2.webp">
+<img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-lifting2.webp">
 
 * prop drilling
-  <img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-propdrilling.webp">
+<img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-propdrilling.webp">
 
-  <img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-propdrilling2.webp">
+<img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-propdrilling2.webp">
 
 ## 사용 방법
 ### 컨텍스트 객체 생성
@@ -77,8 +77,6 @@ import { useContext } from 'react';
 ```jsx
 const { state: { count } } = useContext(CounterContext);
 ```
-
-## 컨텍스트 API 주의사항
 
 ## 컨텍스트 API 사용 사례
 * 테마 지정
