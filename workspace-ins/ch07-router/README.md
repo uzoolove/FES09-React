@@ -56,31 +56,26 @@ npm i react-router-dom
 #### 사용 예시
 * routes.jsx
   ```jsx
-  import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+  import { createBrowserRouter } from 'react-router-dom';
 
   import Page1 from "./Page1";
   import Page2 from "./Page2";
   import Home from "./Home";
   import Layout from "./Layout";
 
-  function App(){  
-    const router = createBrowserRouter([
-      {
-        path: '/',
-        element: <Layout />,
-        children: [
-          { index: true, element: <Home /> },
-          { path: 'page1', element: <Page1 /> },
-          { path: 'page2', element: <Page2 /> }
-        ]
-      },
-    ]);
-    return (
-      <RouterProvider router={ router } />
-    );
-  }
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Layout />,
+      children: [
+        { index: true, element: <Home /> },
+        { path: 'page1', element: <Page1 /> },
+        { path: 'page2', element: <Page2 /> }
+      ]
+    },
+  ]);
 
-  export default App;
+  export default router;
   ```
 
 * App.jsx

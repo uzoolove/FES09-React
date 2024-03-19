@@ -82,6 +82,12 @@ import { useContext } from 'react';
 const { state: { count } } = useContext(CounterContext);
 ```
 
+## 컨텍스트 남용
+* props 전달
+  - props를 사용하면 어떤 컴포넌트가 어떤 데이터를 사용하는지 쉽게 파악이 가능해서 데이터 흐름을 명확히 파악할 수 있음
+* Context 사용
+  - 데이터 흐름 파악이 힘듬
+
 ## 컨텍스트 API 사용 사례
 * 테마 지정
   - 다크 모드, 라이트 모드 등의 테마를 사용자가 수정할수 있게 제공할 경우 컴포넌트 트리 상단에서 컨텍스트를 제공하고 선택한 테마를 하위 컴포넌트에서 사용
