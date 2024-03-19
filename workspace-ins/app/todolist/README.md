@@ -561,7 +561,7 @@
         { path: 'edit', element: <TodoEdit /> }
       ]
     },
-  ```
+    ```
 
 * TodoDetail.jsx에 Outlet 컴포넌트 추가
   ```jsx
