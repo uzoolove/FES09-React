@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 
 import About from '@pages/About';
 import Home from '@pages/Home.jsx';
@@ -15,13 +15,19 @@ const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <Home /> },
+      // { index: true, element: <Home /> },
+      { index: true, element: <Navigate to="/home" /> },
       { path: 'home', element: <Home /> },
       { path: 'about', element: <About /> },
       { path: 'list', element: <TodoList /> },
-      { path: 'list/:_id', element: <TodoDetail /> },
+      { 
+        path: 'list/:_id', 
+        element: <TodoDetail />,
+        children: [
+          { path: 'edit', element: <TodoEdit /> }
+        ]
+      },
       { path: 'add', element: <TodoAdd /> },
-      { path: 'list/:_id/edit', element: <TodoEdit /> },
     ]
   }
 ]);

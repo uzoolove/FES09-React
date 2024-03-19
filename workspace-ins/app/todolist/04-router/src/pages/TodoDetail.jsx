@@ -1,8 +1,10 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 import useAxios from "@hooks/useAxios";
 
 function TodoDetail(){
 
+  // 라우터에 list/:_id/:action 정의했고 URI가 list/3/edit 일 경우
+  // params = { _id: 3, action: 'edit' } 객체가 된다.
   const params = useParams();
   console.log(params._id);
 
@@ -37,6 +39,7 @@ function TodoDetail(){
           <Link to="/list">목록</Link>
         </div>
       ) }
+      <Outlet />
     </div>
   );
 }

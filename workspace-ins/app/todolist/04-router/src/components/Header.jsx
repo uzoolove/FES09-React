@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Header(){
   return (
@@ -7,9 +7,9 @@ function Header(){
       <nav>
         <div>
           <ul>
-            <li><Link to="home">Home</Link></li>
-            <li><Link to="about">About</Link></li>
-            <li><Link to="list">TodoList</Link></li>
+            <li><NavLink className={ ({ isActive }) => isActive ? 'menu-selected' : 'memu' } to="home">Home</NavLink></li>
+            <li><NavLink className={ ({ isActive }) => isActive ? 'menu-selected' : 'memu' } to="about">About</NavLink></li>
+            <li><NavLink className={ ({ isActive }) => isActive ? 'menu-selected' : 'memu' } to="list">TodoList</NavLink></li>
           </ul>
         </div>
       </nav>

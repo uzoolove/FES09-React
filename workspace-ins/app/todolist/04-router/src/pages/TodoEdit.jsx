@@ -43,7 +43,7 @@ function TodoEdit(){
   };
 
   return (
-    <div id="main">
+    <>
       <h2>할일 수정</h2>
       { item && (
         <div className="todo">
@@ -77,7 +77,7 @@ function TodoEdit(){
           </form>
         </div>
       ) }
-    </div>
+    </>
   );
 }
 
