@@ -147,24 +147,24 @@ const { _id } = useParams();
 * 부모 컴포넌트에는 자식 컴포넌트가 렌더링될 영역에 Outlet 컴포넌트 추가
 
 #### 사용 예시
-* list/3 요청에는 TodoDetail이 렌더링 되고 수정 링크를 누르면 주소가 /list/3/edit 형태로 바뀌면서 /list/3/edit에 매칭되는 자식 컴포넌트가 Outlet 컴포넌트 영영에서 추가로 렌더링 됨
+* list/3 요청에는 TodoDetail이 렌더링 되고 수정 링크를 누르면 주소가 list/3/edit 형태로 바뀌면서 list/3/edit에 매칭되는 자식 컴포넌트가 Outlet 컴포넌트 영영에서 추가로 렌더링 됨
 * Router 설정
-```jsx
-{ 
-  path: 'list/:_id',
-  element: <TodoDetail />,
-  children: [
-    { path: 'edit', element: <TodoEdit /> }
-  ]
-}
-```
+  ```jsx
+  { 
+    path: 'list/:_id',
+    element: <TodoDetail />,
+    children: [
+      { path: 'edit', element: <TodoEdit /> }
+    ]
+  }
+  ```
 
 * TodoDetail.jsx
-```jsx
-<Link to="edit">수정</Link>
-<Link to="/list">목록</Link>
-<Outlet />
-```
+  ```jsx
+  <Link to="edit">수정</Link>
+  <Link to="/list">목록</Link>
+  <Outlet />
+  ```
 
 #### index 라우트
 * URI가 자식 경로와 매칭 되지 않는 경우 기본으로 렌더링 할 자식 라우트 지정
@@ -186,30 +186,30 @@ const { _id } = useParams();
 
 #### fallback UI
 * 리액트는 SPA(Single Page Application) 개발을 위해 사용되는 라이브러리 이므로 모든 페이지 구성 요소(js, css)가 번들링 된 후 하나의 시작 페이지에 포함됨(index.html)
-* 사용자가 시작 페이지부터 순차적으로 리액트 라우트에 의해 라우팅 하지 않고 웹브라우저 주소창에 /list/3 처럼 URI를 직접 입력할 경우 서버측에는 /list/3 URI가 존재하지 않으므로 일반적으로 404 에러 메세지를 보내지만 SPA를 서비스하는 웹서버라면 모든 URI 요청에 시작 페이지를(index.html) 전송하도록 구성해야 리액트 라우터에 의해 해당 페이지로 라우팅 되는데 이를 fallback UI라고 함
+* 사용자가 시작 페이지부터 순차적으로 리액트 라우트에 의해 라우팅 하지 않고 웹브라우저 주소창에 list/3 처럼 URI를 직접 입력할 경우 서버측에는 list/3 URI가 존재하지 않으므로 일반적으로 404 에러 메세지를 보내지만 SPA를 서비스하는 웹서버라면 모든 URI 요청에 시작 페이지를(index.html) 전송하도록 구성해야 리액트 라우터에 의해 해당 페이지로 라우팅 되는데 이를 fallback UI라고 함
 
 ##### Node.js의 serve 모듈로 웹서버를 구성할 경우 fallback UI 지정 예시
 ```powershell
-// dist 폴더 하위에 컨텐츠가 있을 경우
-// fallback UI 지정(존재하지 않는 URI 요청에 index.html 응답)
+# dist 폴더 하위에 컨텐츠가 있을 경우
+# fallback UI 지정(존재하지 않는 URI 요청에 index.html 응답)
 npx serve -s dist
 
-// fallback UI 지정 안함(존재하지 않는 URI 요청에 404 에러 응답)
+# fallback UI 지정 안함(존재하지 않는 URI 요청에 404 에러 응답)
 npx serve dist
 ```
 
 ##### Vite 기반으로 개발할 경우 fallback UI 지정 예시
 * Vite의 개발 서버에 기본으로 fallback UI가 지정되어 있음
-```powershell
-// 개발 서버 구동
-npm run dev
+  ```powershell
+  # 개발 서버 구동
+  npm run dev
 
-// 프로젝트 빌드
-npm run build
+  # 프로젝트 빌드
+  npm run build
 
-// 서버 구동
-npm run preview
-```
+  # 서버 구동
+  npm run preview
+  ```
 
 #### 에러 처리 전용 라우트
 * 요청한 URI와 일치하는 라우터가 없을 경우 보여줄 컴포넌트 지정(404 에러 처리)
@@ -319,7 +319,7 @@ const TodoEdit = function(){
 ```jsx
 const navigate = useNavigate();
 // navigate(to, options)
-navigate('/', { state: { from: '/list' } }); // history.putState(state, '', '/')
+navigate('/', { state: { from: '/list' } }); // history.pushState(state, '', '/')
 navigate('/list?keyword=hello', { replace: true }); // history.replaceState(null, '', '/')
 navigate('..', { relative: 'path' }); // 상대경로 지정
 ```
@@ -366,7 +366,7 @@ import Home from './Home';
 const Home = React.lazy(() => import('./Home'));
 ```
 
-### Suspense 컴포넌트
+### React.Suspense 컴포넌트
 * 동적 import를 사용하면 해당 컴포넌트는 서버에서 네트워크를 통해 가져오기 때문에 지연시간이 발생할 수 있음
 * 사용자에게 로딩중임을 나타내는 적절한 UI 필요
 * Suspense 컴포넌트를 이용하면 쉽게 구현 가능
