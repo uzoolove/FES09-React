@@ -11,13 +11,17 @@
 
 ### 상태 끌어올리기
 <img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-lifting.webp">
+[그림 1. props]
 
 <img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-lifting2.webp">
+[그림 2. Context API]]
 
 ### prop drilling
 <img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-propdrilling.webp">
+[그림 3. props]
 
 <img src="https://raw.githubusercontent.com/uzoolove/FES09-React/main/images/context-propdrilling2.webp">
+[그림 4. Context API]
 
 ## 사용 방법
 ### 컨텍스트 객체 생성
