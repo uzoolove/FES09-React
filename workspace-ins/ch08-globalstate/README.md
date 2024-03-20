@@ -160,6 +160,8 @@ npm i recoil
   export default Left3;
   ```
 
+### 참고: <https://recoiljs.org/ko>
+
 ## Zustand
 * zustand는 '상태'라는 뜻의 독일어로 리액트의 상태 관리 라이브러리 중 하나
 * Provider 없이 훅 기반으로 쉽게 사용 가능
@@ -213,3 +215,5 @@ npm i zustans
 
   export default Right3;
   ```
+
+### 침고: <https://docs.pmnd.rs/zustand>
