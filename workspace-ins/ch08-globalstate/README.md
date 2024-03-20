@@ -76,13 +76,15 @@ npm i recoil
 
   function Right3() {
     const setCount = useSetRecoilState(countState);
-    const handleClick = function(num){
-      setCount(num);
+
+    const countUp = function(step){
+      setCount(count => count + step);
     };
+
     return (
       <div>
         <h1>Right3</h1>
-        <button onClick={ () => countUp(20) }>20</button>
+        <button onClick={ () => countUp(1) }>+</button>
       </div>
     );
   }
