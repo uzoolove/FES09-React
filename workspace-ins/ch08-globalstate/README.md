@@ -160,7 +160,7 @@ npm i recoil
   export default Left3;
   ```
 
-### 참고: <https://recoiljs.org/ko>
+### Recoil 참고: <https://recoiljs.org/ko>
 
 ## Zustand
 * zustand는 '상태'라는 뜻의 독일어로 리액트의 상태 관리 라이브러리 중 하나
@@ -168,13 +168,13 @@ npm i recoil
 
 ### 설치
 ```powershell
-npm i zustans
+npm i zustand
 ```
 
 ### Store
 * 상태와 상태를 관리하는 함수로 구성되며 커스텀 훅으로 작성
-* Zustand.create 함수로 생성하고 create 함수의 콜백 함수에서 관리
-* create의 콜백 함수의 매개변수
+* Zustand.create 함수로 생성하고 create 함수의 콜백 함수에서 상태 정의와 상태관리 로직 구현
+* create에 전달하는 콜백 함수의 매개변수
   - set
     + set(newState): 상태를 newState로 업데이트
     + set(state => newState): 이전 상태를 인자로 받고 newState를 반환하면 반환된 상태로 업데이트 됨
@@ -187,15 +187,15 @@ npm i zustans
 
   const useCounterStore = create((set, get) => ({
     count: 10,
-    countUp: (step) => set((state) => ({ count: state.count + step })),
     countDown: (step) => set({ count: get().count - step }),
+    countUp: (step) => set((state) => ({ count: state.count + step })),
   }));
 
   export default useCounterStore;
   ```
 
 ### Store 사용
-* Provider는 필요 없고 그냥 커스텀 훅 사용과 동일하게 사용
+* 커스텀 훅 사용과 동일하게 사용
 * Store를 사용하는 컴포넌트는 자동으로 Store를 구독하게 되며 Store의 상태가 변경되면 리렌더링 됨
 
 * Right3.jsx
@@ -216,4 +216,4 @@ npm i zustans
   export default Right3;
   ```
 
-### 침고: <https://docs.pmnd.rs/zustand>
+### Zustand 침고: <https://docs.pmnd.rs/zustand>
