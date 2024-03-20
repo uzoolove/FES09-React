@@ -17,9 +17,17 @@ export function CounterProvider({ children }){
     setCount(count + step);
   };
 
+  const countDown = function(step){
+    setCount(count - step);
+  };
+
+  const reset = function(){
+    setCount(10);
+  };
+
   const values = {
     state: { count },
-    actions: { countUp }
+    actions: { countUp, countDown, reset }
   };
 
   // 5. 컨텍스트 컴포넌트의 Provider로 자식 컴포넌트를 감싸서 리턴
