@@ -70,7 +70,7 @@ npm i recoil
 
 #### atom을 변경(setter)
 * 변경 작업만 필요할 때는 useSetRecoilState 훅 사용
-  ```js
+  ```jsx
   import { countState } from '@recoil/atoms.mjs';
   import { useSetRecoilState } from 'recoil';
 
@@ -106,7 +106,7 @@ npm i recoil
 
     return (
       <div>
-        <h1>Right3</h1>
+        <h1>Right3 : { count }</h1>
         <button onClick={ () => countUp(1) }>+</button>
       </div>
     );
