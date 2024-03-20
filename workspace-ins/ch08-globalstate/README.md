@@ -216,4 +216,4 @@ npm i zustand
   export default Right3;
   ```
 
-### Zustand 침고: <https://docs.pmnd.rs/zustand>
+### Zustand 참고: <https://docs.pmnd.rs/zustand>
