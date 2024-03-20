@@ -15,7 +15,10 @@ function numberToKorean(number){
   const koreanUnits = ['', '십', '백', '천', '만', '억', '조', '경']; // up to 1경 (10^16)
   
   // Function to convert each digit to Korean
-  function digitToKorean(digit) {
+  function digitToKorean(digit, position) {
+      if (digit === 1 && position > 0) { // Exclude "일" (il) prefix for 1 in units place
+          return '';
+      }
       return koreanNumbers[digit];
   }
 
@@ -30,7 +33,7 @@ function numberToKorean(number){
   // Loop through each digit and its corresponding unit
   digits.forEach((digit, index) => {
       if (digit !== 0) { // Exclude zero digits
-          koreanString = digitToKorean(digit) + koreanUnits[index] + koreanString;
+          koreanString = digitToKorean(digit, index) + koreanUnits[index] + koreanString;
       } else if (index === 4) { // Include '만' for units place
           koreanString = koreanUnits[index] + koreanString;
       }
