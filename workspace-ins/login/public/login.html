@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인</title>
+  <script src="https://unpkg.com/jquery@3.7.1"></script>
+</head>
+<body>
+  <h1>로그인 샘플</h1>
+  <form>
+    <label for="email">이메일</label>
+    <input type="text" id="email" name="email" value="u1@market.com">
+    <br>
+    <label for="password">비밀번호</label>
+    <input type="password" id="password" name="password" value="11111111">
+    <br>
+    <button type="submit">로그인</button>
+  </form>
+
+  <script>
+    $('form').on('submit', async function(e) {
+      e.preventDefault();
+      const data = $(this).serialize();
+      try{
+        const result = await $.post('https://market-lion.koyeb.app/api/users/login', data);
+        alert(result.item.name + '님 로그인 되었습니다.');
+      }catch(xhr){
+        console.error(xhr);
+        alert(xhr.responseJSON?.message);
+      }
+    });
+  </script>
+</body>
+</html>
