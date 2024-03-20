@@ -136,11 +136,6 @@
   })
   ```
 
-##### VSCode에서 alias를 기준으로 import 자동 완성 설정
-* VSCode > File > Preferences > Settings > Import Module Specifier 검색
-  - JavaScript › Preferences: Import Module Specifier 항목의 Preferred path style for auto imports. 값을 non-relative 로 지정
-  - User 탭과 Workspace 탭 모두 설정
-
 ##### VSCode에서 alias로 import 했을 경우 Ctrl + 클릭시 해당 컴포넌트로 바로 이동하도록 설정
 * 프로젝트 루트에 jsconfig.json 파일 생성
   ```json
@@ -155,7 +150,12 @@
       }
     }
   }
-    ```
+  ```
+
+##### VSCode에서 alias를 기준으로 import 자동 완성 설정
+* VSCode > File > Preferences > Settings > Import Module Specifier 검색
+  - JavaScript › Preferences: Import Module Specifier 항목의 Preferred path style for auto imports. 값을 non-relative 로 지정
+  - User 탭과 Workspace 탭 모두 설정
 
 ## 2-3 리액트 애플리케이션 배포
 ### 프로젝트 빌드
