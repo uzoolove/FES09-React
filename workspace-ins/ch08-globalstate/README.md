@@ -8,7 +8,7 @@
 * 상태가 변경되면 컴포넌트가 다시 호출되고 화면이 리렌더링 되는게 리액트의 기본 동작 방식
 * useState, useReducer는 컴포넌트에 종속적인 상태만 관리하므로 다른 컴포넌트와 상태를 공유할 수 없음
 * 전역 상태 관리: 여러 컴포넌트가 상태를 공유하고 특정 컴포넌트에서 상태를 변경하면 공유된 모든 컴포넌트에 영향을 미치는 상태 관리
-  - 전역 상태 관리 라이브러리로는 Context API, Redux, Recoil, Zustans, MobX, Jotai, Valtio 등이 있음
+  - 전역 상태 관리 라이브러리로는 Context API, Redux, Recoil, Zustand, MobX, Jotai, Valtio 등이 있음
 
 ## Recoil 이란?
 * 리액트를 만든 페이스북 팀에서 만든 상태 관리 라이브러리
@@ -57,7 +57,7 @@ npm i recoil
   import { useRecoilValue } from 'recoil';
 
   function Left3() {
-    const korCount = useRecoilValue(countState);
+    const count = useRecoilValue(countState);
     return (
       <div>
         <h1>Left3 : { count }</h1>
@@ -160,7 +160,7 @@ npm i recoil
 
 ## Zustand
 * zustand는 '상태'라는 뜻의 독일어로 리액트의 상태 관리 라이브러리 중 하나
-* Provider 없이 커스텀 훅 형태로 작성하며 쉽게 사용 가능
+* Provider 없이 훅 기반으로 쉽게 사용 가능
 
 ### 설치
 ```powershell
@@ -169,8 +169,8 @@ npm i zustans
 
 ### Store
 * 상태와 상태를 관리하는 함수로 구성되며 커스텀 훅으로 작성
-* Zustand.create 함수로 생성하고 create 함수의 콜백 함수에서 샹태를 관리
-* create 콜백 함수의 매개변수
+* Zustand.create 함수로 생성하고 create 함수의 콜백 함수에서 관리
+* create의 콜백 함수의 매개변수
   - set
     + set(newState): 상태를 newState로 업데이트
     + set(state => newState): 이전 상태를 인자로 받고 newState를 반환하면 반환된 상태로 업데이트 됨
@@ -193,6 +193,8 @@ npm i zustans
 ### Store 사용
 * Provider는 필요 없고 그냥 커스텀 훅 사용과 동일하게 사용
 * Store를 사용하는 컴포넌트는 자동으로 Store를 구독하게 되며 Store의 상태가 변경되면 리렌더링 됨
+
+* Right3.jsx
   ```jsx
   import useCounterStore from '@zustand/counter.mjs';
 
