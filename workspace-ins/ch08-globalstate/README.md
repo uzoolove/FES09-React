@@ -3,7 +3,7 @@
 * 코드 실행(GitHub Page): <https://uzoolove.github.io/FES09-React/workspace-ins/index.html#08>
 
 
-## 생태 관리란?
+## 상태 관리란?
 * 리액트의 useState, useReducer 훅을 이용해서 컴포넌트 내부의 상태를 관리 할 수 있음
 * 상태가 변경되면 컴포넌트가 다시 호출되고 화면이 리렌더링 되는게 리액트의 기본 동작 방식
 * useState, useReducer는 컴포넌트에 종속적인 상태만 관리하므로 다른 컴포넌트와 상태를 공유할 수 없음
