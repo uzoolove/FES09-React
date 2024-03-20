@@ -1,13 +1,18 @@
 import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
-function Right3() {
+Right3.propTypes = {
+  countUp: PropTypes.func
+};
+
+function Right3({ countUp }) {
   useEffect(()=>{
     console.log('#### Right3 렌더링.');
   });
   return (
     <div>
       <h1>Right3</h1>
-      <button onClick={ () => {} }>+</button>
+      <button onClick={ () => countUp(1) }>+</button>
     </div>
   );
 }

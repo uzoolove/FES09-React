@@ -1,12 +1,17 @@
 import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
-function Left3() {
+Left3.propTypes = {
+  count: PropTypes.number
+};
+
+function Left3({ count }) {
   useEffect(()=>{
     console.log('#### Left3 렌더링.');
   });
   return (
     <div>
-      <h1>Left3 : 0</h1>
+      <h1>Left3 : { count }</h1>
     </div>
   );
 }

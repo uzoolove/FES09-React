@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div id="container">
-      <h1>Context API - Sample</h1>
+      <h1>App - Sample</h1>
       <div id="grid">
         <Left1 />
         <Right1 />

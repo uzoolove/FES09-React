@@ -15,10 +15,10 @@ function App() {
 
   return (
     <div id="container">
-      <h1>Context API - with props</h1>
+      <h1>App - with props</h1>
       <div id="grid">
-        <Left1 />
-        <Right1 />
+        <Left1 count={ count } />
+        <Right1 countUp={ countUp } />
       </div>
     </div>
   );
