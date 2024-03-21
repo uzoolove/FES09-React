@@ -1,8 +1,27 @@
 import Footer from "@components/layout/Footer";
 import Header from "@components/layout/Header";
+import useCustomAxios from "@hooks/useCustomAxios.mjs";
+import BoardListItem from "@pages/BoardListItem";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function BoardList(){
+  const [data, setData] = useState(null);
+  const axios = useCustomAxios();
+
+  const fetchBoardList = async () => {
+    const response = await axios.get('/posts', {
+      params: { type: 'qna' }
+    });
+    setData(response.data);
+  };
+
+  useEffect(() => {
+    fetchBoardList();
+  }, []);
+
+  const itemList = data?.item?.map(item => <BoardListItem key={ item._id } item={ item } />);
+
   return (
     <>
       
@@ -10,33 +29,25 @@ function BoardList(){
 
       <div>
         <section>
-          <table>
-            <thead>
-              <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>글쓴이</th>
-                <th>조회</th>
-                <th>작성일</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>2</td>
-                <td><Link to="/boards/1">useState 훅이란?</Link></td>
-                <td>이영희</td>
-                <td>30</td>
-                <td>2099-07-27 21:33</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td><Link to="/boards/2">useEffect 훅이란?</Link></td>
-                <td>김철수</td>
-                <td>123</td>
-                <td>2099-07-20 11:25</td>
-              </tr>
-            </tbody>
-          </table>
+          { itemList && (
+            <table>
+              <thead>
+                <tr>
+                  <th>번호</th>
+                  <th>제목</th>
+                  <th>글쓴이</th>
+                  <th>조회</th>
+                  <th>작성일</th>
+                </tr>
+              </thead>
+              <tbody>
+                { itemList }
+              </tbody>
+            </table>
+          ) }
+          { !itemList && (
+            <p>게시물이 없습니다.</p>
+          ) }
           <hr/>
           <div>
             <Link to="/boards/new">글쓰기</Link>

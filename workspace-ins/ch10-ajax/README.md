@@ -306,15 +306,15 @@ axios.interceptors.response.use((response) => {
 
 #### 설치
 * React Query
-  ```powershell
+  ```sh
   npm i @tanstack/react-query
   ```
 
 * 개발자 도구
-  ```powershell
+  ```sh
   npm i @tanstack/react-query-devtools
   ```
-  - 참고: https://tanstack.com/query/latest/docs/react/devtools
+  - 개발자 도구 사용 방법 참고: <https://tanstack.com/query/latest/docs/react/devtools>
 
 #### 사용 설정
 * App.jsx에 추가
@@ -345,7 +345,7 @@ useQuery(queryKey, queryFn, options)
 ###### 매개변수
 * queryKey
   - useQuery에 부여되는 고유한 Key 값(배열)
-  - 동일한 queryKey로 요청한 useQuery는 동일한 요청으로 인식하며 캐시된 결과를 반환
+  - 같은 queryKey로 요청한 useQuery는 동일한 요청으로 인식하며 캐시된 결과를 반환
   - 사용 예시
     ```jsx
     // 게시물 목록 조회
@@ -361,9 +361,9 @@ useQuery(queryKey, queryFn, options)
 * options
   - 추가적인 설정값
   - staleTime: 조회한 데이터가 fresh에서 stale 상태로 변경되는데 걸리는 시간(default 0). fresh 상태에서는 동일한 요청에 대해 서버에 요청을 보내지 않고 캐시된 데이터를 반환
-  - cacheTime: 데이터 조회후 cacheTime 동안에는 동일한 요청에 대해 일단 캐시된 데이터를 반환하고 서버에 데이터를 요청함. 서버에서 데이터가 도착하면 캐시된 데이터를 교체해서 컴포넌트를 리랜더링 함(default 5분)
+  - cacheTime: 데이터 조회 후 cacheTime 동안에는 동일한 요청에 대해 일단 캐시된 데이터를 반환하고 서버에 데이터를 요청함. 서버에서 데이터가 도착하면 캐시된 데이터를 교체해서 컴포넌트를 다시 렌더링 함(default 5분)
   - refetchOnMount: 데이터가 stale 상태일 경우 마운트 시 마다 재요청을 할지 여부(default true). "always"로 지정할 경우 fresh 상태일때도 마운트 시 마다 재요청 함.
-  - refetchOnWindowFocus: 브라우저 윈도우 포커스가 다른곳을 갔다가 돌아올 경우 재요청을 할 것인지 여부(default true). "always"로 지정하면 fresh 상태에서도 윈도우 포커싱이 될 때마다 재요청
+  - refetchOnWindowFocus: 브라우저 윈도우 포커스가 다른 곳을 갔다가 돌아올 경우 재요청을 할 것인지 여부(default true). "always"로 지정하면 fresh 상태에서도 윈도우 포커싱이 될 때마다 재요청
   - enabled: false일 경우 쿼리를 실행하지 않음(default true)
   - retry: 실패한 쿼리를 재시도 할지 여부나 횟수(default 3)
     * true: 무한 재시도
@@ -373,14 +373,14 @@ useQuery(queryKey, queryFn, options)
   - onSuccess: 쿼리 성공 시 실행되는 함수. 매개변수로 서버의 응답값이 전달됨
   - onError: 쿼리 실패 시 실행되는 함수. 매개변수로 에러값이 전달됨
   - onSettled: 쿼리 성공, 실패와 상관없이 실행되는 함수. 매개변수는 data, error
-  - 그밖의 옵션 참고: https://tanstack.com/query/latest/docs/react/reference/useQuery
+  - 그밖의 옵션 참고: <https://tanstack.com/query/latest/docs/react/reference/useQuery>
 
 ###### 리턴값
 * 다음의 속성을 가진 객체
   - isLoading: queryFn이 반환한 Promise가 pending 상태일때 true. queryFn이 axios를 사용한 함수라면 데이터 로딩중일때 true
   - error: queryFn이 반환한 Promise가 rejected 상태일때 에러 메세지. queryFn이 axios를 사용한 함수라면 에러가 발생했을때 에러 메세지
   - data: queryFn이 반환한 Promise가 fulfilled 상태일때 응답 데이터. queryFn이 axios를 사용한 함수라면 요청에 성공했을때 응답 데이터
-  - 그밖의 속성 참고: https://tanstack.com/query/latest/docs/react/reference/ 
+  - 그밖의 속성 참고: <https://tanstack.com/query/latest/docs/react/reference>
 
 #### useMutation
 * 서버의 데이터를 변경할 때 사용(POST, PUT, PATCH, DELETE)
@@ -397,21 +397,21 @@ useMutation(mutationFn, options)
 * options
   - cacheTime, retry: useQuery 설명 참조
   - onSuccess, onError, onSettled: useQuery 설명 참조. useMutation 뿐만 아니라 mutate 함수의 옵션으로도 사용 가능
-  - 그밖의 옵션 참고: https://tanstack.com/query/latest/docs/react/reference/useMutation
+  - 그밖의 옵션 참고: <https://tanstack.com/query/latest/docs/react/reference/useMutation>
 
 ###### 리턴값
 * 다음의 속성을 가진 객체
-  - mutate: useMutation은 React Hook이므로 컴포넌트 루트에서만 사용할수 있고 대부분의 경우 서버의 데이터를 변경하는 작업은(등록, 수정, 삭제) 사용자의 액션에 의해서 실행 되기 때문에 mutationFn이 호출되는 위치는 이벤트 핸들러 내부이므로 컴포넌트 루트가 아님. 이벤트 핸들러 내부에서 mutate를 호출하면 mutationFn이 호출되면서 실제 비동기 요청이 발생함
+  - mutate: useMutation은 React Hook이므로 컴포넌트 루트에서만 사용할 수 있고 대부분의 경우 서버의 데이터를 변경하는 작업은(등록, 수정, 삭제) 사용자의 액션에 의해서 실행 되기 때문에 mutationFn이 호출되는 위치는 이벤트 핸들러 내부이므로 컴포넌트 루트가 아님. 이벤트 핸들러 내부에서 mutate를 호출하면 mutationFn이 호출되면서 실제 비동기 요청이 발생함
   - isLoading, error, data: useQuery 설명 참조
-  - 그밖의 속성 참고: https://tanstack.com/query/latest/docs/react/reference/useMutation
+  - 그밖의 속성 참고: <https://tanstack.com/query/latest/docs/react/reference/useMutation>
 
 ###### invalidateQueries
 * useQuery에서 사용된 queryKey를 지정해서 해당 쿼리를 무효화 시키고 데이터를 다시 가져옴
 * 예시
   ```jsx
   const queryClient = useQueryClient();
-  // 새로운 댓글 작성시 3번 게시물의 댓글 목록 무효화 시키고 서버에서 다시 가져옴
+  // 새로운 댓글 작성시 3번 게시물의 댓글 목록을 무효화 시키고 서버에서 다시 가져옴
   queryClient.invalidateQueries(['boards', 3, 'comments'])
   ```
-  
-* 참고: https://tanstack.com/query/latest/docs/react/reference/QueryClient#queryclientinvalidatequeries
+
+* 참고: <https://tanstack.com/query/latest/docs/react/reference/QueryClient#queryclientinvalidatequeries>

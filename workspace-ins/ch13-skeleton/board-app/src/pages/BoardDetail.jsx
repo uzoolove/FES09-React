@@ -14,7 +14,7 @@ function BoardDetail(){
           <div>제목 : useState 훅이란</div>
           <div>
             <span>내용</span>
-            <div><textarea rows="15" cols="50" readOnly>상태값(컴포넌트에서 관리하는 데이터)을 추가하기 위한 훅</textarea></div>
+            <div><textarea rows="15" cols="50" readOnly defaultValue="상태값(컴포넌트에서 관리하는 데이터)을 추가하기 위한 훅"></textarea></div>
             <hr/>
           </div>
           <div>
