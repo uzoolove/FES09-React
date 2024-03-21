@@ -339,41 +339,39 @@ axios.interceptors.response.use((response) => {
 
 ##### API
 ```jsx
-useQuery(queryKey, queryFn, options)
+useQuery(options)
 ```
 
-###### 매개변수
+###### options
 * queryKey
   - useQuery에 부여되는 고유한 Key 값(배열)
   - 같은 queryKey로 요청한 useQuery는 동일한 요청으로 인식하며 캐시된 결과를 반환
   - 사용 예시
-    ```jsx
-    // 게시물 목록 조회
-    useQuery(['boards'], queryFn)
-    // 3번 게시물 상세 조회
-    useQuery(['boards', '3'], queryFn)
-    // 3번 게시물 댓글 목록 조회
-    useQuery(['boards', '3', 'comments'], queryFn)
-    ```
+  ```jsx
+  // 게시물 목록 조회
+  useQuery(['boards'], queryFn)
+  // 3번 게시물 상세 조회
+  useQuery(['boards', '3'], queryFn)
+  // 3번 게시물 댓글 목록 조회
+  useQuery(['boards', '3', 'comments'], queryFn)
+  ```
 * queryFn
   - useQuery가 호출 되었을 때 실행될 함수이며 Promise를 반환해야 함
   - 함수 내부에서 axios.get() 같은 함수를 리턴하도록 작성
-* options
-  - 추가적인 설정값
-  - staleTime: 조회한 데이터가 fresh에서 stale 상태로 변경되는데 걸리는 시간(default 0). fresh 상태에서는 동일한 요청에 대해 서버에 요청을 보내지 않고 캐시된 데이터를 반환
-  - cacheTime: 데이터 조회 후 cacheTime 동안에는 동일한 요청에 대해 일단 캐시된 데이터를 반환하고 서버에 데이터를 요청함. 서버에서 데이터가 도착하면 캐시된 데이터를 교체해서 컴포넌트를 다시 렌더링 함(default 5분)
-  - refetchOnMount: 데이터가 stale 상태일 경우 마운트 시 마다 재요청을 할지 여부(default true). "always"로 지정할 경우 fresh 상태일때도 마운트 시 마다 재요청 함.
-  - refetchOnWindowFocus: 브라우저 윈도우 포커스가 다른 곳을 갔다가 돌아올 경우 재요청을 할 것인지 여부(default true). "always"로 지정하면 fresh 상태에서도 윈도우 포커싱이 될 때마다 재요청
-  - enabled: false일 경우 쿼리를 실행하지 않음(default true)
-  - retry: 실패한 쿼리를 재시도 할지 여부나 횟수(default 3)
-    * true: 무한 재시도
-    * false: 재시도 하지 않음
-    * 정수: 재시도 횟수
-  - suspense: suspense mode 활성화 여부(default false). suspense mode가 활성화 될 경우 React의 Suspense와 함께 사용 가능
-  - onSuccess: 쿼리 성공 시 실행되는 함수. 매개변수로 서버의 응답값이 전달됨
-  - onError: 쿼리 실패 시 실행되는 함수. 매개변수로 에러값이 전달됨
-  - onSettled: 쿼리 성공, 실패와 상관없이 실행되는 함수. 매개변수는 data, error
-  - 그밖의 옵션 참고: <https://tanstack.com/query/latest/docs/react/reference/useQuery>
+* staleTime: 조회한 데이터가 fresh에서 stale 상태로 변경되는데 걸리는 시간(default 0). fresh 상태에서는 동일한 요청에 대해 서버에 요청을 보내지 않고 캐시된 데이터를 반환
+* cacheTime: 데이터 조회 후 cacheTime 동안에는 동일한 요청에 대해 일단 캐시된 데이터를 반환하고 서버에 데이터를 요청함. 서버에서 데이터가 도착하면 캐시된 데이터를 교체해서 컴포넌트를 다시 렌더링 함(default 5분)
+* refetchOnMount: 데이터가 stale 상태일 경우 마운트 시 마다 재요청을 할지 여부(default true). "always"로 지정할 경우 fresh 상태일때도 마운트 시 마다 재요청 함.
+* refetchOnWindowFocus: 브라우저 윈도우 포커스가 다른 곳을 갔다가 돌아올 경우 재요청을 할 것인지 여부(default true). "always"로 지정하면 fresh 상태에서도 윈도우 포커싱이 될 때마다 재요청
+* enabled: false일 경우 쿼리를 실행하지 않음(default true)
+* retry: 실패한 쿼리를 재시도 할지 여부나 횟수(default 3)
+  - true: 무한 재시도
+  - false: 재시도 하지 않음
+  - 정수: 재시도 횟수
+* suspense: suspense mode 활성화 여부(default false). suspense mode가 활성화 될 경우 React의 Suspense와 함께 사용 가능
+* onSuccess: 쿼리 성공 시 실행되는 함수. 매개변수로 서버의 응답값이 전달됨
+* onError: 쿼리 실패 시 실행되는 함수. 매개변수로 에러값이 전달됨
+* onSettled: 쿼리 성공, 실패와 상관없이 실행되는 함수. 매개변수는 data, error
+* 그밖의 옵션 참고: <https://tanstack.com/query/latest/docs/react/reference/useQuery>
 
 ###### 리턴값
 * 다음의 속성을 가진 객체
@@ -387,17 +385,16 @@ useQuery(queryKey, queryFn, options)
 
 ##### API
 ```jsx
-useMutation(mutationFn, options)
+useMutation(options)
 ```
 
-###### 매개변수
+###### options
 * mutationFn
   - useMutation이 반환한 mutate 함수가 호출 되었을 때 실행될 함수이며 Promise를 반환해야 함
   - 함수 내부에서 axios.post() 같은 함수를 리턴하도록 작성
-* options
-  - cacheTime, retry: useQuery 설명 참조
-  - onSuccess, onError, onSettled: useQuery 설명 참조. useMutation 뿐만 아니라 mutate 함수의 옵션으로도 사용 가능
-  - 그밖의 옵션 참고: <https://tanstack.com/query/latest/docs/react/reference/useMutation>
+* cacheTime, retry: useQuery 설명 참조
+* onSuccess, onError, onSettled: useQuery 설명 참조. useMutation 뿐만 아니라 mutate 함수의 옵션으로도 사용 가능
+* 그밖의 옵션 참고: <https://tanstack.com/query/latest/docs/react/reference/useMutation>
 
 ###### 리턴값
 * 다음의 속성을 가진 객체
