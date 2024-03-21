@@ -1,11 +1,12 @@
+import Footer from "@components/layout/Footer";
+import Header from "@components/layout/Header";
+
 function BoardList(){
   return (
     <>
-      <header>
-        <div>
-          <h1>게시판</h1>
-        </div>
-      </header>
+      
+      <Header />
+
       <div>
         <section>
           <table>
@@ -41,11 +42,9 @@ function BoardList(){
           </div>
         </section>
       </div>
-      <footer>
-        <div>
-          <p>게시판 정책 및 약관 회사소개 광고 마이비즈니스제휴 제안 이용약관 개인정보취급방침 청소년보호 정책 고객센터</p>
-        </div>
-      </footer>
+      
+      <Footer />
+      
     </>
   );
 }
