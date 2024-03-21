@@ -6,7 +6,8 @@
   샘플 앱으로 접속하면 테스트 할 수 있습니다.
   샘플 앱은 jQuery를 이용해서 로그인 기능을 구현한 앱 입니다.
 
-  로그인 성공시: 하단의 로그인 가능한 계정으로 로그인을 성공하면 API 서버로 부터 사용자 정보가 반환되고 그중에서 name 속성값을 이용해 사용자 이름과 환영 메세지를 alert 함수로 출력합니다.
+  로그인 성공시: 하단의 로그인 가능한 계정으로 로그인을 성공하면 API 서버로 부터 사용자 정보가 반환되고 그중에서 name 속성값을 이용해 
+    사용자 이름과 환영 메세지를 alert 함수로 출력합니다.
   로그인 실패시: API 서버로부터 에러 정보가 반환되고 message 값을 alert 함수로 출력합니다.
 
   fork할 프로젝트: https://stackblitz.com/edit/vitejs-vite-w6c1h8?file=src%2FApp.jsx
@@ -24,14 +25,18 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
 function App() {
+  const { register, handleSubmit } = useForm();
+
   // 2. submit 이벤트 등록
-  const onSubmit = async () => {
+  const onSubmit = async (formData) => {
     try {
       // 3. API 서버 호출
+      const res = await axios.post('https://market-lion.koyeb.app/api/users/login', formData);
       // 4. 로그인 성공 메세지 출력
+      alert(res.data.item.name + '님 로그인 되었습니다.');
     } catch (err) {
       // 5. 로그인 실패 메세지 출력
-      
+      alert(err.response?.data.message);
     }
   };
 
@@ -39,7 +44,15 @@ function App() {
     // 1. JSX 작성
     <>
       <h1>로그인</h1>
-      <form></form>
+      <form onSubmit={ handleSubmit(onSubmit) }>
+        <label htmlFor="email">이메일</label>
+        <input type="text" id="email" { ...register('email') } />
+        <br />
+        <label htmlFor="password">비밀번호</label>
+        <input type="password" id="password" { ...register('password') } />
+        <br />
+        <button type="submit">로그인</button>
+      </form>
     </>
   );
 }
