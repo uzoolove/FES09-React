@@ -1,5 +1,6 @@
 import Footer from "@components/layout/Footer";
 import Header from "@components/layout/Header";
+import { Link } from "react-router-dom";
 
 function BoardDetail(){
   return (
@@ -17,8 +18,8 @@ function BoardDetail(){
             <hr/>
           </div>
           <div>
-            <a href="list.html">목록</a>
-            <button type="submit">삭제</button>
+            <Link to="/boards">목록</Link>
+            <button type="button">삭제</button>
           </div>
         </section>
         
@@ -32,7 +33,7 @@ function BoardDetail(){
                   <textarea name="comment" rows="3" cols="40" placeholder="내용을 입력하세요."></textarea>
                 </div>
               </div>
-              <button type="button">댓글 등록</button>
+              <button type="submit">댓글 등록</button>
             </form>
           </div>
       

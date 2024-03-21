@@ -1,16 +1,9 @@
-import BoardDetail from "@pages/BoardDetail";
-import BoardList from "@pages/BoardList";
-import BoardNew from "@pages/BoardNew";
-import BoardResult from "@pages/BoardResult";
+import { RouterProvider } from "react-router-dom";
+import router from "@/routes";
 
 function App(){
   return (
-    <>
-      <BoardList />
-      <BoardDetail />
-      <BoardNew />
-      <BoardResult />
-    </>
+    <RouterProvider router={ router } />
   );
 }
 

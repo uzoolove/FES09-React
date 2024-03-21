@@ -1,5 +1,6 @@
 import Footer from "@components/layout/Footer";
 import Header from "@components/layout/Header";
+import { Link } from "react-router-dom";
 
 function BoardResult(){
   return (
@@ -11,8 +12,8 @@ function BoardResult(){
           <p>등록되었습니다.</p>				
           <hr />
           <div>
-            <a href="board/3">글확인</a>
-            <a href="board/">목록</a>
+            <Link to="/boards/3">글확인</Link>
+            <Link to="/boards">목록</Link>
           </div>
         </section>
       </div>

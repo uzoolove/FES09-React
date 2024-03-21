@@ -1,5 +1,6 @@
 import Footer from "@components/layout/Footer";
 import Header from "@components/layout/Header";
+import { Link } from "react-router-dom";
 
 function BoardNew(){
   return (
@@ -8,7 +9,7 @@ function BoardNew(){
 
       <div>
         <section>
-          <form action="list.html">
+          <form action="/boards/3/result">
             <div>
               <label htmlFor="writer">작성자</label>
               <input type="text" id="writer" name="writer" autoFocus />
@@ -23,8 +24,8 @@ function BoardNew(){
             </div>
             <hr />
             <div>
-              <a href="list.html">취소</a>
-              <button type="submit" id="regist">등록</button>
+              <Link to="/boards">취소</Link>
+              <button type="submit">등록</button>
             </div>
           </form>
         </section>

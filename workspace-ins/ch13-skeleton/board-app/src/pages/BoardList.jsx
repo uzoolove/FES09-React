@@ -1,5 +1,6 @@
 import Footer from "@components/layout/Footer";
 import Header from "@components/layout/Header";
+import { Link } from "react-router-dom";
 
 function BoardList(){
   return (
@@ -22,14 +23,14 @@ function BoardList(){
             <tbody>
               <tr>
                 <td>2</td>
-                <td><a href="view.html">useState 훅이란?</a></td>
+                <td><Link to="/boards/1">useState 훅이란?</Link></td>
                 <td>이영희</td>
                 <td>30</td>
                 <td>2099-07-27 21:33</td>
               </tr>
               <tr>
                 <td>1</td>
-                <td><a href="view.html">useEffect 훅이란?</a></td>
+                <td><Link to="/boards/2">useEffect 훅이란?</Link></td>
                 <td>김철수</td>
                 <td>123</td>
                 <td>2099-07-20 11:25</td>
@@ -38,7 +39,7 @@ function BoardList(){
           </table>
           <hr/>
           <div>
-            <a href="write.html">글쓰기</a>
+            <Link to="/boards/new">글쓰기</Link>
           </div>
         </section>
       </div>
