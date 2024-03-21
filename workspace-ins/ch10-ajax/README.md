@@ -326,9 +326,9 @@ axios.interceptors.response.use((response) => {
 
   function App() {
     return (
-      <QueryClientProvider client={queryClient}>    
+      <QueryClientProvider client={ queryClient }>    
         ......
-        <ReactQueryDevtools initialIsOpen={false} />
+        <ReactQueryDevtools initialIsOpen={ false } />
       </QueryClientProvider>
     );
   }
@@ -336,6 +336,16 @@ axios.interceptors.response.use((response) => {
 
 #### useQuery
 * 서버의 데이터를 조회할 때 사용(GET)
+* 응답 받은 데이터는 캐시되며 다음번 요청시 서버에 요청하지 않고 캐시된 데이터를 반환
+* 캐시 상태
+  - fresh
+    + 쿼리 실행 후 캐시된 데이터가 오래되지 않은 상태
+    + 이때 동일한 쿼리가 다시 실행되면 서버에 요청하지 않고 캐시된 데이터를 반환
+    + staleTime 속성으로 fresh 상태를 얼마나 유지할지 설정 가능(default 0)
+  - stale
+    + fresh 상태가 지나면 캐시는 stale 상태가 됨
+    + 이때 동일한 쿼리가 다시 실행되면 일단 캐시된 데이터를 반환하고 서버에 데이터를 요청함
+    + 서버에서 데이터가 도착하면 캐시된 데이터를 교체하고 컴포넌트를 다시 렌더링 함
 
 ##### API
 ```jsx
@@ -346,31 +356,40 @@ useQuery(options)
 * queryKey
   - useQuery에 부여되는 고유한 Key 값(배열)
   - 같은 queryKey로 요청한 useQuery는 동일한 요청으로 인식하며 캐시된 결과를 반환
-  - 사용 예시
-  ```jsx
-  // 게시물 목록 조회
-  useQuery(['boards'], queryFn)
-  // 3번 게시물 상세 조회
-  useQuery(['boards', '3'], queryFn)
-  // 3번 게시물 댓글 목록 조회
-  useQuery(['boards', '3', 'comments'], queryFn)
-  ```
+    
 * queryFn
   - useQuery가 호출 되었을 때 실행될 함수이며 Promise를 반환해야 함
   - 함수 내부에서 axios.get() 같은 함수를 리턴하도록 작성
+
+  - 사용 예시
+  ```jsx
+  // 게시물 목록 조회
+  useQuery({
+    queryKey: ['boards'],
+    queryFn: () => axios.get('/posts')
+  });
+  // 3번 게시물 상세 조회
+  useQuery({
+    queryKey: ['boards', '3'],
+    queryFn: () => axios.get('/posts/3')
+  });
+  // 3번 게시물 댓글 목록 조회
+   useQuery({
+    queryKey: ['boards', '3', 'replies'],
+    queryFn: () => axios.get('/posts/3/replies')
+  });
+  ```
+
 * staleTime: 조회한 데이터가 fresh에서 stale 상태로 변경되는데 걸리는 시간(default 0). fresh 상태에서는 동일한 요청에 대해 서버에 요청을 보내지 않고 캐시된 데이터를 반환
-* cacheTime: 데이터 조회 후 cacheTime 동안에는 동일한 요청에 대해 일단 캐시된 데이터를 반환하고 서버에 데이터를 요청함. 서버에서 데이터가 도착하면 캐시된 데이터를 교체해서 컴포넌트를 다시 렌더링 함(default 5분)
+* gcTime: 캐시된 데이터가 얼마동안 사용되지 않으면 제거할지 지정(default 5분)
 * refetchOnMount: 데이터가 stale 상태일 경우 마운트 시 마다 재요청을 할지 여부(default true). "always"로 지정할 경우 fresh 상태일때도 마운트 시 마다 재요청 함.
-* refetchOnWindowFocus: 브라우저 윈도우 포커스가 다른 곳을 갔다가 돌아올 경우 재요청을 할 것인지 여부(default true). "always"로 지정하면 fresh 상태에서도 윈도우 포커싱이 될 때마다 재요청
+* refetchOnWindowFocus: 브라우저가 화면에서 보이지 않다가 다시 보이는 경우 재요청을 할 것인지 여부(default true). "always"로 지정하면 fresh 상태에서도 윈도우 포커싱이 될 때마다 재요청
 * enabled: false일 경우 쿼리를 실행하지 않음(default true)
 * retry: 실패한 쿼리를 재시도 할지 여부나 횟수(default 3)
   - true: 무한 재시도
   - false: 재시도 하지 않음
   - 정수: 재시도 횟수
 * suspense: suspense mode 활성화 여부(default false). suspense mode가 활성화 될 경우 React의 Suspense와 함께 사용 가능
-* onSuccess: 쿼리 성공 시 실행되는 함수. 매개변수로 서버의 응답값이 전달됨
-* onError: 쿼리 실패 시 실행되는 함수. 매개변수로 에러값이 전달됨
-* onSettled: 쿼리 성공, 실패와 상관없이 실행되는 함수. 매개변수는 data, error
 * 그밖의 옵션 참고: <https://tanstack.com/query/latest/docs/react/reference/useQuery>
 
 ###### 리턴값
@@ -382,6 +401,8 @@ useQuery(options)
 
 #### useMutation
 * 서버의 데이터를 변경할 때 사용(POST, PUT, PATCH, DELETE)
+* useMutation은 React Hook이므로 컴포넌트 루트에서만 사용할 수 있고 대부분의 경우 서버의 데이터를 변경하는 작업은(등록, 수정, 삭제) 사용자의 액션에 의해서 실행 되기 때문에 mutationFn이 호출되는 위치는 이벤트 핸들러 내부이므로 컴포넌트 루트가 아님
+* useMutation은 쿼리를 바로 실행하지 않고 쿼리를 실행 할때 사용할 함수를 반환하므로 이벤트 핸들러 내에서 useMutation이 반환한 함수를 통해 쿼리 실행
 
 ##### API
 ```jsx
@@ -392,23 +413,25 @@ useMutation(options)
 * mutationFn
   - useMutation이 반환한 mutate 함수가 호출 되었을 때 실행될 함수이며 Promise를 반환해야 함
   - 함수 내부에서 axios.post() 같은 함수를 리턴하도록 작성
-* cacheTime, retry: useQuery 설명 참조
-* onSuccess, onError, onSettled: useQuery 설명 참조. useMutation 뿐만 아니라 mutate 함수의 옵션으로도 사용 가능
+* gcTime, retry: useQuery 설명 참조
+* onSuccess: 쿼리 성공 시 실행되는 함수. 매개변수로 서버의 응답값이 전달됨
+* onError: 쿼리 실패 시 실행되는 함수. 매개변수로 에러값이 전달됨
+* onSettled: 쿼리 성공, 실패와 상관 없이 실행되는 함수. 매개변수는 data, error
+  - onSuccess, onError, onSettled는 useMutation 뿐만 아니라 mutate 함수의 옵션으로도 사용 가능
 * 그밖의 옵션 참고: <https://tanstack.com/query/latest/docs/react/reference/useMutation>
 
 ###### 리턴값
 * 다음의 속성을 가진 객체
-  - mutate: useMutation은 React Hook이므로 컴포넌트 루트에서만 사용할 수 있고 대부분의 경우 서버의 데이터를 변경하는 작업은(등록, 수정, 삭제) 사용자의 액션에 의해서 실행 되기 때문에 mutationFn이 호출되는 위치는 이벤트 핸들러 내부이므로 컴포넌트 루트가 아님. 이벤트 핸들러 내부에서 mutate를 호출하면 mutationFn이 호출되면서 실제 비동기 요청이 발생함
+  - mutate: 이벤트 핸들러 내부에서 mutate를 호출하면 mutationFn이 호출되면서 실제 비동기 요청이 발생함
   - isLoading, error, data: useQuery 설명 참조
   - 그밖의 속성 참고: <https://tanstack.com/query/latest/docs/react/reference/useMutation>
 
 ###### invalidateQueries
 * useQuery에서 사용된 queryKey를 지정해서 해당 쿼리를 무효화 시키고 데이터를 다시 가져옴
-* 예시
+* 사용 예시
   ```jsx
   const queryClient = useQueryClient();
   // 새로운 댓글 작성시 3번 게시물의 댓글 목록을 무효화 시키고 서버에서 다시 가져옴
   queryClient.invalidateQueries(['boards', 3, 'comments'])
   ```
-
 * 참고: <https://tanstack.com/query/latest/docs/react/reference/QueryClient#queryclientinvalidatequeries>
