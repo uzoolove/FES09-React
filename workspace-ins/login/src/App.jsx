@@ -20,12 +20,26 @@
 
   로그인 가능한 계정 1: u1@market.com / 11111111
   로그인 가능한 계정 2: s1@market.com / 11111111
+
+  배점(100점 만점)
+    1. 에러 없이 페이지 로딩(10점)
+    2. email, password 입력 양식 작성(10점)
+    3. 이벤트 등록(20점)
+    4. API 서버 호출(20점)
+    5. API 서버 응답 메세지 처리(20점)
+    6. 기타(20점)
 */
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
+const errorStyle = {
+  fontSize: '12px',
+  color: 'red',
+  fontWeight: 'bold'
+};
+
 function App() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors }  } = useForm();
 
   // 2. submit 이벤트 등록
   const onSubmit = async (formData) => {
@@ -46,11 +60,22 @@ function App() {
       <h1>로그인</h1>
       <form onSubmit={ handleSubmit(onSubmit) }>
         <label htmlFor="email">이메일</label>
-        <input type="text" id="email" { ...register('email') } />
+        <input type="text" id="email" { ...register('email', {
+          required: '이메일을 입력하세요.',
+          pattern: {
+            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            message: '이메일 형식이 아닙니다.'
+          } 
+        }) } />
         <br />
+        { errors && <div style={ errorStyle }>{ errors.email?.message }</div> }
         <label htmlFor="password">비밀번호</label>
-        <input type="password" id="password" { ...register('password') } />
+        <input type="password" id="password" { ...register('password', {
+          required: "비밀번호는 필수 입니다.",
+          minLength: 8
+        }) } />
         <br />
+        { errors && <div style={ errorStyle }>{ errors.password?.message }</div> }
         <button type="submit">로그인</button>
       </form>
     </>
