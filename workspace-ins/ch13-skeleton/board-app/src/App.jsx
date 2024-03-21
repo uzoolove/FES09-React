@@ -1,8 +1,9 @@
-import BoardList from "@pages/BoardList";
+import { RouterProvider } from "react-router-dom";
+import router from "@/routes";
 
 function App(){
   return (
-    <BoardList />
+    <RouterProvider router={ router } />
   );
 }
 
