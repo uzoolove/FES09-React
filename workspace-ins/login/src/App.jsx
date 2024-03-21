@@ -18,7 +18,7 @@
   * postman으로 먼저 테스트 해보세요.
 
   로그인 가능한 계정 1: u1@market.com / 11111111
-로그인 가능한 계정 2: s1@market.com / 11111111
+  로그인 가능한 계정 2: s1@market.com / 11111111
 */
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
