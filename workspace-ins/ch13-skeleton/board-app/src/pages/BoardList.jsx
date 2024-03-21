@@ -3,6 +3,8 @@ import Header from "@components/layout/Header";
 import { Link } from "react-router-dom";
 
 function BoardList(){
+
+  
   return (
     <>
       
