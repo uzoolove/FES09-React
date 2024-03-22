@@ -9,7 +9,8 @@ function useCustomAxios(){
     timeout: 1000*5,
     headers: {
       'content-type': 'application/json', // request 데이터 타입
-      accept: 'application/json'  // response 데이터 타입
+      accept: 'application/json',  // response 데이터 타입
+      Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOjQsInR5cGUiOiJ1c2VyIiwibmFtZSI6IuuNsOydtOyngCIsImlhdCI6MTcxMTA3MTkzMSwiZXhwIjoxNzExMDc5MTMxLCJpc3MiOiJGRVNQMDEifQ.rZqI7uUUigHWDhA-NQ4QnHVjU_BCIwFS1bHtaAsOtOI`
     }
   });
 

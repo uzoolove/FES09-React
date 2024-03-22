@@ -1,26 +1,34 @@
 import Footer from "@components/layout/Footer";
 import Header from "@components/layout/Header";
-import { Link } from "react-router-dom";
+import useCustomAxios from "@hooks/useCustomAxios.mjs";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 
 function BoardNew(){
+  const { register, handleSubmit } = useForm();
+  const axios = useCustomAxios();
+  const navigate = useNavigate();
+
+  const onSubmit = async formData => {
+    const res = await axios.post('/posts', formData);
+    console.log(res);
+    navigate(`/boards/${res.data.item._id}/result`);
+  };
+
   return (
     <>
       <Header />
 
       <div>
         <section>
-          <form action="/boards/3/result">
-            <div>
-              <label htmlFor="writer">작성자</label>
-              <input type="text" id="writer" name="writer" autoFocus />
-            </div>
+          <form onSubmit={ handleSubmit(onSubmit) }>
             <div>
               <label htmlFor="title">제목</label>
-              <input type="text" id="title" name="title" placeholder="제목을 입력하세요." />
+              <input type="text" id="title" placeholder="제목을 입력하세요." { ...register('title') } />
             </div>
             <div>
               <label htmlFor="content">내용</label>
-              <div><textarea id="content" name="content" rows="15" cols="50"></textarea></div>
+              <div><textarea id="content" rows="15" cols="50" { ...register('content') }></textarea></div>
             </div>
             <hr />
             <div>
