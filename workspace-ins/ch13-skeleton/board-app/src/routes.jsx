@@ -1,7 +1,7 @@
-import BoardDetail from "@pages/BoardDetail";
-import BoardList from "@pages/BoardList";
-import BoardNew from "@pages/BoardNew";
-import BoardResult from "@pages/BoardResult";
+import BoardDetail from "@pages/board/BoardDetail";
+import BoardList from "@pages/board/BoardList";
+import BoardNew from "@pages/board/BoardNew";
+import BoardResult from "@pages/board/BoardResult";
 import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([

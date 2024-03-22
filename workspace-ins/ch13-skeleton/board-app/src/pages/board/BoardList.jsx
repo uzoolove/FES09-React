@@ -1,7 +1,7 @@
 import Footer from "@components/layout/Footer";
 import Header from "@components/layout/Header";
 import useCustomAxios from "@hooks/useCustomAxios.mjs";
-import BoardListItem from "@pages/BoardListItem";
+import BoardListItem from "@pages/board/BoardListItem";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -10,9 +10,7 @@ function BoardList(){
   const axios = useCustomAxios();
 
   const fetchBoardList = async () => {
-    const response = await axios.get('/posts', {
-      params: { type: 'qna' }
-    });
+    const response = await axios.get('/posts');
     setData(response.data);
   };
 
