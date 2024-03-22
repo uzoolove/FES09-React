@@ -12,7 +12,7 @@ function ReplyList(){
   const [data, setData] = useState(null);
 
   const fetchList = async () => {
-    const res = await axios.get(`/boards/${ _id }/replies`);
+    const res = await axios.get(`/posts/${ _id }/replies`);
     setData(res.data);
   }
 
@@ -24,7 +24,7 @@ function ReplyList(){
 
   return (
     <section>
-      <ReplyNew />
+      <ReplyNew fetchList={ fetchList } />
       <h4>댓글 { list?.length || 0 }개</h4>
       { list }
     </section>
