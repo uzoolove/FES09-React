@@ -1,5 +1,7 @@
 import { useForm } from 'react-hook-form';
 import useCustomAxios from '@hooks/useCustomAxios.mjs';
+import { userState } from '@recoil/user/atoms.mjs';
+import { useSetRecoilState } from 'recoil';
 
 const errorStyle = {
   fontSize: '12px',
@@ -8,12 +10,25 @@ const errorStyle = {
 };
 
 function Login() {
+  // recoil setter 반환
+  const setUser = useSetRecoilState(userState);
   const axios = useCustomAxios();
-  const { register, handleSubmit, formState: { errors }  } = useForm();
+  const { register, handleSubmit, formState: { errors }  } = useForm({
+    values: {
+      email: 'u1@market.com',
+      password: '11111111'
+    }
+  });
 
   const onSubmit = async (formData) => {
     try {
       const res = await axios.post('/users/login', formData);
+      // 사용자 정보를 recoil에 저장
+      setUser({
+        _id: res.data.item._id,
+        name: res.data.item.name,
+        token: res.data.token,
+      });
       alert(res.data.item.name + '님 로그인 되었습니다.');
     } catch (err) {
       alert(err.response?.data.message);
