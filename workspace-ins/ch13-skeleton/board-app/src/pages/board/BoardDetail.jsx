@@ -1,13 +1,17 @@
 import Footer from "@components/layout/Footer";
 import Header from "@components/layout/Header";
 import useCustomAxios from "@hooks/useCustomAxios.mjs";
+import { memberState } from "@recoil/user/atoms.mjs";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 
 function BoardDetail(){
   const axios = useCustomAxios();
+  const navigate = useNavigate();
   const { _id } = useParams();
   const [ data, setData ] = useState();
+  const user = useRecoilValue(memberState);
 
   const fetchDetail = async () => {
     const res = await axios.get(`/posts/${ _id }`);
@@ -18,6 +22,13 @@ function BoardDetail(){
   useEffect(() => {
     fetchDetail();
   }, []);
+
+  // 삭제
+  const handleDelete = async () => {
+    await axios.delete(`/posts/${ _id }`);
+    alert('삭제되었습니다.');
+    navigate('/boards');
+  };
 
   const item = data?.item;
 
@@ -36,7 +47,7 @@ function BoardDetail(){
             </div>
             <div>
               <Link to="/boards">목록</Link>
-              <button type="button">삭제</button>
+              { user?._id === item.user._id && <button type="button" onClick={ handleDelete }>삭제</button> }
             </div>
           </section>
         ) }

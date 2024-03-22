@@ -26,6 +26,9 @@ function BoardList(){
       <Header />
 
       <div>
+        <div>
+          <Link to="/boards/new">글쓰기</Link>
+        </div>
         <section>
           <table>
             <thead>
@@ -42,9 +45,7 @@ function BoardList(){
             </tbody>
           </table>
           <hr/>
-          <div>
-            <Link to="/boards/new">글쓰기</Link>
-          </div>
+          
         </section>
       </div>
       
