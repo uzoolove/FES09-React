@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { userState } from "@recoil/user/atoms.mjs";
+import { memberState } from "@recoil/user/atoms.mjs";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 
@@ -11,7 +11,7 @@ function Header(){
     navigate('/');
   };
 
-  const [user, setUser] = useRecoilState(userState);
+  const [user, setUser] = useRecoilState(memberState);
 
   return (
     <header>

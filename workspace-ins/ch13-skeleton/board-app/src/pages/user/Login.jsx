@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import useCustomAxios from '@hooks/useCustomAxios.mjs';
-import { userState } from '@recoil/user/atoms.mjs';
+import { memberState } from '@recoil/user/atoms.mjs';
 import { useSetRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ const errorStyle = {
 
 function Login() {
   // recoil setter 반환
-  const setUser = useSetRecoilState(userState);
+  const setUser = useSetRecoilState(memberState);
   const axios = useCustomAxios();
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors }  } = useForm({
@@ -29,7 +29,7 @@ function Login() {
       setUser({
         _id: res.data.item._id,
         name: res.data.item.name,
-        token: res.data.token,
+        token: res.data.item.token,
       });
       alert(res.data.item.name + '님 로그인 되었습니다.');
       navigate('/'); // 메인페이지로 이동
