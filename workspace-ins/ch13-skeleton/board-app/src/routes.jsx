@@ -3,6 +3,7 @@ import BoardDetail from "@pages/board/BoardDetail";
 import BoardList from "@pages/board/BoardList";
 import BoardNew from "@pages/board/BoardNew";
 import BoardResult from "@pages/board/BoardResult";
+import ReplyList from "@pages/board/ReplyList";
 import Login from "@pages/user/Login";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -21,7 +22,13 @@ const router = createBrowserRouter([
       },
       {
         path: "boards/:_id",
-        element: <BoardDetail />
+        element: <BoardDetail />,
+        children: [
+          {
+            index: true,
+            element: <ReplyList />
+          }
+        ]
       },
       {
         path: "boards/new",

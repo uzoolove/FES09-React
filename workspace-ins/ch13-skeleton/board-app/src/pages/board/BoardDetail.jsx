@@ -1,8 +1,7 @@
 import useCustomAxios from "@hooks/useCustomAxios.mjs";
-import ReplyList from "@pages/board/ReplyList";
 import { memberState } from "@recoil/user/atoms.mjs";
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
 function BoardDetail(){
@@ -49,7 +48,7 @@ function BoardDetail(){
         </section>
       ) }
       
-      <ReplyList />
+      <Outlet />
       
     </div>
   );
