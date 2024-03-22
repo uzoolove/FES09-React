@@ -1,27 +1,45 @@
 import Footer from "@components/layout/Footer";
 import Header from "@components/layout/Header";
-import { Link } from "react-router-dom";
+import useCustomAxios from "@hooks/useCustomAxios.mjs";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 function BoardDetail(){
-  return (
-    <>
-    
-      <Header />
+  const axios = useCustomAxios();
+  const { _id } = useParams();
+  const [ data, setData ] = useState();
 
+  const fetchDetail = async () => {
+    const res = await axios.get(`/posts/${ _id }`);
+    console.log(res);
+    setData(res.data);
+  }
+
+  useEffect(() => {
+    fetchDetail();
+  }, []);
+
+  const item = data?.item;
+
+  return (
+    <>    
+      <Header />
       <div>
-        <section>
-          <div>작성자 : 김철수</div>
-          <div>제목 : useState 훅이란</div>
-          <div>
-            <span>내용</span>
-            <div><textarea rows="15" cols="50" readOnly defaultValue="상태값(컴포넌트에서 관리하는 데이터)을 추가하기 위한 훅"></textarea></div>
-            <hr/>
-          </div>
-          <div>
-            <Link to="/boards">목록</Link>
-            <button type="button">삭제</button>
-          </div>
-        </section>
+        { data && (
+          <section>
+            <div>작성자 : { item.user.name }</div>
+            <div>제목 : { item.title }</div>
+            <div>
+              <span>내용</span>
+              <div><textarea rows="15" cols="50" readOnly value={ item.content }></textarea></div>
+              <hr/>
+            </div>
+            <div>
+              <Link to="/boards">목록</Link>
+              <button type="button">삭제</button>
+            </div>
+          </section>
+        ) }
         
         <section>
 
@@ -38,15 +56,6 @@ function BoardDetail(){
           </div>
       
           <h4>댓글 2개</h4>
-    
-          <div>
-            <h5>
-              <img width="30px" src="https://i.namu.wiki/i/o0BdyBR_G5rTNZH731sc9aOuq1OYdQKBYWaM-B9d0oRnIhsl2jZ-D7gTTGL_PKCxxaDiJmiGpUxZVVQll2D7-7W2lCpqoSwO-24H5IqeDXmVcbpIHZUNfE7vmQ37phOrvR6vETKkDAWlKVPsoNuZ-g.webp" alt="" />
-              <a href="">무지</a>
-            </h5>
-            <pre>좋은 글 감사합니다.</pre>
-            <time dateTime="2024-03-19 12:34:56">2024-03-19 12:34:56</time>
-          </div>
 
           <div>
             <h5>
@@ -58,8 +67,7 @@ function BoardDetail(){
           </div>
         
         </section>
-      </div>
-      
+      </div>      
       <Footer />
 
     </>

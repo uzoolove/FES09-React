@@ -9,7 +9,7 @@ function BoardListItem({ item }){
   return (
     <tr>
       <td>{ item._id }</td>
-      <td><Link to="/boards/1">{ item.title }</Link></td>
+      <td><Link to={`/boards/${ item._id }`}>{ item.title }</Link></td>
       <td>{ item.user.name }</td>
       <td>30</td>
       <td>{ item.updatedAt }</td>
