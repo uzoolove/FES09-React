@@ -2,7 +2,7 @@ import Footer from "@components/layout/Footer";
 import Header from "@components/layout/Header";
 import useCustomAxios from "@hooks/useCustomAxios.mjs";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"
 
 function BoardNew(){
   const { register, handleSubmit } = useForm();

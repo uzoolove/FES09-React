@@ -27,25 +27,20 @@ function BoardList(){
 
       <div>
         <section>
-          { itemList && (
-            <table>
-              <thead>
-                <tr>
-                  <th>번호</th>
-                  <th>제목</th>
-                  <th>글쓴이</th>
-                  <th>조회</th>
-                  <th>작성일</th>
-                </tr>
-              </thead>
-              <tbody>
-                { itemList }
-              </tbody>
-            </table>
-          ) }
-          { !itemList && (
-            <p>게시물이 없습니다.</p>
-          ) }
+          <table>
+            <thead>
+              <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>글쓴이</th>
+                <th>조회</th>
+                <th>작성일</th>
+              </tr>
+            </thead>
+            <tbody>
+              { itemList }
+            </tbody>
+          </table>
           <hr/>
           <div>
             <Link to="/boards/new">글쓰기</Link>
