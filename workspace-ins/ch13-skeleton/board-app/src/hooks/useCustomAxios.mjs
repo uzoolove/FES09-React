@@ -15,7 +15,7 @@ function useCustomAxios(){
     timeout: 1000*5,
     headers: {
       'content-type': 'application/json', // request 데이터 타입
-      accept: 'application/json',  // response 데이터 타입
+      'accept': 'application/json',  // response 데이터 타입
     }
   });
 
