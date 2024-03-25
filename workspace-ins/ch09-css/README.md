@@ -63,9 +63,9 @@
   export default StyledButton;
   ```
 
-## Tainwind CSS
+## Tailwind CSS
 
-### Tainwind CSS란?
+### Tailwind CSS란?
 * utility-first CSS framework
 * 미리 정의된 CSS 클래스를 이용해서 스타일링을 할 수 있는 프레임워크
 * CSS 파일을 따로 만들 필요 없이 제공되는 클래스를 HTML 태그에 직접 지정
@@ -123,7 +123,7 @@ npm install -D tailwindcss postcss autoprefixer
       },
     }
     ```
-    
+
 #### tailwindcss 지시어 추가
 * index.css
   ```css
