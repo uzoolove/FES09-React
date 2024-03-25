@@ -1,3 +1,4 @@
+import Button from "@components/Button";
 import useCustomAxios from "@hooks/useCustomAxios.mjs";
 import { memberState } from "@recoil/user/atoms.mjs";
 import { useEffect, useState } from "react";
@@ -42,8 +43,8 @@ function BoardDetail(){
             <hr/>
           </div>
           <div>
-            <Link to="/boards">목록</Link>
-            { user?._id === item.user._id && <button type="button" onClick={ handleDelete }>삭제</button> }
+            <Link className="btn" to="/boards">목록</Link>
+            { user?._id === item.user._id && <Button bgColor="red" onClick={ handleDelete }>삭제</Button> }
           </div>
         </section>
       ) }
