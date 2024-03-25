@@ -11,3 +11,21 @@
   cursor: pointer; /* Cursor pointer */
   border-radius: 6px; /* Border radius */
 }
+.button-blue{
+  color: blue
+}
+.button-red{
+  color: red
+}
+.button-gray{
+  color: gray
+}
+.button-bg-gray{
+  background-color: gray;
+}
+.button-bg-blue{
+  background-color: blue;
+}
+.button-bg-red{
+  background-color: red;
+}
