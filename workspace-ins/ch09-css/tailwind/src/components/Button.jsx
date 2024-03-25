@@ -3,11 +3,22 @@ import PropTypes from 'prop-types';
 Button.propTypes = {
   children: PropTypes.string.isRequired,
   bgColor: PropTypes.string,
+  size: PropTypes.string,
 };
 
-function Button({ children, bgColor }){
+function Button({ children, bgColor, size, ...rest }){
+  let btnColor = {
+    gray: `bg-gray-500`,
+    blue: 'bg-blue-500',
+    red: 'bg-red-500',
+  };
+  let btnSize = {
+    sm: 'py-1 px-2 text-sm',
+    md: 'py-2 px-4 text-base',
+    lg: 'py-2 px-6 text-lg',
+  };
 
-  return <button className={`bg-${bgColor}-500 text-white font-semibold px-2 py-1 ml-2 text-base hover:bg-blue-600 rounded`}>{ children }</button>
+  return <button className={`${ btnColor[bgColor] } ${ btnSize[size] } text-white font-semibold ml-2 text-base hover:bg-blue-600 rounded`} { ...rest }>{ children }</button>
 }
 
 export default Button;
