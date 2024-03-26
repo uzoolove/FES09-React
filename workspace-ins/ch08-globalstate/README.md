@@ -159,7 +159,7 @@ npm i recoil
   export default Left3;
   ```
 
-### Recoil 참고: <https://recoiljs.org/ko>
+##### Recoil 참고: <https://recoiljs.org/ko>
 
 ## Zustand
 * zustand는 '상태'라는 뜻의 독일어로 리액트의 상태 관리 라이브러리 중 하나
@@ -215,9 +215,7 @@ npm i zustand
   export default Right3;
   ```
 
-### Zustand 참고: <https://docs.pmnd.rs/zustand>
-
-
+##### Zustand 참고: <https://docs.pmnd.rs/zustand>
 
 ## Redux
 * 자바스크립트 애플리케이션을 위한 예측 가능한 상태 컨테이너
@@ -247,7 +245,7 @@ npm i zustand
   - 비즈니스 로직 실행 후의 결과(Action)를 Dispatcher를 거쳐 Store로 전달하여 상태를 변경
 * Action
   - Dispatcher를 거쳐 Store로 전될되는 메세지
-  - 상태를 어떻게 병경할 것인지를 담은 메세지 정보 객체
+  - 상태를 어떻게 변경할 것인지를 담은 메세지 정보 객체
     ```js
     { type: 'countDown', payload: { step: 2 }}
     ```
@@ -278,7 +276,7 @@ npm i zustand
   - 애플리케이션의 다른 부분에서 상태를 변경할 수 없음
   - 상태를 변경하기 위해서는 action이 보내져야 함
 * 상태의 변경은 순수 함수로 작성
-  - Reducer는 현재의 상태를 인자로 전달받고 상태를 수정하여 새로운 상태로 리턴하는 순수함수로 만들어야 함
+  - Reducer는 현재의 상태를 인자로 전달 받고 상태를 수정하여 새로운 상태로 리턴하는 순수함수로 만들어야 함
 
 ### 설치
 ```
@@ -288,5 +286,5 @@ npm i redux react-redux @reduxjs/toolkit
 ### Redux DevTools 설치
 * 크롬 웹스토어에서 Redux DevTools 검색 후 설치
 * 개발자 도구에 Redux 탭이 생김
-
+* 리덕스 디버깅에 유용
 
