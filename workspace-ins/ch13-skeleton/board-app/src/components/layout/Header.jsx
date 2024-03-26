@@ -3,6 +3,7 @@ import { memberState } from "@recoil/user/atoms.mjs";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import Button from '@components/Button';
+import Theme from '@components/Theme';
 
 function Header(){
   const navigate = useNavigate();
@@ -42,6 +43,7 @@ function Header(){
               <Button size="sm" bgColor="gray" onClick={ () => navigate('/users/signup') }>회원가입</Button>
             </div>
           ) }
+          <Theme />
         </div>
       </nav>
     </header>
