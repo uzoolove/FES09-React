@@ -19,7 +19,7 @@ function Header(){
       <nav className="flex flex-wrap justify-center items-center p-4 md:flex-nowrap md:justify-between">
         <div className="w-1/2 order-1 md:w-auto">
           <a className="flex items-center gap-2" href="/">
-            <img className="mr-3 h-6" src="/vite.svg" alt="로고 이미지" />
+            <img className="mr-3 h-6 sm:h-9" src="/vite.svg" alt="로고 이미지" />
             <span className="text-xl font-semibold">게시판</span>
           </a>
         </div>
