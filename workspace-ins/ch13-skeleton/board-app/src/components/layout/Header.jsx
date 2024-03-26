@@ -33,7 +33,8 @@ function Header(){
         </div>
         <div className="w-1/2 order-1 flex justify-end items-center md:order-2 md:w-auto">
           { user ? (
-            <p>
+            <p className="flex items-center">
+              <img className="w-8 rounded-full mr-2" src={`https://market-lion.koyeb.app/api/files/${ user.profile }`}></img>
               { user.name }님 :)
               <Button size="sm" onClick={ handleLogout }>로그아웃</Button>
             </p>
