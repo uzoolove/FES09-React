@@ -23,9 +23,9 @@ function ReplyList(){
   const list = data?.item.map(item => <ReplyItem key={ item._id } item={ item } />);
 
   return (
-    <section>
+    <section className="mb-8">
       <ReplyNew fetchList={ fetchList } />
-      <h4>댓글 { list?.length || 0 }개</h4>
+      <h4 className="mt-8 mb-4 ml-2">댓글 { list?.length || 0 }개</h4>
       { list }
     </section>
   );
