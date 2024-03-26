@@ -1,7 +1,8 @@
+import Button from "@components/Button";
 import useCustomAxios from "@hooks/useCustomAxios.mjs";
 import { memberState } from "@recoil/user/atoms.mjs";
 import { useEffect, useState } from "react";
-import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
 function BoardDetail(){
@@ -31,19 +32,20 @@ function BoardDetail(){
   const item = data?.item;
 
   return (
-    <div>
+    <div className="container mx-auto mt-4 px-4">
       { data && (
-        <section>
-          <div>작성자 : { item.user.name }</div>
-          <div>제목 : { item.title }</div>
-          <div>
-            <span>내용</span>
-            <div><textarea rows="15" cols="50" readOnly value={ item.content }></textarea></div>
+        <section className="mb-8 p-4">
+          <div className="font-semibold text-xl">제목 : { item.title }</div>
+          <div className="text-right text-gray-400">작성자 : { item.user.name }</div>
+          <div className="mb-4">
+            <div>
+              <pre className="w-full p-2 whitespace-pre-wrap">{ item.content }</pre>
+            </div>
             <hr/>
           </div>
-          <div>
-            <Link to="/boards">목록</Link>
-            { user?._id === item.user._id && <button type="button" onClick={ handleDelete }>삭제</button> }
+          <div className="flex justify-end my-4">
+            <Button onClick={ () => navigate('/boards') }>목록</Button>
+            { user?._id === item.user._id && <Button bgColor="red" onClick={ handleDelete }>삭제</Button> }
           </div>
         </section>
       ) }
