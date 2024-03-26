@@ -4,6 +4,7 @@ import BoardList from "@pages/board/BoardList";
 import BoardNew from "@pages/board/BoardNew";
 import ReplyList from "@pages/board/ReplyList";
 import Login from "@pages/user/Login";
+import Signup from "@pages/user/Signup";
 import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "users/login",
         element: <Login />
+      },
+      {
+        path: "users/signup",
+        element: <Signup />
       }
     ]
   },

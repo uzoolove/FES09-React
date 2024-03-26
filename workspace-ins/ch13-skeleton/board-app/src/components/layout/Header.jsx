@@ -34,7 +34,7 @@ function Header(){
           { user ? (
             <p>
               { user.name }님 :)
-              <button type="button" onClick={ handleLogout }>로그아웃</button>
+              <Button size="sm" onClick={ handleLogout }>로그아웃</Button>
             </p>
           ) : (
             <div className="flex justify-end">
