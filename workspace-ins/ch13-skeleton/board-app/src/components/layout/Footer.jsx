@@ -1,6 +1,6 @@
 function Footer(){
   return (
-    <footer className="p-4 bg-gray-200 text-gray-600">
+    <footer className="p-4 bg-gray-200 dark:bg-gray-600 text-gray-600 dark:text-white">
       <div className="min-w-[320px] flex flex-wrap gap-4 justify-center items-center">
         <a href="#" className="hover:font-semibold dark:hover:text-gray-400">약관</a>
         <a href="#" className="hover:font-semibold dark:hover:text-gray-400">게시판 정책</a>

@@ -15,7 +15,7 @@ function Header(){
   const [user, setUser] = useRecoilState(memberState);
 
   return (
-    <header className="min-w-80 bg-gray-200 text-gray-800">
+    <header className="min-w-80 bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-200">
       <nav className="flex flex-wrap justify-center items-center p-4 md:flex-nowrap md:justify-between">
         <div className="w-1/2 order-1 md:w-auto">
           <a className="flex items-center gap-2" href="/">
