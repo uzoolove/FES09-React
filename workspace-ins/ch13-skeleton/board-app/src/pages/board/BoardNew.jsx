@@ -1,6 +1,8 @@
+import Button from "@components/Button";
+import Submit from "@components/Submit";
 import useCustomAxios from "@hooks/useCustomAxios.mjs";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 function BoardNew(){
   const { register, handleSubmit } = useForm();
@@ -27,8 +29,8 @@ function BoardNew(){
           </div>
           <hr />
           <div>
-            <Link to="/boards">취소</Link>
-            <button type="submit">등록</button>
+            <Button bgColor="gray" onClick={ () => navigate('/boards') }>취소</Button>
+            <Submit>등록</Submit>
           </div>
         </form>
       </section>

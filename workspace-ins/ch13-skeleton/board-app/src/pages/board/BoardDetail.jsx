@@ -2,7 +2,7 @@ import Button from "@components/Button";
 import useCustomAxios from "@hooks/useCustomAxios.mjs";
 import { memberState } from "@recoil/user/atoms.mjs";
 import { useEffect, useState } from "react";
-import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
 function BoardDetail(){
@@ -43,7 +43,7 @@ function BoardDetail(){
             <hr/>
           </div>
           <div>
-            <Link className="btn" to="/boards">목록</Link>
+            <Button onClick={ () => navigate('/boards') }>목록</Button>
             { user?._id === item.user._id && <Button bgColor="red" onClick={ handleDelete }>삭제</Button> }
           </div>
         </section>

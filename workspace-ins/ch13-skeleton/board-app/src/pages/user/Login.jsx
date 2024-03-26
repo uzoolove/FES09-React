@@ -2,13 +2,8 @@ import { useForm } from 'react-hook-form';
 import useCustomAxios from '@hooks/useCustomAxios.mjs';
 import { memberState } from '@recoil/user/atoms.mjs';
 import { useSetRecoilState } from 'recoil';
-import { useNavigate } from 'react-router-dom';
-
-const errorStyle = {
-  fontSize: '12px',
-  color: 'red',
-  fontWeight: 'bold'
-};
+import { Link, useNavigate } from 'react-router-dom';
+import Submit from '@components/Submit';
 
 function Login() {
   // recoil setter 반환
@@ -39,29 +34,48 @@ function Login() {
   };
 
   return (
-    <>
-      <h2>로그인</h2>
-      <form onSubmit={ handleSubmit(onSubmit) }>
-        <label htmlFor="email">이메일</label>
-        <input type="text" id="email" { ...register('email', {
-          required: '이메일을 입력하세요.',
-          pattern: {
-            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-            message: '이메일 형식이 아닙니다.'
-          } 
-        }) } />
-        <br />
-        { errors && <div style={ errorStyle }>{ errors.email?.message }</div> }
-        <label htmlFor="password">비밀번호</label>
-        <input type="password" id="password" { ...register('password', {
-          required: "비밀번호는 필수 입니다.",
-          minLength: 8
-        }) } />
-        <br />
-        { errors && <div style={ errorStyle }>{ errors.password?.message }</div> }
-        <button type="submit">로그인</button>
-      </form>
-    </>
+    <div>
+      <div>
+        <div>
+          <h2>로그인</h2>
+        </div>
+        <form onSubmit={ handleSubmit(onSubmit) }>
+          <div>
+            <label htmlFor="email">이메일</label>
+            <input 
+              type="email" 
+              id="email" 
+              placeholder="이메일을 입력하세요"       
+              { ...register('email', {
+                required: '이메일을 입력하세요.',
+                pattern: {
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                  message: '이메일 형식이 아닙니다.'
+                } 
+              })}
+            />
+            { errors.email && <p>{ errors.email.message }</p>}
+          </div>
+          <div>
+            <label htmlFor="password">비밀번호</label>
+            <input 
+              type="password" 
+              id="password" 
+              placeholder="비밀번호를 입력하세요" 
+              { ...register('password', {
+                required: "비밀번호를 입력하세요."
+              })} 
+            />
+            { errors.password && <p>{ errors.password.message }</p>}
+            <Link to="#">비밀번호를 잊으셨나요?</Link>
+          </div>
+          <div>
+            <Submit>로그인</Submit>
+            <Link to="/users/signup">회원가입</Link>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
 

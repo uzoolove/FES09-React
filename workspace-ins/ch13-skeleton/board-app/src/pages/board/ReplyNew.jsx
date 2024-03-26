@@ -2,6 +2,7 @@ import useCustomAxios from "@hooks/useCustomAxios.mjs";
 import { useForm } from "react-hook-form";
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
+import Submit from "@components/Submit";
 
 ReplyNew.propTypes = {
   fetchList: PropTypes.func.isRequired,
@@ -28,7 +29,7 @@ function ReplyNew({ fetchList }){
             <textarea { ...register('comment', { minLength: 2 }) } rows="3" cols="40" placeholder="내용을 입력하세요."></textarea>
           </div>
         </div>
-        <button type="submit">댓글 등록</button>
+        <Submit>댓글 등록</Submit>
       </form>
     </div>
   );

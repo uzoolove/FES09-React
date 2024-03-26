@@ -21,7 +21,7 @@ function BoardList(){
   return (
     <div>
       <div>
-        <Link to="/boards/new">글쓰기</Link>
+        <Link className="btn btn-primary" to="/boards/new">글쓰기</Link>
       </div>
       <section>
         <table>
