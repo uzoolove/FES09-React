@@ -12,7 +12,7 @@ function ReplyList(){
   const [data, setData] = useState(null);
 
   const fetchList = async () => {
-    const res = await axios.get(`/posts/${ _id }/replies`);
+    const res = await axios.get(`/posts/${ _id }/replies`, { params: { sort: JSON.stringify({ _id: -1 }) } });
     setData(res.data);
   }
 
