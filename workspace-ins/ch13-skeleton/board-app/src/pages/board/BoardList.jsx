@@ -21,7 +21,7 @@ function BoardList(){
   return (
     <div className="min-w-80 p-4">
       <div className="text-center py-4">
-        <h2 className="text-2xl font-bold text-gray-700">게시물 목록 조회</h2>
+        <h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200">게시물 목록 조회</h2>
       </div>
       <div className="flex justify-end mr-4">
         <Link className="btn btn-primary" to="/boards/new">글쓰기</Link>
