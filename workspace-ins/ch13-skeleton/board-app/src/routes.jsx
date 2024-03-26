@@ -1,4 +1,5 @@
 import Layout from "@components/layout";
+import ErrorPage from "@pages/ErrorPage";
 import BoardDetail from "@pages/board/BoardDetail";
 import BoardList from "@pages/board/BoardList";
 import BoardNew from "@pages/board/BoardNew";
@@ -10,6 +11,7 @@ import { createBrowserRouter } from "react-router-dom";
 const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <ErrorPage />,
     element: <Layout />,
     children: [
       {

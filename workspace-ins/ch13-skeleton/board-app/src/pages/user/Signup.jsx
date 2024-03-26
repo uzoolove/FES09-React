@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import useCustomAxios from '@hooks/useCustomAxios.mjs';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Submit from '@components/Submit';
 
 function Signup() {
