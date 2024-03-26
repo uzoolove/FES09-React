@@ -197,3 +197,12 @@
 
 ## Zustand
 * <https://docs.pmnd.rs/zustand>
+
+## Redux (한국어)
+* <https://ko.redux.js.org>
+
+## React Redux
+* <https://react-redux.js.org>
+
+## Redux Toolkit
+* <https://redux-toolkit.js.org>
