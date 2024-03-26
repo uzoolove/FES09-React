@@ -24,6 +24,7 @@ function Login() {
       setUser({
         _id: res.data.item._id,
         name: res.data.item.name,
+        profile: res.data.item.profileImage,
         token: res.data.item.token,
       });
       alert(res.data.item.name + '님 로그인 되었습니다.');
