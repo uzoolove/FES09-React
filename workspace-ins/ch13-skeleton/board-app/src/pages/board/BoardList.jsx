@@ -1,3 +1,4 @@
+import Pagination from "@components/Pagination";
 import useCustomAxios from "@hooks/useCustomAxios.mjs";
 import BoardListItem from "@pages/board/BoardListItem";
 import { useQuery } from "@tanstack/react-query";
@@ -10,6 +11,11 @@ function BoardList(){
   // /posts?page=3
   const [searchParams, setSearchParams] = useSearchParams();
 
+  if(!searchParams.get('page')){
+    searchParams.set('page', 1);
+    searchParams.set('limit', 10);
+    setSearchParams(searchParams);
+  }
 
   // const [data, setData] = useState(null);
 
@@ -66,10 +72,12 @@ function BoardList(){
               <tr><td colSpan="5">{ error.message }</td></tr>
             ) }
             { itemList }
+
           </tbody>
         </table>
         <hr/>
-        
+
+        <Pagination totalPage={ data?.pagination.totalPages } current={ data?.pagination.page } />
       </section>
     </div>
   );

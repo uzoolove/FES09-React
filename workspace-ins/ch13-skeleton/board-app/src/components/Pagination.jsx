@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 Pagination.propTypes = {
   totalPage: PropTypes.number,
@@ -7,15 +7,22 @@ Pagination.propTypes = {
 };
 
 function Pagination({ totalPage, current=1 }){
+  const [searchParams] = useSearchParams();
   const pageList = [];
 
   for(let page=1; page<=totalPage; page++){
-    pageList.push(<li key={ page }><Link to={ `/posts` }>{ page }</Link></li>);
+    searchParams.set('page', page);
+    let search = searchParams.toString();
+    pageList.push((
+      <li key={ page }>
+        <Link className={ current===page ? 'text-semibold text-blue-700' : ''} to={ `/boards?${ search }` }>{ page }</Link>
+      </li>
+    ));
   }
 
   return (
     <div>
-      <ul>
+      <ul className="flex justify-center gap-3 m-4">
         { pageList }
       </ul>
     </div>
