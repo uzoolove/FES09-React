@@ -2,6 +2,7 @@ import Pagination from "@components/Pagination";
 import useCustomAxios from "@hooks/useCustomAxios.mjs";
 import BoardListItem from "@pages/board/BoardListItem";
 import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 
 // import { useEffect, useState } from "react";
@@ -17,6 +18,8 @@ function BoardList(){
     setSearchParams(searchParams);
   }
 
+
+
   // const [data, setData] = useState(null);
 
   // const fetchBoardList = async () => {
@@ -28,13 +31,18 @@ function BoardList(){
   //   fetchBoardList();
   // }, []);
 
-  const { isLoading, data, error } = useQuery({
+  const { isLoading, data, error, refetch } = useQuery({
     queryKey: ['posts'],
     queryFn: () => axios.get('/posts', { params: searchParams }),
     select: response => response.data,
     // staleTime: 1000*100, // 쿼리 실행 후 캐시가 유지되는 시간(기본, 0)
     suspense: true,
   });
+
+  useEffect(() => {
+    console.log(searchParams.toString());
+    refetch();
+  }, [searchParams.toString()]);
 
   const itemList = data?.item?.map(item => <BoardListItem key={ item._id } item={ item } />);
 
