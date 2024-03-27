@@ -1,15 +1,10 @@
 import useCustomAxios from "@hooks/useCustomAxios.mjs";
 import { useForm } from "react-hook-form";
-import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 import Submit from "@components/Submit";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-ReplyNew.propTypes = {
-  fetchList: PropTypes.func.isRequired,
-}
-
-function ReplyNew({ fetchList }){
+function ReplyNew(){
   const { _id } = useParams();
   const axios = useCustomAxios();
 
@@ -21,8 +16,8 @@ function ReplyNew({ fetchList }){
     mutationFn: (formData) => axios.post(`/posts/${ _id }/replies`, formData),
     onSuccess(){ // queryFn이 성공을(2xx 응답 상태 코드) 응답 받을 경우 호출되는 콜백 합수
       // 기존 캐시 무효화
-      // queryClient.invalidateQueries(['posts', _id, 'replies']);
-      fetchList();
+      queryClient.invalidateQueries(['posts', _id, 'replies']);
+      
       reset();
     }
   });
