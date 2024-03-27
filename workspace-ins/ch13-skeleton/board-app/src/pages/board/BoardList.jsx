@@ -1,20 +1,31 @@
 import useCustomAxios from "@hooks/useCustomAxios.mjs";
 import BoardListItem from "@pages/board/BoardListItem";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 
+// import { useEffect, useState } from "react";
+
 function BoardList(){
-  const [data, setData] = useState(null);
   const axios = useCustomAxios();
 
-  const fetchBoardList = async () => {
-    const response = await axios.get('/posts');
-    setData(response.data);
-  };
+  // const [data, setData] = useState(null);
 
-  useEffect(() => {
-    fetchBoardList();
-  }, []);
+  // const fetchBoardList = async () => {
+  //   const response = await axios.get('/posts?delay=5000');
+  //   setData(response.data);
+  // };
+
+  // useEffect(() => {
+  //   fetchBoardList();
+  // }, []);
+
+  const { isLoading, data, error } = useQuery({
+    queryKey: ['posts'],
+    queryFn: () => axios.get('/posts'),
+    select: response => response.data,
+    // staleTime: 1000*100, // 쿼리 실행 후 캐시가 유지되는 시간(기본, 0)
+    suspense: true,
+  });
 
   const itemList = data?.item?.map(item => <BoardListItem key={ item._id } item={ item } />);
 
@@ -45,6 +56,12 @@ function BoardList(){
             </tr>
           </thead>
           <tbody>
+            { isLoading && (
+              <tr><td colSpan="5">로딩중...</td></tr>
+            ) }
+            { error && (
+              <tr><td colSpan="5">{ error.message }</td></tr>
+            ) }
             { itemList }
           </tbody>
         </table>
