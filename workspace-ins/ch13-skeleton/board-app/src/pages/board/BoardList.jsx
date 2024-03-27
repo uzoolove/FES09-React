@@ -28,6 +28,7 @@ function BoardList(){
   // 검색 요청시 주소의 query string 수정
   const handleSearch = (keyword) => {
     searchParams.set('keyword', keyword);
+    searchParams.set('page', 1);
     setSearchParams(searchParams);
   };
 
