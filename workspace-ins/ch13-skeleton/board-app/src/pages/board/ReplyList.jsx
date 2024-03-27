@@ -28,7 +28,8 @@ function ReplyList(){
   const { data } = useQuery({
     queryKey: ['posts', _id, 'replies'],
     queryFn: () => axios.get(`/posts/${ _id }/replies`, { params: { sort: JSON.stringify({ _id: -1 }) } }),
-    select: response => response.data
+    select: response => response.data,
+    refetchInterval: 1000
   });
 
   const list = data?.item.map(item => <ReplyItem key={ item._id } item={ item } />);

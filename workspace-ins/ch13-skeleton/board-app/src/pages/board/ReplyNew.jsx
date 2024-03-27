@@ -10,7 +10,6 @@ function ReplyNew(){
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
-
   const queryClient = useQueryClient();
   const addReply = useMutation({
     mutationFn: (formData) => axios.post(`/posts/${ _id }/replies`, formData),
@@ -22,7 +21,7 @@ function ReplyNew(){
     }
   });
 
-  const onSubmit = async formData => {
+  const onSubmit = formData => {
     // await axios.post(`/posts/${ _id }/replies`, formData);
     // fetchList();
     // reset();
