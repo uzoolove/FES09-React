@@ -1,4 +1,5 @@
 import Pagination from "@components/Pagination";
+import Search from "@components/Search";
 import useCustomAxios from "@hooks/useCustomAxios.mjs";
 import BoardListItem from "@pages/board/BoardListItem";
 import { useQuery } from "@tanstack/react-query";
@@ -12,37 +13,23 @@ function BoardList(){
   // /posts?page=3
   const [searchParams, setSearchParams] = useSearchParams();
 
-  if(!searchParams.get('page')){
-    searchParams.set('page', 1);
-    searchParams.set('limit', 10);
-    setSearchParams(searchParams);
-  }
-
-
-
-  // const [data, setData] = useState(null);
-
-  // const fetchBoardList = async () => {
-  //   const response = await axios.get('/posts?delay=5000');
-  //   setData(response.data);
-  // };
-
-  // useEffect(() => {
-  //   fetchBoardList();
-  // }, []);
-
   const { isLoading, data, error, refetch } = useQuery({
     queryKey: ['posts'],
-    queryFn: () => axios.get('/posts', { params: searchParams }),
+    queryFn: () => axios.get('/posts', { params: { page: searchParams.get('page'), limit: 3, keyword: searchParams.get('keyword') } }),
     select: response => response.data,
     // staleTime: 1000*100, // 쿼리 실행 후 캐시가 유지되는 시간(기본, 0)
     suspense: true,
   });
 
   useEffect(() => {
-    console.log(searchParams.toString());
     refetch();
   }, [searchParams.toString()]);
+
+  // 검색 요청시 주소의 query string 수정
+  const handleSearch = (keyword) => {
+    searchParams.set('keyword', keyword);
+    setSearchParams(searchParams);
+  };
 
   const itemList = data?.item?.map(item => <BoardListItem key={ item._id } item={ item } />);
 
@@ -52,6 +39,7 @@ function BoardList(){
         <h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200">게시물 목록 조회</h2>
       </div>
       <div className="flex justify-end mr-4">
+        <Search onClick={ handleSearch } />
         <Link className="btn btn-primary" to="/boards/new">글쓰기</Link>
       </div>
       <section className="p-4">

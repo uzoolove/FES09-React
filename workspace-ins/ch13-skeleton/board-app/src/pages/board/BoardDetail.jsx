@@ -2,7 +2,6 @@ import Button from "@components/Button";
 import useCustomAxios from "@hooks/useCustomAxios.mjs";
 import { memberState } from "@recoil/user/atoms.mjs";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
