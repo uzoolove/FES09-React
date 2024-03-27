@@ -1,12 +1,15 @@
 import useCustomAxios from "@hooks/useCustomAxios.mjs";
 import BoardListItem from "@pages/board/BoardListItem";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 // import { useEffect, useState } from "react";
 
 function BoardList(){
   const axios = useCustomAxios();
+  // /posts?page=3
+  const [searchParams, setSearchParams] = useSearchParams();
+
 
   // const [data, setData] = useState(null);
 
@@ -21,7 +24,7 @@ function BoardList(){
 
   const { isLoading, data, error } = useQuery({
     queryKey: ['posts'],
-    queryFn: () => axios.get('/posts'),
+    queryFn: () => axios.get('/posts', { params: searchParams }),
     select: response => response.data,
     // staleTime: 1000*100, // 쿼리 실행 후 캐시가 유지되는 시간(기본, 0)
     suspense: true,
