@@ -1,10 +1,13 @@
+import Button from "@components/Button";
 import Pagination from "@components/Pagination";
 import Search from "@components/Search";
 import useCustomAxios from "@hooks/useCustomAxios.mjs";
 import BoardListItem from "@pages/board/BoardListItem";
+import { memberState } from "@recoil/user/atoms.mjs";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 
 // import { useEffect, useState } from "react";
 
@@ -32,6 +35,17 @@ function BoardList(){
     setSearchParams(searchParams);
   };
 
+  const user = useRecoilValue(memberState);
+  const navigate = useNavigate();
+  const handleNewPost = () => {
+    if(!user){
+      const gotoLogin = confirm('로그인 후 이용 가능합니다.\n로그인 페이지로 이동하시겠습니까?');
+      gotoLogin && navigate('/users/login');
+    }else{
+      navigate(`/boards/new`);
+    }
+  }
+
   const itemList = data?.item?.map(item => <BoardListItem key={ item._id } item={ item } />);
 
   return (
@@ -41,7 +55,7 @@ function BoardList(){
       </div>
       <div className="flex justify-end mr-4">
         <Search onClick={ handleSearch } />
-        <Link className="btn btn-primary" to="/boards/new">글쓰기</Link>
+        <Button onClick={ handleNewPost }>글쓰기</Button>
       </div>
       <section className="p-4">
         <table className="border-collapse w-full table-fixed">
