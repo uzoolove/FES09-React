@@ -36,7 +36,6 @@ function ReplyList(){
     // false를 리턴하면 더이상 queryFn이 호출되지 않고 무한 스크롤 종료
     // lastPage는 res
     getNextPageParam: (lastPage, allPages) => {
-      console.log("lastPage", lastPage, "allPages", allPages);
       const totalPages = lastPage.data.pagination.totalPages; // 전체 페이지
       let nextPage = allPages.length < totalPages ? allPages.length + 1 : false; // 새로 요청해야할 페이지
       return nextPage;
@@ -46,18 +45,15 @@ function ReplyList(){
   // const list = data?.item.map(item => <ReplyItem key={ item._id } item={ item } />);
   // ES2019 Array.prototype.flatMap();
   // 2차원 배열을 1차원 배열로 변환
-  console.log('data', data);
   const list = data?.pages?.flatMap(page => page.data.item.map(item => <ReplyItem key={ item._id } item={ item } />));
   
-
-  console.log('list', list);
   const hasNext = data?.pages.at(-1).data.pagination.page < data?.pages.at(-1).data.pagination.totalPages;
 
   return (
     <section className="mb-8">
-      <h4 className="mt-8 mb-4 ml-2">댓글 { list?.length || 0 }개</h4>
+      <h4 className="mt-8 mb-4 ml-2">댓글 { data?.pages.at(-1).data.pagination.total || 0 }개</h4>
 
-      <InfiniteScroll pageStart={1} loadMore={ fetchNextPage } hasMore={ hasNext } loader={ <Spinner /> }>
+      <InfiniteScroll pageStart={1} loadMore={ fetchNextPage } hasMore={ hasNext } loader={ <Spinner key="0" /> }>
         { list || [] }
       </InfiniteScroll>
 
