@@ -49,7 +49,7 @@ function BoardDetail(){
           <div className="text-right text-gray-400">작성자 : { item.user.name }</div>
           <div className="mb-4">
             <div>
-              <pre className="w-full p-2 whitespace-pre-wrap">{ item.content }</pre>
+              <pre className="w-full p-2 whitespace-pre-wrap font-custom">{ item.content }</pre>
             </div>
             <hr/>
           </div>

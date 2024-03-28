@@ -12,7 +12,7 @@ function ReplyItem({ item }){
         <a className="text-blue-500" href="">{ item._id } { item.user.name }</a>
         <time className="ml-auto text-gray-500 dark:text-gray-400" dateTime={ item.createdAt }>{ item.createdAt }</time>
       </div>
-      <pre className="whitespace-pre-wrap">{ item.comment }</pre>
+      <pre className="font-custom whitespace-pre-wrap">{ item.comment }</pre>
       
     </div>
   );
