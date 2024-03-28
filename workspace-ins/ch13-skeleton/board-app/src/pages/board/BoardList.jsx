@@ -1,20 +1,50 @@
+import Button from "@components/Button";
+import Pagination from "@components/Pagination";
+import Search from "@components/Search";
 import useCustomAxios from "@hooks/useCustomAxios.mjs";
 import BoardListItem from "@pages/board/BoardListItem";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { memberState } from "@recoil/user/atoms.mjs";
+import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+
+// import { useEffect, useState } from "react";
 
 function BoardList(){
-  const [data, setData] = useState(null);
   const axios = useCustomAxios();
+  // /posts?page=3
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const fetchBoardList = async () => {
-    const response = await axios.get('/posts');
-    setData(response.data);
-  };
+  const { isLoading, data, error, refetch } = useQuery({
+    queryKey: ['posts'],
+    queryFn: () => axios.get('/posts', { params: { page: searchParams.get('page'), limit: 3, keyword: searchParams.get('keyword') } }),
+    select: response => response.data,
+    // staleTime: 1000*100, // 쿼리 실행 후 캐시가 유지되는 시간(기본, 0)
+    suspense: true,
+  });
 
   useEffect(() => {
-    fetchBoardList();
-  }, []);
+    refetch();
+  }, [searchParams.toString()]);
+
+  // 검색 요청시 주소의 query string 수정
+  const handleSearch = (keyword) => {
+    searchParams.set('keyword', keyword);
+    searchParams.set('page', 1);
+    setSearchParams(searchParams);
+  };
+
+  const user = useRecoilValue(memberState);
+  const navigate = useNavigate();
+  const handleNewPost = () => {
+    if(!user){
+      const gotoLogin = confirm('로그인 후 이용 가능합니다.\n로그인 페이지로 이동하시겠습니까?');
+      gotoLogin && navigate('/users/login');
+    }else{
+      navigate(`/boards/new`);
+    }
+  }
 
   const itemList = data?.item?.map(item => <BoardListItem key={ item._id } item={ item } />);
 
@@ -24,7 +54,8 @@ function BoardList(){
         <h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200">게시물 목록 조회</h2>
       </div>
       <div className="flex justify-end mr-4">
-        <Link className="btn btn-primary" to="/boards/new">글쓰기</Link>
+        <Search onClick={ handleSearch } />
+        <Button onClick={ handleNewPost }>글쓰기</Button>
       </div>
       <section className="p-4">
         <table className="border-collapse w-full table-fixed">
@@ -45,11 +76,19 @@ function BoardList(){
             </tr>
           </thead>
           <tbody>
+            { isLoading && (
+              <tr><td colSpan="5">로딩중...</td></tr>
+            ) }
+            { error && (
+              <tr><td colSpan="5">{ error.message }</td></tr>
+            ) }
             { itemList }
+
           </tbody>
         </table>
         <hr/>
-        
+
+        <Pagination totalPage={ data?.pagination.totalPages } current={ data?.pagination.page } />
       </section>
     </div>
   );

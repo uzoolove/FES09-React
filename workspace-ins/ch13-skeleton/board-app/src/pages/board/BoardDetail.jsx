@@ -1,7 +1,7 @@
 import Button from "@components/Button";
 import useCustomAxios from "@hooks/useCustomAxios.mjs";
 import { memberState } from "@recoil/user/atoms.mjs";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
@@ -9,18 +9,28 @@ function BoardDetail(){
   const axios = useCustomAxios();
   const navigate = useNavigate();
   const { _id } = useParams();
-  const [ data, setData ] = useState();
+  
   const user = useRecoilValue(memberState);
 
-  const fetchDetail = async () => {
-    const res = await axios.get(`/posts/${ _id }`);
-    console.log(res);
-    setData(res.data);
-  }
 
-  useEffect(() => {
-    fetchDetail();
-  }, []);
+  // const [ data, setData ] = useState();
+
+  // const fetchDetail = async () => {
+  //   const res = await axios.get(`/posts/${ _id }`);
+  //   console.log(res);
+  //   setData(res.data);
+  // }
+
+  // useEffect(() => {
+  //   fetchDetail();
+  // }, []);
+
+  const { data } = useQuery({
+    queryKey: ['posts', _id],
+    queryFn: () => axios.get(`/posts/${ _id }`),
+    select: response => response.data,
+    suspense: true,
+  });
 
   // 삭제
   const handleDelete = async () => {
@@ -33,7 +43,7 @@ function BoardDetail(){
 
   return (
     <div className="container mx-auto mt-4 px-4">
-      { data && (
+      { item && (
         <section className="mb-8 p-4">
           <div className="font-semibold text-xl">제목 : { item.title }</div>
           <div className="text-right text-gray-400">작성자 : { item.user.name }</div>

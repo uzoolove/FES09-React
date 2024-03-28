@@ -2,10 +2,11 @@ import { useForm } from 'react-hook-form';
 import useCustomAxios from '@hooks/useCustomAxios.mjs';
 import { memberState } from '@recoil/user/atoms.mjs';
 import { useSetRecoilState } from 'recoil';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Submit from '@components/Submit';
 
 function Login() {
+  const location = useLocation();
   // recoil setter 반환
   const setUser = useSetRecoilState(memberState);
   const axios = useCustomAxios();
@@ -28,7 +29,7 @@ function Login() {
         token: res.data.item.token,
       });
       alert(res.data.item.name + '님 로그인 되었습니다.');
-      navigate('/'); // 메인페이지로 이동
+      navigate(location.state?.from ? location.state?.from : '/'); // 메인페이지로 이동
     } catch (err) { // AxiosError(네트워크 에러-response가 없음, 서버의 4xx, 5xx 응답 상태 코드를 받았을 때-response 있음)
       if(err.response?.data.errors){  // API 서버가 응답한 에러
         err.response?.data.errors.forEach(error => setError(error.path, { message: error.msg }) );
