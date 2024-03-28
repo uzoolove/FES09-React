@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
 const API_SERVER = import.meta.env.VITE_API_SERVER;
+const REFRESH_URL = '/auth/refresh';
 
 function useCustomAxios(){
 
@@ -26,21 +27,45 @@ function useCustomAxios(){
   // 요청 인터셉터
   instance.interceptors.request.use(config => {
     if(user){
-      const accessToken = user.token.accessToken; 
-      config.headers.Authorization = `Bearer ${ accessToken }`;
+      let token = user.token.accessToken;
+      if(config.url === REFRESH_URL){
+        token = user.token.refreshToken;
+      }
+      config.headers.Authorization = `Bearer ${ token }`;
     }
     return config;
   });
 
   // 응답 인터셉터
   instance.interceptors.response.use(res => res, err => {
-    if(err.response?.status === 401){ // 인증 되지 않음
-      const gotoLogin = confirm('로그인 후 이용 가능합니다.\n로그인 페이지로 이동하시겠습니까?');
-      gotoLogin && navigate('/users/login', { state: { from: location.pathname } });
+    const { config, response } = err;
+    if(response?.status === 401){ // 인증 되지 않음
+      if(config.url === REFRESH_URL){ // refresh 토큰 인증 실패
+        const gotoLogin = confirm('로그인 후 이용 가능합니다.\n로그인 페이지로 이동하시겠습니까?');
+        gotoLogin && navigate('/users/login', { state: { from: location.pathname } });
+      }else{
+        // refresh 토큰으로 access 토큰 재발급 요청
+        const accessToken = getAccessToken(instance);
+        if(accessToken){
+          config.headers.Authorization = `Bearer ${ accessToken }`;
+          // 갱신된 accessToken으로 재요청
+          return axios(config);
+        }
+      }
     }else{
       return Promise.reject(err);
     }
   });
+
+  // accessToken 갱신 요청
+  async function getAccessToken(instance){
+    try{
+      const { data: { accessToken } } = await instance.get(REFRESH_URL);
+      return accessToken;
+    }catch(err){
+      console.error(err);
+    }
+  }
 
   return instance;
 }

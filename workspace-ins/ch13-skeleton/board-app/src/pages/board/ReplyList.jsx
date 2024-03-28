@@ -34,7 +34,7 @@ function ReplyList(){
     // refetchInterval: 1000
     // 마지막 페이지와 함께 전체 페이지 목록을 받아서 queryFn에 전달할 pageParam 값을 리턴하도록 구현한다.
     // false를 리턴하면 더이상 queryFn이 호출되지 않고 무한 스크롤 종료
-    // lastPage는 res.data
+    // lastPage는 res
     getNextPageParam: (lastPage, allPages) => {
       console.log("lastPage", lastPage, "allPages", allPages);
       const totalPages = lastPage.data.pagination.totalPages; // 전체 페이지
