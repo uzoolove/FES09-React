@@ -9,9 +9,9 @@ Button.propTypes = {
 
 function Button({ children, type="button", bgColor='blue', size='md', ...rest }){
   let btnColor = {
-    gray: `bg-gray-500`,
-    blue: 'bg-blue-500',
-    red: 'bg-red-500',
+    gray: 'bg-gray-500 dark:bg-gray-700 hover:bg-gray-600',
+    blue: 'bg-blue-500 dark:bg-blue-800 hover:bg-blue-600' ,
+    red: 'bg-red-500 dark:bg-red-800 hover:bg-red-600 ',
   };
   let btnSize = {
     sm: 'py-1 px-2 text-sm',
@@ -19,7 +19,7 @@ function Button({ children, type="button", bgColor='blue', size='md', ...rest })
     lg: 'py-2 px-6 text-lg',
   };
 
-  return <button type={ type } className={`${ btnColor[bgColor] } ${ btnSize[size] } text-white font-semibold ml-2 text-base hover:bg-blue-600 rounded`} { ...rest }>{ children }</button>
+  return <button type={ type } className={`${ btnColor[bgColor] } ${ btnSize[size] } text-white dark:text-gray-200 font-semibold ml-2 text-base rounded`} { ...rest }>{ children }</button>
 }
 
 export default Button;

@@ -15,7 +15,7 @@ function Search({ onClick }){
 
   return (
     <form>
-      <input className="dark:bg-gray-600" type="text" autoFocus value={ keyword } onChange={ handleChange } />
+      <input className="border rounded-md dark:bg-gray-700 border-gray-300 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200" type="text" value={ keyword } onChange={ handleChange } />
       <Submit onClick={ (e) => { e.preventDefault(); onClick(keyword); }}>검색</Submit>
     </form>
   );

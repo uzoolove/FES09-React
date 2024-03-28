@@ -39,9 +39,9 @@ function Header(){
         </div>
         <div className="w-auto order-2 text-lg mt-4 md:mt-0">
           <ul className="flex items-center gap-6 uppercase">
-            <li><Link to="/boards">정보공유</Link></li>
-            <li><Link to="/boards">자유게시판</Link></li>
-            <li><Link to="/boards">질문게시판</Link></li>
+            <li className="hover:font-semibold"><Link to="/boards">정보공유</Link></li>
+            <li className="hover:font-semibold"><Link to="/boards">자유게시판</Link></li>
+            <li className="hover:font-semibold"><Link to="/boards">질문게시판</Link></li>
           </ul>
         </div>
         <div className="w-1/2 order-1 flex justify-end items-center md:order-2 md:w-auto">

@@ -14,8 +14,8 @@ function Pagination({ totalPage, current=1 }){
     searchParams.set('page', page);
     let search = searchParams.toString();
     pageList.push((
-      <li key={ page }>
-        <Link className={ current===page ? 'text-semibold text-blue-700' : ''} to={ `/boards?${ search }` }>{ page }</Link>
+      <li key={ page } className={ current===page ? 'text-bold text-blue-700' : '' }>
+        <Link className="hover:text-blue-700" to={ `/boards?${ search }` }>{ page }</Link>
       </li>
     ));
   }
