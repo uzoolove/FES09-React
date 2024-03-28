@@ -31,13 +31,14 @@ function useCustomAxios(){
       if(config.url === REFRESH_URL){
         token = user.token.refreshToken;
       }
+      console.log('인증에 전달하는 토큰', token);
       config.headers.Authorization = `Bearer ${ token }`;
     }
     return config;
   });
 
   // 응답 인터셉터
-  instance.interceptors.response.use(res => res, err => {
+  instance.interceptors.response.use(res => res, async err => {
     const { config, response } = err;
     if(response?.status === 401){ // 인증 되지 않음
       if(config.url === REFRESH_URL){ // refresh 토큰 인증 실패
@@ -45,7 +46,7 @@ function useCustomAxios(){
         gotoLogin && navigate('/users/login', { state: { from: location.pathname } });
       }else{
         // refresh 토큰으로 access 토큰 재발급 요청
-        const accessToken = getAccessToken(instance);
+        const accessToken = await getAccessToken(instance);
         if(accessToken){
           config.headers.Authorization = `Bearer ${ accessToken }`;
           // 갱신된 accessToken으로 재요청
@@ -60,7 +61,9 @@ function useCustomAxios(){
   // accessToken 갱신 요청
   async function getAccessToken(instance){
     try{
+      console.log('accessToken 재발급 요청');
       const { data: { accessToken } } = await instance.get(REFRESH_URL);
+      console.log('accessToken 재발급 요청 결과', accessToken);
       return accessToken;
     }catch(err){
       console.error(err);
