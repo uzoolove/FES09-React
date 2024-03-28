@@ -18,7 +18,7 @@ function BoardList(){
 
   const { isLoading, data, error, refetch } = useQuery({
     queryKey: ['posts'],
-    queryFn: () => axios.get('/posts', { params: { page: searchParams.get('page'), limit: 3, keyword: searchParams.get('keyword') } }),
+    queryFn: () => axios.get('/posts', { params: { page: searchParams.get('page'), limit: import.meta.env.VITE_POST_LIMIT, keyword: searchParams.get('keyword') } }),
     select: response => response.data,
     // staleTime: 1000*100, // 쿼리 실행 후 캐시가 유지되는 시간(기본, 0)
     suspense: true,
@@ -61,8 +61,9 @@ function BoardList(){
         <table className="border-collapse w-full table-fixed">
           <colgroup>
             <col className="w-[10%] sm:w-[10%]" />
-            <col className="w-[60%] sm:w-[40%]" />
+            <col className="w-[60%] sm:w-[30%]" />
             <col className="w-[30%] sm:w-[15%]" />
+            <col className="w-0 sm:w-[10%]" />
             <col className="w-0 sm:w-[10%]" />
             <col className="w-0 sm:w-[25%]" />
           </colgroup>
@@ -71,7 +72,8 @@ function BoardList(){
               <th className="p-2 whitespace-nowrap">번호</th>
               <th className="p-2 whitespace-nowrap">제목</th>
               <th className="p-2 whitespace-nowrap">글쓴이</th>
-              <th className="p-2 whitespace-nowrap hidden sm:table-cell">조회</th>
+              <th className="p-2 whitespace-nowrap hidden sm:table-cell">조회수</th>
+              <th className="p-2 whitespace-nowrap hidden sm:table-cell">댓글수</th>
               <th className="p-2 whitespace-nowrap hidden sm:table-cell">작성일</th>
             </tr>
           </thead>
