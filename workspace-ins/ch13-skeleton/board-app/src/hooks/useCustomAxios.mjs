@@ -31,7 +31,6 @@ function useCustomAxios(){
       if(config.url === REFRESH_URL){
         token = user.token.refreshToken;
       }
-      console.log('인증에 전달하는 토큰', token);
       config.headers.Authorization = `Bearer ${ token }`;
     }
     return config;
@@ -61,9 +60,7 @@ function useCustomAxios(){
   // accessToken 갱신 요청
   async function getAccessToken(instance){
     try{
-      console.log('accessToken 재발급 요청');
       const { data: { accessToken } } = await instance.get(REFRESH_URL);
-      console.log('accessToken 재발급 요청 결과', accessToken);
       return accessToken;
     }catch(err){
       console.error(err);
