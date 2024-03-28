@@ -16,9 +16,11 @@ function BoardList(){
   // /posts?page=3
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const page = searchParams.get('page');
+
   const { isLoading, data, error, refetch } = useQuery({
-    queryKey: ['posts'],
-    queryFn: () => axios.get('/posts', { params: { page: searchParams.get('page'), limit: import.meta.env.VITE_POST_LIMIT, keyword: searchParams.get('keyword') } }),
+    queryKey: ['posts', page],
+    queryFn: () => axios.get('/posts', { params: { page, limit: import.meta.env.VITE_POST_LIMIT, keyword: searchParams.get('keyword') } }),
     select: response => response.data,
     // staleTime: 1000*100, // 쿼리 실행 후 캐시가 유지되는 시간(기본, 0)
     suspense: true,
