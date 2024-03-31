@@ -2,9 +2,57 @@
 * 소스 코드(GitHub): <https://github.com/uzoolove/FES09-React/tree/main/workspace-ins/ch13-skeleton>
 * 코드 실행(GitHub Page): <https://uzoolove.github.io/FES09-React/workspace-ins/index.html#13>
 
-* Vite 환경 변수와 모드: <https://ko.vitejs.dev/guide/env-and-mode.html>
+## 프로젝트 생성
+### Github organizations 접속
+* <https://github.com/organizations/FRONTENDSCHOOL9>
+### 프로젝트 생성
+* 팀장
+
+## 프로젝트 세팅
+### 저장소 설정
+#### Collaborators 추가
+* Private으로 만들었을 경우
+  - Settings > Collaborators > Add people
+  - 팀원 초대
+  - 강사 초대(uzoolove@gmail.com)
+  - 멘토 초대
+
+#### 이슈 마일스톤 생성
+* 이슈 마일스톤: 유사한 이슈들을 하나로 모아서 관리
+* 개발 목표를 마일스톤으로 만들고 관련 이슈들을 미리 생성하면 이슈들의 Open, Close 상태를 한눈에 관리
+* Issues > Milestones > Create a Milestone
+* 마일스톤 예시
+  - 피그마 시안 작성(완료기간 2024.04.04)
+  - 게시물 목록 조회(완료기간 2024.04.09)
+    + 목록 하나당 3줄만 표시되도록 CSS나 JS에서 처리 필요
+    + 페이징 처리
+    + 검색 기능 추가
+  - 게시물 상세 조회(완료기간 2024.04.12)
+    + 댓글에 추가 댓글 기능 필요한지 확인
+    + 댓글 간격 조정
+  - 게시물 댓글 추가(완료기간 2024.04.16)
+    + 페이지네이션 또는 무한 스크롤 적용
+    + 댓글 검색 기능 필요
+  - 전체 기능(완료기간 2024.04.23)
+    + 네이버 로그인 OAuth 인증 구현
+    + 로그인 상태 저장 Session이나 JWT로 구현
+    + 카카오 지도 연동
+    + 실시간 버스 위치 조회(데이터 포털)
+  
+  
+
+#### 이슈 템플릿 작성
+* 이슈 작성시 버그 리포트 같은 경우 버그 현상, 재현 시나리오 등 이슈에 포함되어야 하는 내용을 입력 할수 있도록 템플릿 제공 필요
+* Settings > Features, Issues, Set up templates
+
+#### 이슈 작성
+* 프로젝트를 진행하면서 발생하는 다양한 이벤트(버그, 추가해야 할 기능, 아이디어, 질문 등)를 등록하고 관리하는 기능
+* 팀원과 협업에 필요
+
 
 ## 배포 준비
+* Vite 환경 변수와 모드: <https://ko.vitejs.dev/guide/env-and-mode.html>
+
 ### .env
 * dotenv: DB 접속 정보, API KEY 등의 환경설정 정보를 코드에 직접 작성하지 않고 외부 파일로 만들어서 관리하기 위해 사용하는 nodejs 확장모듈
 * 개발, 테스트, 운영 등의 여러 환경에서 각각 다른 값을 사용해야 하는 경우 각 환경 설정 정보를 가진 파일을 여러개 작성해서 적용 가능
@@ -20,7 +68,7 @@ npm i dotenv
   - CRA로 프로젝트를 생성했을 경우 환경변수는 반드시 REACT_APP_ 접두사로 시작해야 함
   - Vite로 생성했을 경우 환경변수는 반드시 VITE_ 접두사로 시작해야 함
 * 예시
-  ```sh
+  ```
   VITE_API_SERVER=https://localhost/api
   VITE_KAKAO_MAP_API_KEY=acd4396a562ece1a9a522481df8561c5
   ```
