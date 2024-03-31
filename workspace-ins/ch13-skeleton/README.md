@@ -6,7 +6,7 @@
 ### Github organizations 접속
 * <https://github.com/organizations/FRONTENDSCHOOL9>
 ### 프로젝트 생성
-* 팀장
+* 팀장 
 
 ## 프로젝트 세팅
 ### 저장소 설정
