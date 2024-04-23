@@ -71,6 +71,7 @@
   ```
 
 ### 라우터 컴포넌트 작성
+* 참고: <https://uzoolove.github.io/FES09-React/workspace-ins/ch07-router>
 * 04-router/src/routes.jsx 파일 생성
 * BrowserRouter 사용
   ```jsx
@@ -104,7 +105,7 @@
   export default router;
   ```
 
-### App.jsx 작성
+### App.jsx 수정
 * 리액트 라우터 추가
   ```jsx
   import { RouterProvider } from "react-router-dom";
@@ -124,7 +125,7 @@
   - a 태그 대신 Link로 수정
   - href 속성을 to로 수정
   - 링크를 라우터에 등록한 URL로 수정
-* Header.jsx
+* Header.jsx 예시
   ```jsx
   <Link to="/home">Home</Link>
   <Link to="/about">About</Link>
@@ -133,9 +134,10 @@
 
 ## 2단계
 * axios로 API 서버 호출
+* 참고: <https://uzoolove.github.io/FES09-React/workspace-ins/ch10-ajax/#axios-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC>
 
 ### useAxios 커스텀 훅 작성
-* hooks/useAxios.jsx 작성
+* 04-router/src/hooks/useAxios.jsx 작성
   ```jsx
   import { useEffect, useState } from "react";
   import axios from 'axios';
