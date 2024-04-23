@@ -2,9 +2,9 @@
 ## 1단계
 * HTML 코드를 기반으로 리액트 컴포넌트 생성
 * 리액트 라우터 적용
-* a 태그를 Link로 수정
 
 ### 프로젝트 생성
+* 참고: <https://uzoolove.github.io/FES09-React/workspace-ins/ch02-start/#2-4-jsx>
 * workspace/app/todolist 폴더로 이동 후 다음 명령 실행
   ```powershell
   npm init vite
@@ -25,19 +25,20 @@
   ```
 
 ### UI 컴포넌트 작성
-* app/todolist/sample 폴더의 html 코드를 컴포넌트로 이동
+* workspace/app/todolist/sample 폴더의 html 코드를 컴포넌트로 이동
   - header 태그는 Header.jsx에서 사용
   - footer 태그는 Footer.jsx에서 사용
   - div id="main" 태그는 각 페이지의 컴포넌트에서 사용
   - JSX 문법에 맞게 수정
+    + 참고: <https://uzoolove.github.io/FES09-React/workspace-ins/ch02-start/#2-4-jsx>
 
 #### 공통 컴포넌트
-* src/components 폴더 생성
-  - Footer.jsx
+* 04-router/src/components 폴더 생성후 파일 작성
   - Header.jsx
+  - Footer.jsx
 
 #### 페이지별 컴포넌트
-* src/pages 폴더 생성
+* 04-router/src/pages 폴더 생성후 파일 작성
   - About.jsx
   - ErrorPage.jsx
   - Home.jsx
@@ -50,7 +51,7 @@
 * 참고: <https://uzoolove.github.io/FES09-React/workspace-ins/ch02-start/#viteconfigjs>
 
 ### 레이아웃 컴포넌트 작성
-* src/components/Layout.jsx 파일 생성
+* 04-router/src/components/Layout.jsx 파일 생성
   ```jsx
   import Footer from "@components/Footer";
   import Header from "@components/Header";
@@ -70,7 +71,7 @@
   ```
 
 ### 라우터 컴포넌트 작성
-* src/routes.jsx 파일 생성
+* 04-router/src/routes.jsx 파일 생성
 * BrowserRouter 사용
   ```jsx
   import { createBrowserRouter } from "react-router-dom";
