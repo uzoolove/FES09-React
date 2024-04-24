@@ -19,7 +19,7 @@
   # 기본 패키지 설치
   npm i
   # 추가 패키지 설치
-  npm i axios immer react-router-dom
+  npm i axios react-router-dom react-hook-form
   # 개발 서버 실행
   npm run dev
   ```
@@ -547,7 +547,7 @@
   ```
 
 ### Navigate 컴포넌트 사용
-* routes.jsx 파일에 추가
+* routes.jsx 파일의 children 첫번째 요소로 추가
 ```jsx
 { path: '/', element: <Navigate to="/home" /> }
 ```
