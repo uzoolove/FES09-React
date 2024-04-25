@@ -489,6 +489,7 @@
 
   - 다음 코드로 변경
     ```jsx
+    const axios = useAxiosInstance();
     const [items, setItems] = useState();
     const fetchList = async () => {
       const response = await axios.get('/todolist');
