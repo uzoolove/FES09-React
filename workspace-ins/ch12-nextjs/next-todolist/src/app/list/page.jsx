@@ -1,4 +1,14 @@
-export default function TodoList(){
+async function getTodoList(){
+  const res = await fetch('http://localhost:3000/api/todolist');
+  const json = await res.json();
+  return json;
+}
+
+export default async function TodoList(){
+
+  const data = await getTodoList();
+  console.log(data);
+
   return (
     <div id="main">
       <h2>할일 목록</h2>
