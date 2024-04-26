@@ -1,3 +1,5 @@
+import TodoListItem from "@/app/list/TodoListItem";
+
 async function getTodoList(){
   const res = await fetch('http://localhost:3000/api/todolist');
   const json = await res.json();
@@ -7,7 +9,8 @@ async function getTodoList(){
 export default async function TodoList(){
 
   const data = await getTodoList();
-  console.log(data);
+  
+  const itemList = data.items.map((item) => <TodoListItem key={ item._id } item={item} />);
 
   return (
     <div id="main">
@@ -20,21 +23,7 @@ export default async function TodoList(){
           <button type="button">검색</button>
         </div>
         <ul className="todolist">
-          <li>
-            <span>1</span>
-            <a href="./tododetail.html"><s>듄2 보기</s></a>
-            <a href="./todolist.html">삭제</a>
-          </li>
-          <li>
-            <span>2</span>
-            <a href="./tododetail.html">10시간 잠자기</a>
-            <a href="./todolist.html">삭제</a>
-          </li>
-          <li>
-            <span>3</span>
-            <a href="./tododetail.html">리액트 과제 하기</a>
-            <a href="./todolist.html">삭제</a>
-          </li>
+          { itemList }
         </ul>
       </div>
     </div>
