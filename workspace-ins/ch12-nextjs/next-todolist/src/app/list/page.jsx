@@ -1,4 +1,5 @@
 import TodoListItem from "@/app/list/TodoListItem";
+import Link from "next/link";
 
 async function getTodoList(){
   const res = await fetch('http://localhost:3000/api/todolist');
@@ -16,7 +17,7 @@ export default async function TodoList(){
     <div id="main">
       <h2>할일 목록</h2>
       <div className="todo">
-        <a href="./todoadd.html">추가</a>
+        <Link href="/list/add">추가</Link>
         <br/>
         <div className="search">
           <input type="text" autoFocus />

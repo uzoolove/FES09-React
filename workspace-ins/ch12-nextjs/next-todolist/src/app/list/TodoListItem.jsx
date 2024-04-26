@@ -1,6 +1,15 @@
+import { remove } from "@/app/actions";
+import { revalidatePath } from "next/cache";
 import Link from "next/link";
 
-export default function TodoListItem({ item, handleDelete }){
+export default function TodoListItem({ item }){
+
+  const handleDelete = async () => {
+    'use server';
+    await remove(item._id);
+    revalidatePath('/list');
+  };
+
   return (
     <li>
       <form>

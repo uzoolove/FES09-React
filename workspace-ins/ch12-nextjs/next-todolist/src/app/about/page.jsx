@@ -1,3 +1,7 @@
+export const metadata = {
+  title: "About | Todo List",
+};
+
 export default function About(){
   return (
     <div id="main">

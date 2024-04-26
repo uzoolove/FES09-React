@@ -1,6 +1,8 @@
 import { db } from '@/db';
 import { NextResponse } from 'next/server';
 
+
+// DB에서 할일 목록 조회
 export async function GET(req){
 
   const keyword = req.nextUrl.searchParams.get('keyword');
@@ -39,3 +41,4 @@ export async function GET(req){
   db.write();
   return NextResponse.json({ items, pagination }, { status: 200 });
 }
+
