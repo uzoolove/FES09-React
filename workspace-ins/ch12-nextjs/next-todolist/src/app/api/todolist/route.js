@@ -4,7 +4,6 @@ import { NextResponse } from 'next/server';
 
 // DB에서 할일 목록 조회
 export async function GET(req){
-
   const keyword = req.nextUrl.searchParams.get('keyword');
   let page = req.nextUrl.searchParams.get('page');
   let limit = req.nextUrl.searchParams.get('limit');
